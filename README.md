@@ -19,3 +19,12 @@
 ## 红线
 - 只服务 Miao 本人（N=1），产品化是远期事项，未经他明示不开工。
 - 汇报只认回读实证：文件在盘、构建通过、URL 可打开，三者缺一不报「完成」。
+
+## Slice 2 — snapshot client, Company sections and global search (2026-11-10)
+
+- Profile view holds an optional snapshot URL (localStorage `fit.snapshot.url`; empty = local-only, no network call). The client fetches it once per load with `cache:'no-store'`, stores the last-good snapshot plus fetched-at time in `fit.snapshot.cache.v1`, and on failure/offline renders the cache with an age label ("snapshot · 2h ago"). The UI never blocks on the fetch.
+- Briefing view gains a Company section (only when a snapshot is present): latest briefing entry, goals summary (total + named entries, count-only remainder as "N more items"), recent decisions (up to 5), and — when present — `snapshot.overview`: an overview strip (goals total + named, activity buckets, staleness) and a recent-activity list (up to 10). Entries without a display title render as count-only / type+date lines; no names are invented.
+- Team view gains a Company snapshot block with workspace/goal counts when present.
+- Global search (header icon, top of Briefing) searches local schedule items, local journal messages and snapshot content as rendered (display titles, decision ids, recent-activity display titles). Results navigate to the relevant view; empty-query and no-result states are shown honestly.
+- Exposure rule: the client reads only pre-sanitized display titles from the snapshot — see the field list in the `cleanSnapshot` comment in `index.html` — and never reads any other title/slug field. Palette stays ink/orange; no analytics, no accounts, no other network calls. A sample snapshot is in `tests/fixtures/snapshot.sample.json`.
+- Manual checklist: configure the fixture URL → Company/Team sections appear; reload offline → cached sections with age label; clear the URL → back to local-only; search "Ship FIT snapshot client", a schedule title and a journal word → hits across all three sources; search a nonsense string → honest no-result state.
