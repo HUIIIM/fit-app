@@ -1,1 +1,25 @@
-{"background_color":"#FFFFFF","description":"Miao 的个人 AI 团队：晨间简报、拇指决策、六人智能体团队","display":"standalone","icons":[],"lang":"zh-CN","name":"FIT · 我的 AI 团队","scope":".","short_name":"FIT","start_url":".","theme_color":"#000000"}
+{
+  "background_color": "#FFFFFF",
+  "description": "Helm — AI company console: morning briefing, decisions and approvals",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "zh-CN",
+  "name": "Helm",
+  "scope": ".",
+  "short_name": "Helm",
+  "start_url": ".",
+  "theme_color": "#000000"
+}
