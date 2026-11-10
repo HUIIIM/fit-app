@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<title>FIT · 我的 AI 团队</title>
+<title>Helm · 我的 AI 团队</title>
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
 <style>
 :root{--ink:#000000;--paper:#FFFFFF;--card:#FFFFFF;--line:#E5E5E5;--accent:#FF4713;--ok:#1D8348;--mut:#737373;--soft:#F5F5F5}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -57,6 +59,21 @@ header .search{position:absolute;top:16px;right:14px;width:38px;height:38px;bord
 header h1{padding-right:44px}
 .snapstrip{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:4px}
 .snapstrip b{color:var(--accent)}
+/* Helm overview (G8 v2). Grayscale blocks: orange (#FF4713) in the overview appears ONLY on the pending-approvals badge (.ov-badge) and the signal-disc core (.ov-disc-core). Count bars are grayscale only. */
+.ov-block{border-top:1px solid var(--line);padding:12px 0}
+.ov-block:first-of-type{border-top:none;padding-top:2px}
+.ov-block h3{font-size:14px;margin-bottom:8px}
+.ov-signal{display:flex;gap:12px;align-items:center}
+.ov-disc{width:34px;height:34px;border-radius:99px;background:conic-gradient(var(--ink) 0 var(--sig,0%),var(--line) var(--sig,0%) 100%);display:flex;align-items:center;justify-content:center;flex:none}
+.ov-disc-core{width:12px;height:12px;border-radius:99px;background:var(--accent)}
+.ov-status{font-size:15px;font-weight:700}
+.ov-meta{font-size:12.5px;color:var(--mut);line-height:1.5;margin-top:2px}
+.ov-gap{font-size:13.5px;color:var(--mut);line-height:1.6}
+.ov-badge{display:inline-block;background:var(--accent);color:#FFFFFF;border-radius:99px;padding:2px 8px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:2px}
+.ov-bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:4px 0 10px}
+.ov-bar i{display:block;height:100%;background:var(--ink)}
+.ov-bar-7d i{background:var(--mut)}
+.ov-bar-older i{background:var(--line);border-right:1px solid var(--mut)}
 </style>
 </head>
 <body>
@@ -69,7 +86,7 @@ header h1{padding-right:44px}
 <main>
 <section class="view on" id="v-brief">
 <div class="card"><h2>Search</h2><div class="searchbar"><input id="globalSearch" type="search" placeholder="Search schedule, journal and company snapshot..." aria-label="Global search"><button class="small accent" type="button" id="clearSearch">Clear</button></div><div id="searchResults"><div class="empty">Type to search your schedule items, journal messages and company snapshot content.</div></div></div>
-<div class="card" id="companyCard" hidden><h2>Company<span class="tag" id="snapshotAge"></span></h2><div id="companyBody"></div><div class="note" id="snapshotNote"></div></div>
+<div class="card" id="companyCard"><h2 id="overviewHeading">Overview</h2><div id="companyBody"></div><div class="note" id="snapshotNote"></div></div>
 <div class="card"><h2>Today's briefing</h2><div id="briefSummary"></div><div id="briefList"></div></div>
 <div class="card"><h2>Pending</h2><div id="briefPending"></div></div>
 <div class="note">This briefing is generated from your schedule saved on this device. No external data is used.</div>
@@ -122,7 +139,7 @@ header h1{padding-right:44px}
 <div class="item"><div class="t">付款前先搜折扣</div><div class="d">任何付款先找最便宜的正规路径并留痕</div></div>
 </div>
 <div class="card"><h2>Company snapshot</h2><p class="empty">Optional: enter a snapshot URL from your server-side generator. Empty means local-only mode — no network call is made and the app behaves exactly as before. Only pre-sanitized display titles from the snapshot are ever shown; entries without one are count-only.</p><label for="snapshotUrl">Snapshot URL</label><input id="snapshotUrl" type="url" placeholder="https://example.com/snapshot.json" maxlength="500"><div class="row"><button class="btn primary" type="button" id="saveSnapshotUrl">Save snapshot URL</button><button class="btn" type="button" id="refreshSnapshot">Refresh now</button></div><div id="snapshotStatus" class="empty" role="status"></div></div>
-<div class="card"><h2>Clear local data</h2><p class="empty">This deletes all FIT data stored on this device (schedule items and message journal entries). This cannot be undone.</p><button class="btn ink" type="button" id="clearData">Clear all local data</button><div id="clearStatus" class="empty" role="status"></div></div>
+<div class="card"><h2>Clear local data</h2><p class="empty">This deletes all Helm data stored on this device (schedule items and message journal entries). This cannot be undone.</p><button class="btn ink" type="button" id="clearData">Clear all local data</button><div id="clearStatus" class="empty" role="status"></div></div>
 </section>
 </main>
 <nav>
@@ -137,6 +154,15 @@ header h1{padding-right:44px}
 var KEY='fit.state.v1';
 var SNAP_URL_KEY='fit.snapshot.url';
 var SNAP_CACHE_KEY='fit.snapshot.cache.v1';
+var SHELL_VERSION='v4';
+var SW_RELOAD_FLAG='helm.sw.reloaded.'+SHELL_VERSION;
+/* Helm overview strings only. zh-CN is the default; en is used when the browser language starts with en. Existing views are not retrofitted in this slice. Later slices extend STR with new keys. */
+var STR={
+'zh-CN':{overview:'总览',statusLocalOnly:'本地模式',statusLive:'已连接',statusCached:'缓存快照',statusStale:'快照较旧',statusNotConnected:'未连接',statusLoading:'加载中…',generation:'生成序号',projection:'投影版本',goals:'目标',goalsTotal:'目标总数',goalsNamed:'已命名',activity24h:'24小时内更新',activity7d:'7天内更新',activityOlder:'更早',staleness:'过期目标',activity:'动态',activityUpTo:'最多 10 条',activityCountOnly:'无显示标题 — 仅计数',briefing:'简报',decisions:'决策',decisionsUpTo:'最多显示 5 条',approvals:'待审批',approvalsNotConnected:'未连接 — 未显示待审批项，也不是 0 项。',approvalsNoData:'此快照没有待审批数据。',approvalsNoItems:'此快照没有待审批项详情。',approvalsCount:'项待审批',proposer:'提议人',effect:'影响',subject:'对象',health:'健康',healthNoData:'此快照没有健康数据 — 来源缺失。',noSnapshotData:'未连接快照 — 本地模式。',activityNoData:'此快照没有近期动态。',briefingNoData:'此快照没有简报或决策数据。',goalCountOnly:'仅计数 — 未提供显示标题。',viewTeam:'查看团队'},
+en:{overview:'Overview',statusLocalOnly:'Local-only',statusLive:'Live',statusCached:'Cached snapshot',statusStale:'Stale snapshot',statusNotConnected:'Not connected',statusLoading:'Loading…',generation:'Generation',projection:'Projection',goals:'Goals',goalsTotal:'Goals total',goalsNamed:'Named',activity24h:'Updated last 24h',activity7d:'Updated last 7d',activityOlder:'Older',staleness:'Stale',activity:'Activity',activityUpTo:'Up to 10',activityCountOnly:'No display title — count-only entry',briefing:'Briefing',decisions:'Decisions',decisionsUpTo:'Up to 5 shown',approvals:'Pending approvals',approvalsNotConnected:'Not connected — no pending approvals are shown, and this is not a count of 0.',approvalsNoData:'No pending-approvals data in this snapshot.',approvalsNoItems:'No pending-approval item details in this snapshot.',approvalsCount:'pending',proposer:'Proposer',effect:'Effect',subject:'Subject',health:'Health',healthNoData:'No health data in this snapshot — source gap.',noSnapshotData:'No snapshot connected — local-only mode.',activityNoData:'No recent activity in this snapshot.',briefingNoData:'No briefing or decision data in this snapshot.',goalCountOnly:'Count-only — no display title was provided.',viewTeam:'View team'}
+};
+var LOCALE=((typeof navigator!=='undefined'&&navigator.language&&/^en/i.test(navigator.language))?'en':'zh-CN');
+function t(key){var table=STR[LOCALE]||STR['zh-CN'];return table[key]||STR['zh-CN'][key]||key}
 var QUADRANTS=[{id:'urgent-important',label:'重要 × 紧急'},{id:'not-urgent-important',label:'重要 × 不紧急'},{id:'urgent-not-important',label:'不重要 × 紧急'},{id:'not-urgent-not-important',label:'不重要 × 不紧急'}];
 function quadrantLabel(id){for(var i=0;i<QUADRANTS.length;i++){if(QUADRANTS[i].id===id)return QUADRANTS[i].label}return id}
 function loadState(){try{var raw=localStorage.getItem(KEY);if(!raw)return{version:1,schedule:[],messages:[]};var parsed=JSON.parse(raw);if(!parsed||!Array.isArray(parsed.schedule)||!Array.isArray(parsed.messages))return{version:1,schedule:[],messages:[]};return{version:1,schedule:parsed.schedule,messages:parsed.messages}}catch(e){return{version:1,schedule:[],messages:[]}}}
@@ -147,11 +173,12 @@ function esc(value){return String(value).replace(/[&<>"']/g,function(c){return{'
 function newId(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
 function formatTime(value){try{return new Date(value).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}catch(e){return''}}
 function pendingItems(){return state.schedule.filter(function(item){return!item.done})}
-/* ---- Slice 2: snapshot client. The server-side snapshot exposes titles ONLY as pre-sanitized display titles. This client reads ONLY the fields listed here and never reads any other title/slug field from snapshot objects: briefing.kind, briefing.date, briefing.displayTitle / briefing.display_title; goals[].id, goals[].displayTitle / goals[].display_title; decisions[].id, decisions[].date, decisions[].displayTitle / decisions[].display_title; team.workspaces, team.goals; overview.goals_total, overview.goals_named, overview.goals_activity_buckets.updated_last_24h, overview.goals_activity_buckets.updated_last_7d, overview.goals_activity_buckets.older, overview.recent_activity[].type, overview.recent_activity[].date, overview.recent_activity[].display_title, overview.staleness. (Local schedule items have their own local title field, unrelated to the snapshot.) ---- */
+/* ---- Slice 2 + Helm overview: snapshot client. The server-side snapshot exposes titles ONLY as pre-sanitized display titles. This client reads ONLY the fields listed here and never reads any other title/slug field from snapshot objects: briefing.kind, briefing.date, briefing.displayTitle / briefing.display_title; goals[].id, goals[].displayTitle / goals[].display_title; decisions[].id, decisions[].date, decisions[].displayTitle / decisions[].display_title, decisions[].subject_ref; team.workspaces, team.goals; overview.goals_total, overview.goals_named, overview.goals_activity_buckets.updated_last_24h, overview.goals_activity_buckets.updated_last_7d, overview.goals_activity_buckets.older, overview.recent_activity[].type, overview.recent_activity[].date, overview.recent_activity[].display_title, overview.recent_activity[].subject_ref, overview.staleness; projection_version (preferred) or legacy version; generation_seq; pending_approvals.status, pending_approvals.count, pending_approvals.items[].id, .displayTitle/.display_title, .proposer, .effect, .subject_ref, .date; fleet_health numeric counts. The tenant object is ignored entirely and never read. (Local schedule items have their own local title field, unrelated to the snapshot.) ---- */
 var snapshot=null;
 var snapshotFetchedAt=0;
 var snapshotFromCache=false;
 var snapshotError='';
+var snapshotLoading=false;
 function getSnapshotUrl(){try{return (localStorage.getItem(SNAP_URL_KEY)||'').trim()}catch(e){return ''}}
 function setSnapshotUrl(url){try{if(url)localStorage.setItem(SNAP_URL_KEY,url);else localStorage.removeItem(SNAP_URL_KEY)}catch(e){}}
 function asString(v){return (typeof v==='string'&&v.trim())?v:null}
@@ -159,82 +186,149 @@ function asNumber(v){return (typeof v==='number'&&isFinite(v))?v:null}
 function displayTitleOf(entry){if(!entry||typeof entry!=='object')return null;return asString(entry.displayTitle)||asString(entry.display_title)}
 function loadSnapshotCache(){try{var raw=localStorage.getItem(SNAP_CACHE_KEY);if(!raw)return null;var parsed=JSON.parse(raw);if(!parsed||typeof parsed!=='object'||!parsed.snapshot||typeof parsed.fetchedAt!=='number')return null;return parsed}catch(e){return null}}
 function saveSnapshotCache(snap){try{localStorage.setItem(SNAP_CACHE_KEY,JSON.stringify({snapshot:snap,fetchedAt:Date.now(),url:getSnapshotUrl()}))}catch(e){}}
+function cleanApprovalItem(a){if(!a||typeof a!=='object')return null;return{id:asString(a.id),displayTitle:displayTitleOf(a),proposer:asString(a.proposer),effect:asString(a.effect),subjectRef:asString(a.subject_ref||a.subjectRef),date:asString(a.date)}}
 function cleanSnapshot(raw){
 if(!raw||typeof raw!=='object')return null;
-var out={briefing:null,goals:[],decisions:[],team:null,overview:null};
+var out={briefing:null,goals:[],decisions:[],team:null,overview:null,projectionVersion:null,generationSeq:null,pendingApprovals:null,fleetHealth:null};
+var pv=(raw.projection_version!==undefined&&raw.projection_version!==null)?raw.projection_version:(raw.projectionVersion!==undefined&&raw.projectionVersion!==null)?raw.projectionVersion:raw.version;
+if(typeof pv==='number'&&isFinite(pv))out.projectionVersion=pv;else if(typeof pv==='string'&&pv.trim())out.projectionVersion=pv.trim();
+out.generationSeq=asNumber((raw.generation_seq!==undefined&&raw.generation_seq!==null)?raw.generation_seq:raw.generationSeq);
 var b=raw.briefing;
 if(Array.isArray(b))b=b[0];
 if(b&&typeof b==='object'){out.briefing={kind:asString(b.kind),date:asString(b.date),displayTitle:displayTitleOf(b)}}
 if(Array.isArray(raw.goals)){out.goals=raw.goals.filter(function(g){return g&&typeof g==='object'}).map(function(g){return{id:asString(g.id),displayTitle:displayTitleOf(g)}})}
-if(Array.isArray(raw.decisions)){out.decisions=raw.decisions.filter(function(d){return d&&typeof d==='object'}).map(function(d){return{id:asString(d.id),date:asString(d.date),displayTitle:displayTitleOf(d)}})}
-var t=raw.team;
-if(t&&typeof t==='object'){var tw=asNumber(t.workspaces);var tg=asNumber(t.goals);if(tw!==null||tg!==null)out.team={workspaces:tw,goals:tg}}
+if(Array.isArray(raw.decisions)){out.decisions=raw.decisions.filter(function(d){return d&&typeof d==='object'}).map(function(d){return{id:asString(d.id),date:asString(d.date),displayTitle:displayTitleOf(d),subjectRef:asString(d.subject_ref||d.subjectRef)}})}
+var tm=raw.team;
+if(tm&&typeof tm==='object'){var tw=asNumber(tm.workspaces);var tg=asNumber(tm.goals);if(tw!==null||tg!==null)out.team={workspaces:tw,goals:tg}}
 var ov=raw.overview;
 if(ov&&typeof ov==='object'){
 var buckets=null;var bk=ov.goals_activity_buckets;
 if(bk&&typeof bk==='object'){buckets={updated_last_24h:asNumber(bk.updated_last_24h),updated_last_7d:asNumber(bk.updated_last_7d),older:asNumber(bk.older)}}
 var activity=[];
-if(Array.isArray(ov.recent_activity)){activity=ov.recent_activity.filter(function(a){return a&&typeof a==='object'}).slice(0,10).map(function(a){return{type:asString(a.type),date:asString(a.date),displayTitle:displayTitleOf(a)}})}
+if(Array.isArray(ov.recent_activity)){activity=ov.recent_activity.filter(function(a){return a&&typeof a==='object'}).slice(0,10).map(function(a){return{type:asString(a.type),date:asString(a.date),displayTitle:displayTitleOf(a),subjectRef:asString(a.subject_ref||a.subjectRef)}})}
 out.overview={goals_total:asNumber(ov.goals_total),goals_named:asNumber(ov.goals_named),goals_activity_buckets:buckets,recent_activity:activity,staleness:asNumber(ov.staleness)};
 }
+var pa=raw.pending_approvals||raw.pendingApprovals||(ov&&ov.pending_approvals)||(ov&&ov.pendingApprovals);
+if(pa&&typeof pa==='object'){
+if(Array.isArray(pa)){out.pendingApprovals={status:null,count:pa.length,items:pa.filter(function(a){return a&&typeof a==='object'}).map(cleanApprovalItem).filter(function(a){return a})}}
+else{var items=[];if(Array.isArray(pa.items)){items=pa.items.filter(function(a){return a&&typeof a==='object'}).map(cleanApprovalItem).filter(function(a){return a})}out.pendingApprovals={status:asString(pa.status),count:asNumber(pa.count),items:items}}
+}
+var fh=raw.fleet_health||raw.fleetHealth||(ov&&ov.fleet_health)||(ov&&ov.fleetHealth);
+if(fh&&typeof fh==='object'){var health={};var hasHealth=false;for(var k in fh){if(Object.prototype.hasOwnProperty.call(fh,k)){var n=asNumber(fh[k]);if(n!==null){health[k]=n;hasHealth=true}}}if(hasHealth)out.fleetHealth=health}
 return out;
 }
 function formatAge(ms){if(!(ms>0))return 'just now';var s=Math.floor(ms/1000);if(s<60)return 'just now';var m=Math.floor(s/60);if(m<60)return m+'m ago';var h=Math.floor(m/60);if(h<24)return h+'h ago';var d=Math.floor(h/24);return d+'d ago'}
 function snapshotAgeLabel(){if(!snapshot||!snapshotFetchedAt)return '';return 'snapshot \u00b7 '+formatAge(Date.now()-snapshotFetchedAt)+(snapshotFromCache?' \u00b7 cached':'')}
 function fetchSnapshot(){
 var url=getSnapshotUrl();
-if(!url){snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';renderSnapshot();return}
+if(!url){snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';snapshotLoading=false;renderSnapshot();return}
+snapshotLoading=true;
 fetch(url,{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('HTTP '+res.status);return res.json()}).then(function(raw){
 var cleaned=cleanSnapshot(raw);
 if(!cleaned)throw new Error('Invalid snapshot');
-snapshot=cleaned;snapshotFetchedAt=Date.now();snapshotFromCache=false;snapshotError='';saveSnapshotCache(cleaned);renderSnapshot();renderSearch();
+snapshot=cleaned;snapshotFetchedAt=Date.now();snapshotFromCache=false;snapshotError='';snapshotLoading=false;saveSnapshotCache(cleaned);renderSnapshot();renderSearch();
 }).catch(function(err){
+snapshotLoading=false;
 snapshotError='Snapshot could not be refreshed ('+(err&&err.message?err.message:'offline')+'). Showing the last saved snapshot.';
 renderSnapshot();renderSearch();
 });
 }
+/* Five-state signal disc: local (no snapshot URL), live (direct fetch, age < 24h), cached (last-good snapshot), stale (snapshot age >= 24h), not_connected (URL set, no snapshot, fetch failed). Level is a grayscale conic fill; the disc core is orange. */
+function signalState(){
+if(!snapshot){if(!getSnapshotUrl())return 'local';return 'not_connected'}
+var ageMs=snapshotFetchedAt?Date.now()-snapshotFetchedAt:0;
+if(ageMs>24*60*60*1000)return 'stale';
+if(snapshotFromCache)return 'cached';
+return 'live';
+}
+function signalLevel(state){var levels={local:25,live:100,cached:75,stale:50,not_connected:0};return levels[state]||0}
+function signalLabel(state){var labels={local:t('statusLocalOnly'),live:t('statusLive'),cached:t('statusCached'),stale:t('statusStale'),not_connected:t('statusNotConnected')};return labels[state]||t('statusNotConnected')}
+function countBar(value,max,cls){var pct=max>0?Math.round((value||0)/max*100):0;if(value>0&&pct<4)pct=4;return '<div class="ov-bar '+(cls||'')+'"><i style="width:'+pct+'%"></i></div>'}
 function renderSnapshot(){
 var card=document.getElementById('companyCard');
 var teamCard=document.getElementById('teamSnapshotCard');
 var status=document.getElementById('snapshotStatus');
 var url=getSnapshotUrl();
+var heading=document.getElementById('overviewHeading');if(heading)heading.textContent=t('overview');
 if(status){
 if(!url){status.textContent='Local-only mode. No snapshot URL is configured, so no network call is made.'}
 else if(snapshot){status.textContent=(snapshotFromCache?'Using the last saved snapshot. ':'Snapshot loaded. ')+snapshotAgeLabel()+'.'}
 else if(snapshotError){status.textContent=snapshotError}
 else{status.textContent='Loading snapshot...'}
 }
-if(!snapshot){if(card)card.hidden=true;if(teamCard)teamCard.hidden=true;return}
-var ageEl=document.getElementById('snapshotAge');if(ageEl)ageEl.textContent=snapshotAgeLabel();
+var sig=signalState();
+var sigText=signalLabel(sig);
+if(!snapshot&&snapshotLoading&&!snapshotError)sigText=t('statusLoading');
+var metaParts=[];
+if(snapshot)metaParts.push(snapshotAgeLabel());
+if(snapshot&&snapshot.generationSeq!==null&&snapshot.generationSeq!==undefined)metaParts.push(t('generation')+' #'+snapshot.generationSeq);
+if(snapshot&&snapshot.projectionVersion!==null&&snapshot.projectionVersion!==undefined)metaParts.push(t('projection')+' '+snapshot.projectionVersion);
+metaParts.push('Shell '+SHELL_VERSION);
 var html='';
-if(snapshot.briefing){var br=snapshot.briefing;var brMeta=[br.kind,br.date].filter(function(x){return x}).join(' \u00b7 ');html+='<div class="item"><div class="t">'+esc(br.displayTitle||br.kind||'Briefing')+'</div><div class="d">'+esc(brMeta)+'</div></div>'}
-if(snapshot.overview){
-var ov=snapshot.overview;var parts=[];
-if(ov.goals_total!==null&&ov.goals_total!==undefined)parts.push(ov.goals_total+' goals total');
-if(ov.goals_named!==null&&ov.goals_named!==undefined)parts.push(ov.goals_named+' named');
-if(ov.goals_activity_buckets){var bk2=ov.goals_activity_buckets;parts.push('updated last 24h: '+(bk2.updated_last_24h!==null&&bk2.updated_last_24h!==undefined?bk2.updated_last_24h:0)+' \u00b7 last 7d: '+(bk2.updated_last_7d!==null&&bk2.updated_last_7d!==undefined?bk2.updated_last_7d:0)+' \u00b7 older: '+(bk2.older!==null&&bk2.older!==undefined?bk2.older:0))}
-if(ov.staleness!==null&&ov.staleness!==undefined)parts.push('staleness: '+ov.staleness);
-if(parts.length)html+='<div class="snapstrip"><b>Overview</b><div>'+esc(parts.join(' \u00b7 '))+'</div></div>';
-if(ov.recent_activity&&ov.recent_activity.length){
-html+='<div class="item"><div class="t">Recent activity</div><div class="d">'+ov.recent_activity.length+' entr'+(ov.recent_activity.length===1?'y':'ies')+' (up to 10)</div></div>';
-ov.recent_activity.slice(0,10).forEach(function(a){
-if(a.displayTitle){html+='<div class="item"><div class="t">'+esc(a.displayTitle)+'</div><div class="d">'+esc((a.type||'Activity')+(a.date?' \u00b7 '+a.date:''))+'</div></div>'}
-else{html+='<div class="item"><div class="t">'+esc(a.type||'Activity')+'</div><div class="d">'+esc(a.date||'')+' \u00b7 No display title \u2014 count-only entry</div></div>'}
-});
-}
-}
+html+='<div class="ov-block"><div class="ov-signal"><div class="ov-disc" style="--sig:'+signalLevel(sig)+'%" role="img" aria-label="'+esc(sigText)+'"><span class="ov-disc-core"></span></div><div><div class="ov-status">'+esc(sigText)+'</div><div class="ov-meta">'+esc(metaParts.join(' \u00b7 '))+'</div></div></div></div>';
+html+='<div class="ov-block"><h3>'+esc(t('goals'))+'</h3>';
+if(!snapshot){html+='<div class="ov-gap">'+esc(t('noSnapshotData'))+'</div>'}
+else{
 var namedGoals=snapshot.goals.filter(function(g){return g.displayTitle});
 var unnamedGoals=snapshot.goals.length-namedGoals.length;
-html+='<div class="item"><div class="t">'+snapshot.goals.length+' goal'+(snapshot.goals.length===1?'':'s')+' total</div><div class="d">'+namedGoals.length+' named \u00b7 '+unnamedGoals+' count-only</div></div>';
-namedGoals.forEach(function(g){html+='<div class="item"><div class="t">'+esc(g.displayTitle)+'</div><div class="d">Goal</div></div>'});
-if(unnamedGoals>0){html+='<div class="item"><div class="t">'+unnamedGoals+' more item'+(unnamedGoals===1?'':'s')+'</div><div class="d">Count-only \u2014 no display title was provided for these goals.</div></div>'}
-if(snapshot.decisions.length){
-html+='<div class="item"><div class="t">Recent decisions</div><div class="d">'+Math.min(snapshot.decisions.length,5)+' shown (up to 5)</div></div>';
-snapshot.decisions.slice(0,5).forEach(function(d){
-html+='<div class="item"><div class="t">'+esc(d.id||'Decision')+'</div><div class="d">'+esc((d.date||'')+(d.displayTitle?' \u00b7 '+d.displayTitle:' \u00b7 No display title'))+'</div></div>'});
+if(snapshot.overview){
+var ov=snapshot.overview;
+if(ov.goals_total!==null&&ov.goals_total!==undefined)html+='<div class="item"><div class="t">'+ov.goals_total+' '+esc(t('goalsTotal'))+'</div><div class="d">'+(ov.goals_named!==null&&ov.goals_named!==undefined?ov.goals_named+' '+esc(t('goalsNamed')):'')+'</div></div>';
+if(ov.goals_activity_buckets){var bk2=ov.goals_activity_buckets;var maxV=Math.max(bk2.updated_last_24h||0,bk2.updated_last_7d||0,bk2.older||0,1);
+html+='<div class="ov-meta">'+esc(t('activity24h'))+': '+(bk2.updated_last_24h||0)+'</div>'+countBar(bk2.updated_last_24h||0,maxV,'');
+html+='<div class="ov-meta">'+esc(t('activity7d'))+': '+(bk2.updated_last_7d||0)+'</div>'+countBar(bk2.updated_last_7d||0,maxV,'ov-bar-7d');
+html+='<div class="ov-meta">'+esc(t('activityOlder'))+': '+(bk2.older||0)+'</div>'+countBar(bk2.older||0,maxV,'ov-bar-older');
 }
+if(ov.staleness!==null&&ov.staleness!==undefined)html+='<div class="ov-meta">'+esc(t('staleness'))+': '+ov.staleness+'</div>';
+}else{html+='<div class="item"><div class="t">'+snapshot.goals.length+' '+esc(t('goalsTotal'))+'</div><div class="d">'+namedGoals.length+' '+esc(t('goalsNamed'))+'</div></div>'}
+namedGoals.forEach(function(g){html+='<div class="item"><div class="t">'+esc(g.displayTitle)+'</div><div class="d">Goal</div></div>'});
+if(unnamedGoals>0){html+='<div class="item"><div class="t">'+unnamedGoals+' more item'+(unnamedGoals===1?'':'s')+'</div><div class="d">'+esc(t('goalCountOnly'))+'</div></div>'}
+html+='<div class="row"><button class="small" type="button" data-overview-view="v-team">'+esc(t('viewTeam'))+'</button></div>';
+}
+html+='</div>';
+html+='<div class="ov-block"><h3>'+esc(t('activity'))+'</h3>';
+if(!snapshot){html+='<div class="ov-gap">'+esc(t('noSnapshotData'))+'</div>'}
+else if(snapshot.overview&&snapshot.overview.recent_activity&&snapshot.overview.recent_activity.length){
+var act=snapshot.overview.recent_activity.slice(0,10);
+html+='<div class="ov-meta">'+act.length+' \u00b7 '+esc(t('activityUpTo'))+'</div>';
+act.forEach(function(a){
+if(a.displayTitle){html+='<div class="item"><div class="t">'+esc(a.displayTitle)+'</div><div class="d">'+esc((a.type||'Activity')+(a.date?' \u00b7 '+a.date:''))+'</div>'+(a.subjectRef?'<div class="ov-meta">'+esc(t('subject'))+': '+esc(a.subjectRef)+'</div>':'')+'</div>'}
+else{html+='<div class="item"><div class="t">'+esc((a.type||'Activity')+(a.date?' \u00b7 '+a.date:''))+'</div><div class="d">'+esc(t('activityCountOnly'))+'</div>'+(a.subjectRef?'<div class="ov-meta">'+esc(t('subject'))+': '+esc(a.subjectRef)+'</div>':'')+'</div>'}
+});
+}else{html+='<div class="ov-gap">'+esc(t('activityNoData'))+'</div>'}
+html+='</div>';
+html+='<div class="ov-block"><h3>'+esc(t('briefing'))+' / '+esc(t('decisions'))+'</h3>';
+if(!snapshot){html+='<div class="ov-gap">'+esc(t('noSnapshotData'))+'</div>'}
+else{
+var hasBrief=false;
+if(snapshot.briefing){hasBrief=true;var br=snapshot.briefing;var brMeta=[br.kind,br.date].filter(function(x){return x}).join(' \u00b7 ');html+='<div class="item"><div class="t">'+esc(br.displayTitle||br.kind||'Briefing')+'</div><div class="d">'+esc(brMeta)+'</div></div>'}
+if(snapshot.decisions.length){
+html+='<div class="ov-meta">'+Math.min(snapshot.decisions.length,5)+' \u00b7 '+esc(t('decisionsUpTo'))+'</div>';
+snapshot.decisions.slice(0,5).forEach(function(d){html+='<div class="item"><div class="t">'+esc(d.id||'Decision')+'</div><div class="d">'+esc((d.date||'')+(d.displayTitle?' \u00b7 '+d.displayTitle:' \u00b7 '+t('activityCountOnly')))+'</div>'+(d.subjectRef?'<div class="ov-meta">'+esc(t('subject'))+': '+esc(d.subjectRef)+'</div>':'')+'</div>'});
+}else if(!hasBrief){html+='<div class="ov-gap">'+esc(t('briefingNoData'))+'</div>'}
+}
+html+='</div>';
+var pa=snapshot?snapshot.pendingApprovals:null;
+var paCount=0;
+if(pa){paCount=(pa.count!==null&&pa.count!==undefined)?pa.count:(pa.items?pa.items.length:0)}
+html+='<div class="ov-block"><h3>'+esc(t('approvals'))+(pa&&pa.status!=='not_connected'&&paCount>0?'<span class="ov-badge">'+paCount+'</span>':'')+'</h3>';
+if(!snapshot){html+='<div class="ov-gap">'+esc(t('noSnapshotData'))+'</div>'}
+else if(pa&&pa.status==='not_connected'){html+='<div class="ov-gap">'+esc(t('approvalsNotConnected'))+'</div>'}
+else if(pa&&pa.items&&pa.items.length){
+html+='<div class="ov-meta">'+paCount+' '+esc(t('approvalsCount'))+'</div>';
+pa.items.forEach(function(a){html+='<div class="item"><div class="t">'+esc(a.displayTitle||a.id||'Approval')+'</div>'+(a.proposer?'<div class="d">'+esc(t('proposer'))+': '+esc(a.proposer)+'</div>':'')+(a.effect?'<div class="d">'+esc(t('effect'))+': '+esc(a.effect)+'</div>':'')+(a.subjectRef?'<div class="ov-meta">'+esc(t('subject'))+': '+esc(a.subjectRef)+'</div>':'')+'</div>'});
+}
+else if(pa&&paCount>0){html+='<div class="ov-meta">'+paCount+' '+esc(t('approvalsCount'))+'</div><div class="ov-gap">'+esc(t('approvalsNoItems'))+'</div>'}
+else{html+='<div class="ov-gap">'+esc(t('approvalsNoData'))+'</div>'}
+html+='</div>';
+html+='<div class="ov-block"><h3>'+esc(t('health'))+'</h3>';
+if(!snapshot){html+='<div class="ov-gap">'+esc(t('noSnapshotData'))+'</div>'}
+else if(snapshot.fleetHealth){var hp=[];for(var hk in snapshot.fleetHealth){if(Object.prototype.hasOwnProperty.call(snapshot.fleetHealth,hk))hp.push(hk+': '+snapshot.fleetHealth[hk])}html+='<div class="ov-meta">'+esc(hp.join(' \u00b7 '))+'</div>'}
+else{html+='<div class="ov-gap">'+esc(t('healthNoData'))+'</div>'}
+html+='</div>';
 var body=document.getElementById('companyBody');if(body)body.innerHTML=html;
 if(card)card.hidden=false;
+if(!snapshot){if(teamCard)teamCard.hidden=true;var note0=document.getElementById('snapshotNote');if(note0)note0.textContent=snapshotError||'Local-only mode. No snapshot is connected.';return}
 if(snapshot.team){
 var tparts=[];
 if(snapshot.team.workspaces!==null&&snapshot.team.workspaces!==undefined)tparts.push(snapshot.team.workspaces+' workspace'+(snapshot.team.workspaces===1?'':'s'));
@@ -257,6 +351,7 @@ if(snapshot.briefing&&snapshot.briefing.displayTitle&&snapshot.briefing.displayT
 snapshot.goals.forEach(function(g){if(g.displayTitle&&g.displayTitle.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company goal',text:g.displayTitle,detail:'Goal',view:'v-brief'})});
 snapshot.decisions.forEach(function(d){var hay=(d.displayTitle||'')+' '+(d.id||'');if(hay.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company decision',text:d.displayTitle||d.id||'Decision',detail:(d.date||'')+(d.displayTitle?'':' \u00b7 No display title'),view:'v-brief'})});
 if(snapshot.overview&&Array.isArray(snapshot.overview.recent_activity)){snapshot.overview.recent_activity.forEach(function(a){if(a.displayTitle&&a.displayTitle.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company activity',text:a.displayTitle,detail:(a.type||'Activity')+' \u00b7 '+(a.date||''),view:'v-brief'})})}
+if(snapshot.pendingApprovals&&Array.isArray(snapshot.pendingApprovals.items)){snapshot.pendingApprovals.items.forEach(function(a){if(a.displayTitle&&a.displayTitle.toLowerCase().indexOf(needle)>-1)results.push({kind:'Pending approval',text:a.displayTitle,detail:(a.proposer?'Proposer: '+a.proposer:'')+(a.effect?' \u00b7 Effect: '+a.effect:''),view:'v-brief'})})}
 if(snapshot.team&&['workspace','workspaces','team','company'].indexOf(needle)>-1){var tp=[];if(snapshot.team.workspaces!==null&&snapshot.team.workspaces!==undefined)tp.push(snapshot.team.workspaces+' workspaces');if(snapshot.team.goals!==null&&snapshot.team.goals!==undefined)tp.push(snapshot.team.goals+' goals');if(tp.length)results.push({kind:'Company team',text:tp.join(' \u00b7 '),detail:'Team snapshot',view:'v-team'})}
 }
 return results;
@@ -298,7 +393,7 @@ document.getElementById('chatEmpty').hidden=state.messages.length>0;
 function renderProfile(){
 var total=state.schedule.length;var pending=pendingItems().length;var done=total-pending;
 var byQuadrant=QUADRANTS.map(function(q){var count=state.schedule.filter(function(item){return item.quadrant===q.id}).length;return '<div class="item"><div class="t">'+esc(q.label)+'</div><div class="d">'+count+' item'+(count===1?'':'s')+'</div></div>'}).join('');
-document.getElementById('profileStats').innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+'</div><div class="d">'+pending+' pending \u00b7 '+done+' done</div></div>'+byQuadrant+'<div class="item"><div class="t">'+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div><div class="d">Stored locally only, under key fit.state.v1. No account, no server, no analytics.</div></div>';
+document.getElementById('profileStats').innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+'</div><div class="d">'+pending+' pending \u00b7 '+done+' done</div></div>'+byQuadrant+'<div class="item"><div class="t">'+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div><div class="d">Stored locally only, under key fit.state.v1. No account, no server, no analytics.</div></div><div class="item"><div class="t">Helm shell '+SHELL_VERSION+'</div><div class="d">Service worker helm-shell-'+SHELL_VERSION+'. Already-open pages reload once to a new shell.</div></div>';
 var urlInput=document.getElementById('snapshotUrl');if(urlInput&&document.activeElement!==urlInput)urlInput.value=getSnapshotUrl();
 }
 function renderAll(){renderBriefing();renderSchedule();renderChat();renderProfile();renderSnapshot();renderSearch()}
@@ -309,6 +404,7 @@ document.getElementById('quadGrid').addEventListener('click',function(event){var
 document.getElementById('briefPending').addEventListener('click',function(event){var btn=event.target.closest('button[data-action="done"]');if(!btn)return;var id=btn.getAttribute('data-id');for(var i=0;i<state.schedule.length;i++){if(state.schedule[i].id===id){state.schedule[i].done=true}}saveState();renderAll()});
 document.getElementById('chatForm').addEventListener('submit',function(event){event.preventDefault();var text=document.getElementById('chatText').value.trim();if(!text)return;state.messages.push({id:newId(),text:text,createdAt:Date.now()});saveState();renderAll();document.getElementById('chatForm').reset()});
 document.getElementById('chatList').addEventListener('click',function(event){var btn=event.target.closest('button[data-action="delete-msg"]');if(!btn)return;var id=btn.getAttribute('data-id');state.messages=state.messages.filter(function(x){return x.id!==id});saveState();renderAll()});
+document.getElementById('companyBody').addEventListener('click',function(event){var btn=event.target.closest('button[data-overview-view]');if(!btn)return;showView(btn.getAttribute('data-overview-view'))});
 var clearArmed=false;var clearTimer=null;
 document.getElementById('clearData').addEventListener('click',function(){var btn=document.getElementById('clearData');var status=document.getElementById('clearStatus');if(!clearArmed){clearArmed=true;btn.textContent='Click again to confirm';status.textContent='This deletes all schedule items and messages stored on this device. Click again to confirm.';clearTimer=setTimeout(function(){clearArmed=false;btn.textContent='Clear all local data';status.textContent=''},8000);return}clearTimeout(clearTimer);clearArmed=false;try{localStorage.removeItem(KEY)}catch(e){}state={version:1,schedule:[],messages:[]};resetScheduleForm();document.getElementById('chatForm').reset();renderAll();btn.textContent='Clear all local data';status.textContent='All local data has been cleared.'});
 document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.v)})});
@@ -321,17 +417,25 @@ var val=document.getElementById('snapshotUrl').value.trim();
 var st=document.getElementById('snapshotStatus');
 if(val&&!/^https?:\/\//i.test(val)){if(st)st.textContent='Enter a full http(s) snapshot URL, or leave it empty for local-only mode.';return}
 setSnapshotUrl(val);
-if(!val){try{localStorage.removeItem(SNAP_CACHE_KEY)}catch(e){}snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';renderSnapshot();renderSearch();if(st)st.textContent='Snapshot URL cleared. Back to local-only mode.';return}
+if(!val){try{localStorage.removeItem(SNAP_CACHE_KEY)}catch(e){}snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';snapshotLoading=false;renderSnapshot();renderSearch();if(st)st.textContent='Snapshot URL cleared. Back to local-only mode.';return}
 if(st)st.textContent='Saving... fetching snapshot.';
 fetchSnapshot();
 });
 document.getElementById('refreshSnapshot').addEventListener('click',function(){var st=document.getElementById('snapshotStatus');if(!getSnapshotUrl()){if(st)st.textContent='No snapshot URL configured. Enter one above to fetch a snapshot.';return}fetchSnapshot()});
-setInterval(function(){var el=document.getElementById('snapshotAge');if(el&&snapshot)el.textContent=snapshotAgeLabel()},60000);
+setInterval(function(){if(snapshot)renderSnapshot()},60000);
 var cached=loadSnapshotCache();
 if(cached){var fromCache=cleanSnapshot(cached.snapshot);if(fromCache){snapshot=fromCache;snapshotFetchedAt=cached.fetchedAt;snapshotFromCache=true}}
 renderAll();
 fetchSnapshot();
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
+if('serviceWorker' in navigator){
+var hadController=!!navigator.serviceWorker.controller;
+navigator.serviceWorker.addEventListener('controllerchange',function(){
+if(!hadController)return;
+try{if(sessionStorage.getItem(SW_RELOAD_FLAG))return;sessionStorage.setItem(SW_RELOAD_FLAG,'1')}catch(e){}
+location.reload();
+});
+navigator.serviceWorker.register('sw.js').catch(function(){})
+}
 })();
 </script>
 </body>
