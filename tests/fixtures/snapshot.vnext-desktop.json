@@ -1,0 +1,102 @@
+{
+  "snapshot_version": "vnext",
+  "projection_version": 2,
+  "generation_seq": 44,
+  "generated_at": "2026-11-08T08:00:00Z",
+  "tenant": "Acme",
+  "goals": [
+    {
+      "id": "goal-1",
+      "display_title": "Ship Helm overview"
+    },
+    {
+      "id": "goal-2",
+      "display_title": "Grow Helm adoption"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "dec-44",
+      "date": "2026-11-08",
+      "display_title": "Approve Helm overview launch",
+      "subject_ref": "goal-1"
+    },
+    {
+      "id": "dec-45",
+      "date": "2026-11-08",
+      "display_title": "Approve adoption pilot",
+      "subject_ref": "goal-2"
+    }
+  ],
+  "briefing": {
+    "kind": "daily",
+    "date": "2026-11-08",
+    "display_title": "Helm daily overview"
+  },
+  "fleet_health": {
+    "healthy": 2,
+    "degraded": 1,
+    "down": 0
+  },
+  "pending_approvals": {
+    "status": "connected",
+    "count": 2,
+    "items": [
+      {
+        "id": "appr-1",
+        "display_title": "Increase Helm budget",
+        "proposer": "Finance",
+        "effect": "Budget +$100",
+        "subject_ref": "goal-1"
+      },
+      {
+        "id": "appr-2",
+        "display_title": "Ship Helm overview"
+      }
+    ]
+  },
+  "overview": {
+    "goals_total": 2,
+    "goals_named": 2,
+    "goals_activity_buckets": {
+      "updated_last_24h": 2,
+      "updated_last_7d": 0,
+      "older": 0
+    },
+    "recent_activity": [
+      {
+        "type": "goal",
+        "date": "2026-11-08",
+        "display_title": "Ship Helm overview",
+        "subject_ref": "goal-1"
+      },
+      {
+        "type": "decision",
+        "date": "2026-11-08",
+        "display_title": "Approve Helm overview launch",
+        "subject_ref": "goal-1"
+      },
+      {
+        "type": "note",
+        "date": "2026-11-08",
+        "display_title": "Helm overview note",
+        "subject_ref": "goal-1"
+      },
+      {
+        "type": "goal",
+        "date": "2026-11-08",
+        "display_title": "Grow Helm adoption",
+        "subject_ref": "goal-2"
+      },
+      {
+        "type": "decision",
+        "date": "2026-11-08"
+      }
+    ],
+    "staleness_days": 0
+  },
+  "team": {
+    "workspaces": 1,
+    "goals": 2
+  }
+}
