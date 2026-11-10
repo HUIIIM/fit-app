@@ -3,135 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0B1B33">
+<meta name="theme-color" content="#111111">
 <title>FIT · 我的 AI 团队</title>
 <link rel="manifest" href="manifest.webmanifest">
 <style>
-  :root{--navy:#0B1B33;--ink:#10151d;--paper:#f6f4ef;--card:#ffffff;--line:#e4e0d6;--accent:#e8590c;--ok:#2b8a3e;--mut:#6b7280}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--paper);color:var(--ink);padding-bottom:76px}
-  header{background:var(--navy);color:#fff;padding:18px 16px 14px;position:sticky;top:0;z-index:5}
-  header .hi{font-size:13px;opacity:.75}
-  header h1{font-size:21px;margin-top:2px}
-  header .sub{font-size:13px;opacity:.85;margin-top:4px}
-  main{padding:14px 14px 6px;max-width:640px;margin:0 auto}
-  .view{display:none}.view.on{display:block}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
-  .card h2{font-size:15px;margin-bottom:8px}
-  .tag{display:inline-block;font-size:11px;background:#fff1e6;color:var(--accent);border-radius:99px;padding:2px 8px;margin-left:6px;vertical-align:2px}
-  .item{border-top:1px solid var(--line);padding:10px 0}
-  .item:first-of-type{border-top:none}
-  .item .t{font-size:15px;font-weight:600}
-  .item .d{font-size:13px;color:var(--mut);margin-top:3px;line-height:1.5}
-  .acts{display:flex;gap:8px;margin-top:10px}
-  .acts button{flex:1;border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 0;font-size:14px;cursor:pointer;min-height:44px}
-  .acts button.yes{background:var(--ok);border-color:var(--ok);color:#fff;font-weight:600}
-  .acts button.no{color:#c92a2a}
-  .acts button.done{opacity:.45;pointer-events:none}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .agent{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
-  .agent .n{font-size:15px;font-weight:600}
-  .agent .r{font-size:12px;color:var(--mut);margin-top:2px}
-  .agent .s{font-size:12.5px;margin-top:8px;line-height:1.5}
-  .dot{display:inline-block;width:8px;height:8px;border-radius:99px;background:var(--ok);margin-right:5px}
-  .dot.idle{background:#adb5bd}
-  .quad{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .q{border:1px solid var(--line);border-radius:12px;padding:10px;min-height:92px;background:#fff}
-  .q b{font-size:12px;color:var(--accent)}
-  .q ul{list-style:none;font-size:13px;margin-top:6px;line-height:1.7}
-  .msg{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;font-size:14px;line-height:1.6}
-  .msg .who{font-size:12px;color:var(--mut);margin-bottom:4px}
-  .mock{font-size:11.5px;color:var(--mut);text-align:center;margin:10px 0 2px}
-  nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;z-index:5}
-  nav button{flex:1;background:none;border:none;padding:10px 0 14px;font-size:12.5px;color:var(--mut);cursor:pointer;min-height:52px}
-  nav button.on{color:var(--navy);font-weight:700}
-  .big{width:100%;background:var(--navy);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;min-height:48px;cursor:pointer}
+:root{--ink:#111111;--paper:#FFFFFF;--card:#FFFFFF;--line:#E5E5E5;--accent:#FF4713;--ok:#1D8348;--mut:#737373;--soft:#F5F5F5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--paper);color:var(--ink);padding-bottom:76px}
+header{background:var(--ink);color:#FFFFFF;padding:18px 16px 14px;position:sticky;top:0;z-index:5}
+header .hi{font-size:13px;opacity:.75}
+header h1{font-size:21px;margin-top:2px}
+header .sub{font-size:13px;opacity:.85;margin-top:4px}
+main{padding:14px 14px 6px;max-width:640px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.card h2{font-size:15px;margin-bottom:8px}
+.tag{display:inline-block;font-size:11px;background:var(--soft);color:var(--accent);border-radius:99px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.item{border-top:1px solid var(--line);padding:10px 0}
+.item:first-of-type{border-top:none}
+.item .t{font-size:15px;font-weight:600}
+.item .d{font-size:13px;color:var(--mut);margin-top:3px;line-height:1.5}
+.item.done .t{text-decoration:line-through;color:var(--mut)}
+.empty{font-size:13.5px;color:var(--mut);line-height:1.6;padding:10px 0}
+.note{font-size:11.5px;color:var(--mut);text-align:center;margin:10px 0 2px;line-height:1.5}
+label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 10px;font-size:14px;font-family:inherit;background:#FFFFFF;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.row{display:flex;gap:8px;margin-top:12px}
+.btn{flex:1;border:1px solid var(--line);background:#FFFFFF;border-radius:10px;padding:11px 8px;font-size:14px;min-height:44px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#FFFFFF;font-weight:700}
+.btn.ink{background:var(--ink);border-color:var(--ink);color:#FFFFFF;font-weight:600}
+.small{font-size:12.5px;padding:6px 10px;border:1px solid var(--line);background:#FFFFFF;border-radius:8px;min-height:36px;cursor:pointer}
+.small.accent{color:var(--accent);border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.agent{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.agent .n{font-size:15px;font-weight:600}
+.agent .r{font-size:12px;color:var(--mut);margin-top:2px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:99px;background:var(--ok);margin-right:5px}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.q{border:1px solid var(--line);border-radius:12px;padding:10px;min-height:92px;background:#FFFFFF}
+.q b{font-size:12px;color:var(--accent)}
+.q ul{list-style:none;font-size:13px;margin-top:6px;line-height:1.7}
+.q li{margin-bottom:10px}
+.q .meta{font-size:12px;color:var(--mut)}
+.msg{background:#FFFFFF;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;font-size:14px;line-height:1.6}
+.msg .who{font-size:12px;color:var(--mut);margin-bottom:4px}
+nav{position:fixed;left:0;right:0;bottom:0;background:#FFFFFF;border-top:1px solid var(--line);display:flex;z-index:5}
+nav button{flex:1;background:none;border:none;padding:10px 0 14px;font-size:12.5px;color:var(--mut);cursor:pointer;min-height:52px}
+nav button.on{color:var(--ink);font-weight:700}
+.big{width:100%;background:var(--ink);color:#FFFFFF;border:none;border-radius:12px;padding:14px;font-size:15px;min-height:48px;cursor:pointer}
 </style>
 </head>
 <body>
 <header>
-  <div class="hi" id="dateLine">今日简报</div>
-  <h1>早上好，Miao</h1>
-  <div class="sub" id="briefLine">你的 AI 团队昨夜完成了 3 件事，2 件等你一句话。</div>
+<div class="hi" id="dateLine">今日简报</div>
+<h1>早上好，Miao</h1>
+<div class="sub" id="briefLine"></div>
 </header>
 <main>
-  <!-- 简报 -->
-  <section class="view on" id="v-brief">
-    <div class="card">
-      <h2>昨夜进展<span class="tag">模拟数据</span></h2>
-      <div class="item"><div class="t">官网 QA 门禁全过</div><div class="d">网站组完成全站逐面复检，0 处过期口径，证据已回读。</div></div>
-      <div class="item"><div class="t">记忆库周备份完成</div><div class="d">四层备份落 Google Drive，SHA-256 回读全 MATCH。</div></div>
-      <div class="item"><div class="t">Eastmark 盯守无变化</div><div class="d">目标房源仍未挂牌，阳性对照通过。</div></div>
-    </div>
-    <div class="card">
-      <h2>等你决定（拇指区）</h2>
-      <div class="item"><div class="t">小红书本周选题单（7 篇）</div><div class="d">内容组按叙事弧排好序，首篇《入狱前最后一晚》钩子已过七环。</div>
-        <div class="acts"><button class="yes" onclick="decide(this)">确认</button><button onclick="decide(this)">修改</button><button class="no" onclick="decide(this)">否决</button></div></div>
-      <div class="item"><div class="t">ETSI 入会申请包</div><div class="d">材料已齐，只差提交时付款（&gt;$30 须你点）。</div>
-        <div class="acts"><button class="yes" onclick="decide(this)">确认</button><button onclick="decide(this)">修改</button><button class="no" onclick="decide(this)">否决</button></div></div>
-    </div>
-    <button class="big" onclick="alert('语音晨报为模拟功能：接 TTS 后点按即朗读全文简报')">▶ 播放语音晨报（模拟）</button>
-    <div class="mock">FIT 骨架版 · 全部为静态模拟数据，功能逐项接线中</div>
-  </section>
-  <!-- 日程 -->
-  <section class="view" id="v-plan">
-    <div class="card"><h2>四象限<span class="tag">模拟数据</span></h2>
-      <div class="quad">
-        <div class="q"><b>重要 × 紧急</b><ul><li>律师回信跟进</li><li>ETSI 申请提交</li></ul></div>
-        <div class="q"><b>重要 × 不紧急</b><ul><li>3GPP 首次发言稿</li><li>砝码数据底盘</li></ul></div>
-        <div class="q"><b>不重要 × 紧急</b><ul><li>账号年检 ×2</li></ul></div>
-        <div class="q"><b>不重要 × 不紧急</b><ul><li>素材库整理</li></ul></div>
-      </div>
-    </div>
-    <div class="card"><h2>今日时间块</h2>
-      <div class="item"><div class="t">晨间简报确认</div><div class="d">5 分钟 · 只看等你决定的部分</div></div>
-      <div class="item"><div class="t">深度工作（团队自动推进）</div><div class="d">你不在线时团队按授权自驱，出结果回简报</div></div>
-    </div>
-  </section>
-  <!-- 团队 -->
-  <section class="view" id="v-team">
-    <div class="grid">
-      <div class="agent"><div class="n">总管家</div><div class="r">PM · 调度与简报</div><div class="s"><span class="dot"></span>值班中：汇总全队进展，只把决定项推给你</div></div>
-      <div class="agent"><div class="n">工程师</div><div class="r">Dev · 网站与产品</div><div class="s"><span class="dot"></span>进行中：官网迭代队列 3 件</div></div>
-      <div class="agent"><div class="n">秘书</div><div class="r">日程 · 邮件 · 杂务</div><div class="s"><span class="dot"></span>进行中：邮箱值守，案件邮件硬排除</div></div>
-      <div class="agent"><div class="n">研究员</div><div class="r">深研 · 情报</div><div class="s"><span class="dot idle"></span>待命：下一个深挖指令</div></div>
-      <div class="agent"><div class="n">生活教练</div><div class="r">健康 · 运动</div><div class="s"><span class="dot"></span>今日训练已排：无器械 + 20 磅重球</div></div>
-      <div class="agent"><div class="n">财务官</div><div class="r">账目 · 信用修复</div><div class="s"><span class="dot"></span>进行中：账单对账与折扣搜寻</div></div>
-    </div>
-    <div class="mock">六个角色为骨架占位 · 后续逐个接真实能力</div>
-  </section>
-  <!-- 对话 -->
-  <section class="view" id="v-chat">
-    <div class="msg"><div class="who">总管家 · 模拟</div>选题单已排好，只等你点确认；其余事项我按授权直接办了，明细在简报里。</div>
-    <div class="msg"><div class="who">工程师 · 模拟</div>官网新版已过 QA 三门禁并回读生产 200，随时可发布。</div>
-    <div class="msg"><div class="who">财务官 · 模拟</div>本月订阅已对账，发现 1 笔可砍，已按省钱规则先找折扣路径。</div>
-    <div class="mock">团队对话为模拟 · 后续接真实消息流</div>
-  </section>
-  <!-- 我的 -->
-  <section class="view" id="v-me">
-    <div class="card"><h2>每周复盘</h2><div class="item"><div class="t">本周团队产出</div><div class="d">完成 41 件 · 等你决定 2 件 · 平均响应在简报内闭环（模拟数据）</div></div></div>
-    <div class="card"><h2>授权与规则</h2>
-      <div class="item"><div class="t">花钱 &gt;$30 才找我</div><div class="d">其余事项团队全自动：自行决定、自行解决、只报结果</div></div>
-      <div class="item"><div class="t">付款前先搜折扣</div><div class="d">任何付款先找最便宜的正规路径并留痕</div></div>
-    </div>
-  </section>
+<section class="view on" id="v-brief">
+<div class="card"><h2>Today's briefing</h2><div id="briefSummary"></div><div id="briefList"></div></div>
+<div class="card"><h2>Pending</h2><div id="briefPending"></div></div>
+<div class="note">This briefing is generated from your schedule saved on this device. No external data is used.</div>
+</section>
+<section class="view" id="v-plan">
+<div class="card"><h2 id="schedFormTitle">Add schedule item</h2>
+<form id="schedForm">
+<label for="schedTitle">Title</label>
+<input id="schedTitle" type="text" required maxlength="120" placeholder="e.g. Team meeting">
+<label for="schedTime">Time block</label>
+<input id="schedTime" type="text" required maxlength="60" placeholder="e.g. 09:00-10:00">
+<label for="schedQuadrant">Quadrant</label>
+<select id="schedQuadrant">
+<option value="urgent-important">重要 × 紧急</option>
+<option value="not-urgent-important">重要 × 不紧急</option>
+<option value="urgent-not-important">不重要 × 紧急</option>
+<option value="not-urgent-not-important">不重要 × 不紧急</option>
+</select>
+<div class="row"><button class="btn primary" type="submit" id="schedSubmit">Add item</button><button class="btn" type="button" id="schedCancel" hidden>Cancel edit</button></div>
+</form></div>
+<div class="card"><h2>四象限</h2><div class="quad" id="quadGrid"></div><div id="schedEmpty" class="empty" hidden>No schedule items yet. Add your first item above — it will appear in its quadrant and be saved on this device.</div></div>
+</section>
+<section class="view" id="v-team">
+<div class="grid">
+<div class="agent"><div class="n">总管家</div><div class="r">PM · 调度与简报</div></div>
+<div class="agent"><div class="n">工程师</div><div class="r">Dev · 网站与产品</div></div>
+<div class="agent"><div class="n">秘书</div><div class="r">日程 · 邮件 · 杂务</div></div>
+<div class="agent"><div class="n">研究员</div><div class="r">深研 · 情报</div></div>
+<div class="agent"><div class="n">生活教练</div><div class="r">健康 · 运动</div></div>
+<div class="agent"><div class="n">财务官</div><div class="r">账目 · 信用修复</div></div>
+</div>
+<div class="note">Roster display only. No live status is shown, because no team data is connected.</div>
+</section>
+<section class="view" id="v-chat">
+<div class="card"><h2>Local message journal</h2>
+<form id="chatForm">
+<label for="chatText">Message</label>
+<textarea id="chatText" rows="3" required maxlength="500" placeholder="Write a note to yourself..."></textarea>
+<div class="row"><button class="btn primary" type="submit">Post message</button></div>
+</form>
+<div class="note">Messages are stored only on this device. There are no automatic replies.</div></div>
+<div id="chatList"></div>
+<div id="chatEmpty" class="empty">No messages yet. Post your first local note above and it will appear here.</div>
+</section>
+<section class="view" id="v-me">
+<div class="card"><h2>My data</h2><div id="profileStats"></div></div>
+<div class="card"><h2>授权与规则</h2>
+<div class="item"><div class="t">花钱 &gt;$30 才找我</div><div class="d">其余事项团队全自动：自行决定、自行解决、只报结果</div></div>
+<div class="item"><div class="t">付款前先搜折扣</div><div class="d">任何付款先找最便宜的正规路径并留痕</div></div>
+</div>
+<div class="card"><h2>Clear local data</h2><p class="empty">This deletes all FIT data stored on this device (schedule items and message journal entries). This cannot be undone.</p><button class="btn ink" type="button" id="clearData">Clear all local data</button><div id="clearStatus" class="empty" role="status"></div></div>
+</section>
 </main>
 <nav>
-  <button class="on" data-v="v-brief">简报</button>
-  <button data-v="v-plan">日程</button>
-  <button data-v="v-team">团队</button>
-  <button data-v="v-chat">对话</button>
-  <button data-v="v-me">我的</button>
+<button class="on" data-v="v-brief">简报</button>
+<button data-v="v-plan">日程</button>
+<button data-v="v-team">团队</button>
+<button data-v="v-chat">对话</button>
+<button data-v="v-me">我的</button>
 </nav>
 <script>
-  document.getElementById('dateLine').textContent = new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'}) + ' · 晨间简报';
-  document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('nav button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
-    document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on')});
-    document.getElementById(b.dataset.v).classList.add('on');window.scrollTo(0,0);
-  })});
-  function decide(btn){var row=btn.parentElement;row.querySelectorAll('button').forEach(function(x){x.classList.add('done')});btn.classList.remove('done');btn.textContent='✓ '+btn.textContent;}
-  if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
+(function(){
+var KEY='fit.state.v1';
+var QUADRANTS=[{id:'urgent-important',label:'重要 × 紧急'},{id:'not-urgent-important',label:'重要 × 不紧急'},{id:'urgent-not-important',label:'不重要 × 紧急'},{id:'not-urgent-not-important',label:'不重要 × 不紧急'}];
+function quadrantLabel(id){for(var i=0;i<QUADRANTS.length;i++){if(QUADRANTS[i].id===id)return QUADRANTS[i].label}return id}
+function loadState(){try{var raw=localStorage.getItem(KEY);if(!raw)return{version:1,schedule:[],messages:[]};var parsed=JSON.parse(raw);if(!parsed||!Array.isArray(parsed.schedule)||!Array.isArray(parsed.messages))return{version:1,schedule:[],messages:[]};return{version:1,schedule:parsed.schedule,messages:parsed.messages}}catch(e){return{version:1,schedule:[],messages:[]}}}
+function saveState(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+var state=loadState();
+var editingId=null;
+function esc(value){return String(value).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function newId(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
+function formatTime(value){try{return new Date(value).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}catch(e){return''}}
+function pendingItems(){return state.schedule.filter(function(item){return!item.done})}
+function renderBriefing(){
+document.getElementById('dateLine').textContent=new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'})+' · 晨间简报';
+var total=state.schedule.length;var pending=pendingItems().length;var done=total-pending;
+var line=document.getElementById('briefLine');
+if(total===0){line.textContent='No schedule items yet today.'}else{line.textContent='Today: '+total+' schedule item'+(total===1?'':'s')+', '+pending+' pending, '+done+' done.'}
+var summary=document.getElementById('briefSummary');
+if(total===0){summary.innerHTML='<div class="empty">Nothing is scheduled yet. Add your first item in 日程 to start your day.</div>'}else{summary.innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+' today</div><div class="d">'+pending+' pending · '+done+' done · '+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div></div>'}
+var list=document.getElementById('briefList');
+if(total===0){list.innerHTML=''}else{list.innerHTML=state.schedule.map(function(item){return '<div class="item'+(item.done?' done':'')+'"><div class="t">'+(item.done?'<span class="dot"></span>':'')+esc(item.title)+'</div><div class="d">'+esc(item.time)+' · '+esc(quadrantLabel(item.quadrant))+(item.done?' · Done':'')+'</div></div>'}).join('')}
+var pendingEl=document.getElementById('briefPending');
+if(pending===0){pendingEl.innerHTML='<div class="empty">'+(total===0?'No pending items.':'All caught up — nothing is pending.')+'</div>'}else{pendingEl.innerHTML=pendingItems().map(function(item){return '<div class="item"><div class="t">'+esc(item.title)+'</div><div class="d">'+esc(item.time)+' · '+esc(quadrantLabel(item.quadrant))+'</div><div class="row"><button class="small accent" type="button" data-action="done" data-id="'+item.id+'">Mark done</button></div></div>'}).join('')}
+}
+function renderSchedule(){
+var grid=document.getElementById('quadGrid');
+grid.innerHTML=QUADRANTS.map(function(q){
+var items=state.schedule.filter(function(item){return item.quadrant===q.id});
+var inner=items.length===0?'<li class="meta">No items yet.</li>':items.map(function(item){return '<li><div>'+(item.done?'<span class="dot"></span>':'')+esc(item.title)+'</div><div class="meta">'+esc(item.time)+(item.done?' · Done':'')+'</div><div><button class="small" type="button" data-action="toggle" data-id="'+item.id+'">'+(item.done?'Undo done':'Mark done')+'</button> <button class="small" type="button" data-action="edit" data-id="'+item.id+'">Edit</button> <button class="small" type="button" data-action="delete" data-id="'+item.id+'">Delete</button></div></li>'}).join('');
+return '<div class="q"><b>'+esc(q.label)+'</b><ul>'+inner+'</ul></div>'}).join('');
+document.getElementById('schedEmpty').hidden=state.schedule.length>0;
+}
+function renderChat(){
+var list=document.getElementById('chatList');
+var sorted=state.messages.slice().sort(function(a,b){return b.createdAt-a.createdAt});
+list.innerHTML=sorted.map(function(msg){return '<div class="msg"><div class="who">Local note · '+esc(formatTime(msg.createdAt))+'</div>'+esc(msg.text)+'<div class="row"><button class="small" type="button" data-action="delete-msg" data-id="'+msg.id+'">Delete</button></div></div>'}).join('');
+document.getElementById('chatEmpty').hidden=state.messages.length>0;
+}
+function renderProfile(){
+var total=state.schedule.length;var pending=pendingItems().length;var done=total-pending;
+var byQuadrant=QUADRANTS.map(function(q){var count=state.schedule.filter(function(item){return item.quadrant===q.id}).length;return '<div class="item"><div class="t">'+esc(q.label)+'</div><div class="d">'+count+' item'+(count===1?'':'s')+'</div></div>'}).join('');
+document.getElementById('profileStats').innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+'</div><div class="d">'+pending+' pending · '+done+' done</div></div>'+byQuadrant+'<div class="item"><div class="t">'+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div><div class="d">Stored locally only, under key fit.state.v1. No account, no server, no analytics.</div></div>';
+}
+function renderAll(){renderBriefing();renderSchedule();renderChat();renderProfile()}
+function resetScheduleForm(){document.getElementById('schedForm').reset();editingId=null;document.getElementById('schedFormTitle').textContent='Add schedule item';document.getElementById('schedSubmit').textContent='Add item';document.getElementById('schedCancel').hidden=true}
+document.getElementById('schedForm').addEventListener('submit',function(event){event.preventDefault();var title=document.getElementById('schedTitle').value.trim();var time=document.getElementById('schedTime').value.trim();var quadrant=document.getElementById('schedQuadrant').value;if(!title||!time)return;if(editingId){var existing=null;for(var i=0;i<state.schedule.length;i++){if(state.schedule[i].id===editingId)existing=state.schedule[i]}if(existing){existing.title=title;existing.time=time;existing.quadrant=quadrant}}else{state.schedule.push({id:newId(),title:title,time:time,quadrant:quadrant,done:false,createdAt:Date.now()})}saveState();renderAll();resetScheduleForm()});
+document.getElementById('schedCancel').addEventListener('click',function(){resetScheduleForm()});
+document.getElementById('quadGrid').addEventListener('click',function(event){var btn=event.target.closest('button[data-action]');if(!btn)return;var id=btn.getAttribute('data-id');var action=btn.getAttribute('data-action');var item=null;for(var i=0;i<state.schedule.length;i++){if(state.schedule[i].id===id)item=state.schedule[i]}if(!item)return;if(action==='toggle'){item.done=!item.done;saveState();renderAll()}else if(action==='delete'){state.schedule=state.schedule.filter(function(x){return x.id!==id});if(editingId===id)resetScheduleForm();saveState();renderAll()}else if(action==='edit'){editingId=id;document.getElementById('schedTitle').value=item.title;document.getElementById('schedTime').value=item.time;document.getElementById('schedQuadrant').value=item.quadrant;document.getElementById('schedFormTitle').textContent='Edit schedule item';document.getElementById('schedSubmit').textContent='Save changes';document.getElementById('schedCancel').hidden=false;document.getElementById('schedTitle').focus()}});
+document.getElementById('briefPending').addEventListener('click',function(event){var btn=event.target.closest('button[data-action="done"]');if(!btn)return;var id=btn.getAttribute('data-id');for(var i=0;i<state.schedule.length;i++){if(state.schedule[i].id===id){state.schedule[i].done=true}}saveState();renderAll()});
+document.getElementById('chatForm').addEventListener('submit',function(event){event.preventDefault();var text=document.getElementById('chatText').value.trim();if(!text)return;state.messages.push({id:newId(),text:text,createdAt:Date.now()});saveState();renderAll();document.getElementById('chatForm').reset()});
+document.getElementById('chatList').addEventListener('click',function(event){var btn=event.target.closest('button[data-action="delete-msg"]');if(!btn)return;var id=btn.getAttribute('data-id');state.messages=state.messages.filter(function(x){return x.id!==id});saveState();renderAll()});
+var clearArmed=false;var clearTimer=null;
+document.getElementById('clearData').addEventListener('click',function(){var btn=document.getElementById('clearData');var status=document.getElementById('clearStatus');if(!clearArmed){clearArmed=true;btn.textContent='Click again to confirm';status.textContent='This deletes all schedule items and messages stored on this device. Click again to confirm.';clearTimer=setTimeout(function(){clearArmed=false;btn.textContent='Clear all local data';status.textContent=''},8000);return}clearTimeout(clearTimer);clearArmed=false;try{localStorage.removeItem(KEY)}catch(e){}state={version:1,schedule:[],messages:[]};resetScheduleForm();document.getElementById('chatForm').reset();renderAll();btn.textContent='Clear all local data';status.textContent='All local data has been cleared.'});
+document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('nav button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on')});document.getElementById(b.dataset.v).classList.add('on');window.scrollTo(0,0)})});
+renderAll();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
+})();
 </script>
 </body>
 </html>
