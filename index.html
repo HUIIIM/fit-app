@@ -52,6 +52,11 @@ nav{position:fixed;left:0;right:0;bottom:0;background:#FFFFFF;border-top:1px sol
 nav button{flex:1;background:none;border:none;padding:10px 0 14px;font-size:12.5px;color:var(--mut);cursor:pointer;min-height:52px}
 nav button.on{color:var(--ink);font-weight:700}
 .big{width:100%;background:var(--ink);color:#FFFFFF;border:none;border-radius:12px;padding:14px;font-size:15px;min-height:48px;cursor:pointer}
+.searchbar{display:flex;gap:8px}.searchbar input{flex:1}.searchbar .small{flex:none}
+header .search{position:absolute;top:16px;right:14px;width:38px;height:38px;border:1px solid rgba(255,255,255,.55);background:transparent;color:#FFFFFF;border-radius:99px;font-size:16px;cursor:pointer}
+header h1{padding-right:44px}
+.snapstrip{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:4px}
+.snapstrip b{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -59,9 +64,12 @@ nav button.on{color:var(--ink);font-weight:700}
 <div class="hi" id="dateLine">今日简报</div>
 <h1>早上好，Miao</h1>
 <div class="sub" id="briefLine"></div>
+<button class="search" id="searchBtn" type="button" aria-label="Search" title="Search">&#128269;</button>
 </header>
 <main>
 <section class="view on" id="v-brief">
+<div class="card"><h2>Search</h2><div class="searchbar"><input id="globalSearch" type="search" placeholder="Search schedule, journal and company snapshot..." aria-label="Global search"><button class="small accent" type="button" id="clearSearch">Clear</button></div><div id="searchResults"><div class="empty">Type to search your schedule items, journal messages and company snapshot content.</div></div></div>
+<div class="card" id="companyCard" hidden><h2>Company<span class="tag" id="snapshotAge"></span></h2><div id="companyBody"></div><div class="note" id="snapshotNote"></div></div>
 <div class="card"><h2>Today's briefing</h2><div id="briefSummary"></div><div id="briefList"></div></div>
 <div class="card"><h2>Pending</h2><div id="briefPending"></div></div>
 <div class="note">This briefing is generated from your schedule saved on this device. No external data is used.</div>
@@ -93,6 +101,7 @@ nav button.on{color:var(--ink);font-weight:700}
 <div class="agent"><div class="n">生活教练</div><div class="r">健康 · 运动</div></div>
 <div class="agent"><div class="n">财务官</div><div class="r">账目 · 信用修复</div></div>
 </div>
+<div class="card" id="teamSnapshotCard" hidden><h2>Company snapshot</h2><div id="teamSnapshotBody"></div></div>
 <div class="note">Roster display only. No live status is shown, because no team data is connected.</div>
 </section>
 <section class="view" id="v-chat">
@@ -112,6 +121,7 @@ nav button.on{color:var(--ink);font-weight:700}
 <div class="item"><div class="t">花钱 &gt;$30 才找我</div><div class="d">其余事项团队全自动：自行决定、自行解决、只报结果</div></div>
 <div class="item"><div class="t">付款前先搜折扣</div><div class="d">任何付款先找最便宜的正规路径并留痕</div></div>
 </div>
+<div class="card"><h2>Company snapshot</h2><p class="empty">Optional: enter a snapshot URL from your server-side generator. Empty means local-only mode — no network call is made and the app behaves exactly as before. Only pre-sanitized display titles from the snapshot are ever shown; entries without one are count-only.</p><label for="snapshotUrl">Snapshot URL</label><input id="snapshotUrl" type="url" placeholder="https://example.com/snapshot.json" maxlength="500"><div class="row"><button class="btn primary" type="button" id="saveSnapshotUrl">Save snapshot URL</button><button class="btn" type="button" id="refreshSnapshot">Refresh now</button></div><div id="snapshotStatus" class="empty" role="status"></div></div>
 <div class="card"><h2>Clear local data</h2><p class="empty">This deletes all FIT data stored on this device (schedule items and message journal entries). This cannot be undone.</p><button class="btn ink" type="button" id="clearData">Clear all local data</button><div id="clearStatus" class="empty" role="status"></div></div>
 </section>
 </main>
@@ -125,6 +135,8 @@ nav button.on{color:var(--ink);font-weight:700}
 <script>
 (function(){
 var KEY='fit.state.v1';
+var SNAP_URL_KEY='fit.snapshot.url';
+var SNAP_CACHE_KEY='fit.snapshot.cache.v1';
 var QUADRANTS=[{id:'urgent-important',label:'重要 × 紧急'},{id:'not-urgent-important',label:'重要 × 不紧急'},{id:'urgent-not-important',label:'不重要 × 紧急'},{id:'not-urgent-not-important',label:'不重要 × 不紧急'}];
 function quadrantLabel(id){for(var i=0;i<QUADRANTS.length;i++){if(QUADRANTS[i].id===id)return QUADRANTS[i].label}return id}
 function loadState(){try{var raw=localStorage.getItem(KEY);if(!raw)return{version:1,schedule:[],messages:[]};var parsed=JSON.parse(raw);if(!parsed||!Array.isArray(parsed.schedule)||!Array.isArray(parsed.messages))return{version:1,schedule:[],messages:[]};return{version:1,schedule:parsed.schedule,messages:parsed.messages}}catch(e){return{version:1,schedule:[],messages:[]}}}
@@ -135,38 +147,161 @@ function esc(value){return String(value).replace(/[&<>"']/g,function(c){return{'
 function newId(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
 function formatTime(value){try{return new Date(value).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}catch(e){return''}}
 function pendingItems(){return state.schedule.filter(function(item){return!item.done})}
+/* ---- Slice 2: snapshot client. The server-side snapshot exposes titles ONLY as pre-sanitized display titles. This client reads ONLY the fields listed here and never reads any other title/slug field from snapshot objects: briefing.kind, briefing.date, briefing.displayTitle / briefing.display_title; goals[].id, goals[].displayTitle / goals[].display_title; decisions[].id, decisions[].date, decisions[].displayTitle / decisions[].display_title; team.workspaces, team.goals; overview.goals_total, overview.goals_named, overview.goals_activity_buckets.updated_last_24h, overview.goals_activity_buckets.updated_last_7d, overview.goals_activity_buckets.older, overview.recent_activity[].type, overview.recent_activity[].date, overview.recent_activity[].display_title, overview.staleness. (Local schedule items have their own local title field, unrelated to the snapshot.) ---- */
+var snapshot=null;
+var snapshotFetchedAt=0;
+var snapshotFromCache=false;
+var snapshotError='';
+function getSnapshotUrl(){try{return (localStorage.getItem(SNAP_URL_KEY)||'').trim()}catch(e){return ''}}
+function setSnapshotUrl(url){try{if(url)localStorage.setItem(SNAP_URL_KEY,url);else localStorage.removeItem(SNAP_URL_KEY)}catch(e){}}
+function asString(v){return (typeof v==='string'&&v.trim())?v:null}
+function asNumber(v){return (typeof v==='number'&&isFinite(v))?v:null}
+function displayTitleOf(entry){if(!entry||typeof entry!=='object')return null;return asString(entry.displayTitle)||asString(entry.display_title)}
+function loadSnapshotCache(){try{var raw=localStorage.getItem(SNAP_CACHE_KEY);if(!raw)return null;var parsed=JSON.parse(raw);if(!parsed||typeof parsed!=='object'||!parsed.snapshot||typeof parsed.fetchedAt!=='number')return null;return parsed}catch(e){return null}}
+function saveSnapshotCache(snap){try{localStorage.setItem(SNAP_CACHE_KEY,JSON.stringify({snapshot:snap,fetchedAt:Date.now(),url:getSnapshotUrl()}))}catch(e){}}
+function cleanSnapshot(raw){
+if(!raw||typeof raw!=='object')return null;
+var out={briefing:null,goals:[],decisions:[],team:null,overview:null};
+var b=raw.briefing;
+if(Array.isArray(b))b=b[0];
+if(b&&typeof b==='object'){out.briefing={kind:asString(b.kind),date:asString(b.date),displayTitle:displayTitleOf(b)}}
+if(Array.isArray(raw.goals)){out.goals=raw.goals.filter(function(g){return g&&typeof g==='object'}).map(function(g){return{id:asString(g.id),displayTitle:displayTitleOf(g)}})}
+if(Array.isArray(raw.decisions)){out.decisions=raw.decisions.filter(function(d){return d&&typeof d==='object'}).map(function(d){return{id:asString(d.id),date:asString(d.date),displayTitle:displayTitleOf(d)}})}
+var t=raw.team;
+if(t&&typeof t==='object'){var tw=asNumber(t.workspaces);var tg=asNumber(t.goals);if(tw!==null||tg!==null)out.team={workspaces:tw,goals:tg}}
+var ov=raw.overview;
+if(ov&&typeof ov==='object'){
+var buckets=null;var bk=ov.goals_activity_buckets;
+if(bk&&typeof bk==='object'){buckets={updated_last_24h:asNumber(bk.updated_last_24h),updated_last_7d:asNumber(bk.updated_last_7d),older:asNumber(bk.older)}}
+var activity=[];
+if(Array.isArray(ov.recent_activity)){activity=ov.recent_activity.filter(function(a){return a&&typeof a==='object'}).slice(0,10).map(function(a){return{type:asString(a.type),date:asString(a.date),displayTitle:displayTitleOf(a)}})}
+out.overview={goals_total:asNumber(ov.goals_total),goals_named:asNumber(ov.goals_named),goals_activity_buckets:buckets,recent_activity:activity,staleness:asNumber(ov.staleness)};
+}
+return out;
+}
+function formatAge(ms){if(!(ms>0))return 'just now';var s=Math.floor(ms/1000);if(s<60)return 'just now';var m=Math.floor(s/60);if(m<60)return m+'m ago';var h=Math.floor(m/60);if(h<24)return h+'h ago';var d=Math.floor(h/24);return d+'d ago'}
+function snapshotAgeLabel(){if(!snapshot||!snapshotFetchedAt)return '';return 'snapshot \u00b7 '+formatAge(Date.now()-snapshotFetchedAt)+(snapshotFromCache?' \u00b7 cached':'')}
+function fetchSnapshot(){
+var url=getSnapshotUrl();
+if(!url){snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';renderSnapshot();return}
+fetch(url,{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('HTTP '+res.status);return res.json()}).then(function(raw){
+var cleaned=cleanSnapshot(raw);
+if(!cleaned)throw new Error('Invalid snapshot');
+snapshot=cleaned;snapshotFetchedAt=Date.now();snapshotFromCache=false;snapshotError='';saveSnapshotCache(cleaned);renderSnapshot();renderSearch();
+}).catch(function(err){
+snapshotError='Snapshot could not be refreshed ('+(err&&err.message?err.message:'offline')+'). Showing the last saved snapshot.';
+renderSnapshot();renderSearch();
+});
+}
+function renderSnapshot(){
+var card=document.getElementById('companyCard');
+var teamCard=document.getElementById('teamSnapshotCard');
+var status=document.getElementById('snapshotStatus');
+var url=getSnapshotUrl();
+if(status){
+if(!url){status.textContent='Local-only mode. No snapshot URL is configured, so no network call is made.'}
+else if(snapshot){status.textContent=(snapshotFromCache?'Using the last saved snapshot. ':'Snapshot loaded. ')+snapshotAgeLabel()+'.'}
+else if(snapshotError){status.textContent=snapshotError}
+else{status.textContent='Loading snapshot...'}
+}
+if(!snapshot){if(card)card.hidden=true;if(teamCard)teamCard.hidden=true;return}
+var ageEl=document.getElementById('snapshotAge');if(ageEl)ageEl.textContent=snapshotAgeLabel();
+var html='';
+if(snapshot.briefing){var br=snapshot.briefing;var brMeta=[br.kind,br.date].filter(function(x){return x}).join(' \u00b7 ');html+='<div class="item"><div class="t">'+esc(br.displayTitle||br.kind||'Briefing')+'</div><div class="d">'+esc(brMeta)+'</div></div>'}
+if(snapshot.overview){
+var ov=snapshot.overview;var parts=[];
+if(ov.goals_total!==null&&ov.goals_total!==undefined)parts.push(ov.goals_total+' goals total');
+if(ov.goals_named!==null&&ov.goals_named!==undefined)parts.push(ov.goals_named+' named');
+if(ov.goals_activity_buckets){var bk2=ov.goals_activity_buckets;parts.push('updated last 24h: '+(bk2.updated_last_24h!==null&&bk2.updated_last_24h!==undefined?bk2.updated_last_24h:0)+' \u00b7 last 7d: '+(bk2.updated_last_7d!==null&&bk2.updated_last_7d!==undefined?bk2.updated_last_7d:0)+' \u00b7 older: '+(bk2.older!==null&&bk2.older!==undefined?bk2.older:0))}
+if(ov.staleness!==null&&ov.staleness!==undefined)parts.push('staleness: '+ov.staleness);
+if(parts.length)html+='<div class="snapstrip"><b>Overview</b><div>'+esc(parts.join(' \u00b7 '))+'</div></div>';
+if(ov.recent_activity&&ov.recent_activity.length){
+html+='<div class="item"><div class="t">Recent activity</div><div class="d">'+ov.recent_activity.length+' entr'+(ov.recent_activity.length===1?'y':'ies')+' (up to 10)</div></div>';
+ov.recent_activity.slice(0,10).forEach(function(a){
+if(a.displayTitle){html+='<div class="item"><div class="t">'+esc(a.displayTitle)+'</div><div class="d">'+esc((a.type||'Activity')+(a.date?' \u00b7 '+a.date:''))+'</div></div>'}
+else{html+='<div class="item"><div class="t">'+esc(a.type||'Activity')+'</div><div class="d">'+esc(a.date||'')+' \u00b7 No display title \u2014 count-only entry</div></div>'}
+});
+}
+}
+var namedGoals=snapshot.goals.filter(function(g){return g.displayTitle});
+var unnamedGoals=snapshot.goals.length-namedGoals.length;
+html+='<div class="item"><div class="t">'+snapshot.goals.length+' goal'+(snapshot.goals.length===1?'':'s')+' total</div><div class="d">'+namedGoals.length+' named \u00b7 '+unnamedGoals+' count-only</div></div>';
+namedGoals.forEach(function(g){html+='<div class="item"><div class="t">'+esc(g.displayTitle)+'</div><div class="d">Goal</div></div>'});
+if(unnamedGoals>0){html+='<div class="item"><div class="t">'+unnamedGoals+' more item'+(unnamedGoals===1?'':'s')+'</div><div class="d">Count-only \u2014 no display title was provided for these goals.</div></div>'}
+if(snapshot.decisions.length){
+html+='<div class="item"><div class="t">Recent decisions</div><div class="d">'+Math.min(snapshot.decisions.length,5)+' shown (up to 5)</div></div>';
+snapshot.decisions.slice(0,5).forEach(function(d){
+html+='<div class="item"><div class="t">'+esc(d.id||'Decision')+'</div><div class="d">'+esc((d.date||'')+(d.displayTitle?' \u00b7 '+d.displayTitle:' \u00b7 No display title'))+'</div></div>'});
+}
+var body=document.getElementById('companyBody');if(body)body.innerHTML=html;
+if(card)card.hidden=false;
+if(snapshot.team){
+var tparts=[];
+if(snapshot.team.workspaces!==null&&snapshot.team.workspaces!==undefined)tparts.push(snapshot.team.workspaces+' workspace'+(snapshot.team.workspaces===1?'':'s'));
+if(snapshot.team.goals!==null&&snapshot.team.goals!==undefined)tparts.push(snapshot.team.goals+' goal'+(snapshot.team.goals===1?'':'s'));
+if(tparts.length){if(teamCard)teamCard.hidden=false;var tb=document.getElementById('teamSnapshotBody');if(tb)tb.innerHTML='<div class="item"><div class="t">'+esc(tparts.join(' \u00b7 '))+'</div><div class="d">From the company snapshot'+(snapshotFromCache?' (cached '+formatAge(Date.now()-snapshotFetchedAt)+')':'')+'.</div></div>'}
+else if(teamCard)teamCard.hidden=true;
+}else if(teamCard)teamCard.hidden=true;
+var note=document.getElementById('snapshotNote');
+if(note)note.textContent=snapshotFromCache?('Offline / fetch failed \u2014 showing the last saved snapshot. '+snapshotAgeLabel()+'.'):(snapshotError||'Company data comes from the configured snapshot URL. Only pre-sanitized display titles are shown; entries without one are count-only.');
+}
+/* ---- Slice 2: global search across local schedule, local journal and snapshot content as rendered. ---- */
+function showView(id){document.querySelectorAll('nav button').forEach(function(x){x.classList.toggle('on',x.dataset.v===id)});document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.id===id)});window.scrollTo(0,0)}
+function searchResultsFor(q){
+var needle=q.trim().toLowerCase();if(!needle)return [];
+var results=[];
+state.schedule.forEach(function(item){if((item.title+' '+item.time+' '+quadrantLabel(item.quadrant)).toLowerCase().indexOf(needle)>-1)results.push({kind:'Schedule',text:item.title,detail:item.time+' \u00b7 '+quadrantLabel(item.quadrant),view:'v-plan'})});
+state.messages.forEach(function(msg){if(msg.text.toLowerCase().indexOf(needle)>-1)results.push({kind:'Journal',text:msg.text,detail:formatTime(msg.createdAt),view:'v-chat'})});
+if(snapshot){
+if(snapshot.briefing&&snapshot.briefing.displayTitle&&snapshot.briefing.displayTitle.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company briefing',text:snapshot.briefing.displayTitle,detail:(snapshot.briefing.kind||'')+' \u00b7 '+(snapshot.briefing.date||''),view:'v-brief'});
+snapshot.goals.forEach(function(g){if(g.displayTitle&&g.displayTitle.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company goal',text:g.displayTitle,detail:'Goal',view:'v-brief'})});
+snapshot.decisions.forEach(function(d){var hay=(d.displayTitle||'')+' '+(d.id||'');if(hay.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company decision',text:d.displayTitle||d.id||'Decision',detail:(d.date||'')+(d.displayTitle?'':' \u00b7 No display title'),view:'v-brief'})});
+if(snapshot.overview&&Array.isArray(snapshot.overview.recent_activity)){snapshot.overview.recent_activity.forEach(function(a){if(a.displayTitle&&a.displayTitle.toLowerCase().indexOf(needle)>-1)results.push({kind:'Company activity',text:a.displayTitle,detail:(a.type||'Activity')+' \u00b7 '+(a.date||''),view:'v-brief'})})}
+if(snapshot.team&&['workspace','workspaces','team','company'].indexOf(needle)>-1){var tp=[];if(snapshot.team.workspaces!==null&&snapshot.team.workspaces!==undefined)tp.push(snapshot.team.workspaces+' workspaces');if(snapshot.team.goals!==null&&snapshot.team.goals!==undefined)tp.push(snapshot.team.goals+' goals');if(tp.length)results.push({kind:'Company team',text:tp.join(' \u00b7 '),detail:'Team snapshot',view:'v-team'})}
+}
+return results;
+}
+function renderSearch(){
+var input=document.getElementById('globalSearch');var box=document.getElementById('searchResults');if(!input||!box)return;
+var q=input.value;
+if(!q.trim()){box.innerHTML='<div class="empty">Type to search your schedule items, journal messages and company snapshot content.</div>';return}
+var results=searchResultsFor(q);
+if(results.length===0){box.innerHTML='<div class="empty">No results for \u201c'+esc(q)+'\u201d. Try a schedule title, a journal word, a company display title or a decision id.</div>';return}
+box.innerHTML=results.map(function(r){return '<div class="item"><div class="t">'+esc(r.text)+'</div><div class="d">'+esc(r.kind)+' \u00b7 '+esc(r.detail)+'</div><div class="row"><button class="small accent" type="button" data-search-view="'+r.view+'">Open</button></div></div>'}).join('');
+}
 function renderBriefing(){
-document.getElementById('dateLine').textContent=new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'})+' · 晨间简报';
+document.getElementById('dateLine').textContent=new Date().toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'})+' \u00b7 晨间简报';
 var total=state.schedule.length;var pending=pendingItems().length;var done=total-pending;
 var line=document.getElementById('briefLine');
 if(total===0){line.textContent='No schedule items yet today.'}else{line.textContent='Today: '+total+' schedule item'+(total===1?'':'s')+', '+pending+' pending, '+done+' done.'}
 var summary=document.getElementById('briefSummary');
-if(total===0){summary.innerHTML='<div class="empty">Nothing is scheduled yet. Add your first item in 日程 to start your day.</div>'}else{summary.innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+' today</div><div class="d">'+pending+' pending · '+done+' done · '+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div></div>'}
+if(total===0){summary.innerHTML='<div class="empty">Nothing is scheduled yet. Add your first item in 日程 to start your day.</div>'}else{summary.innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+' today</div><div class="d">'+pending+' pending \u00b7 '+done+' done \u00b7 '+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div></div>'}
 var list=document.getElementById('briefList');
-if(total===0){list.innerHTML=''}else{list.innerHTML=state.schedule.map(function(item){return '<div class="item'+(item.done?' done':'')+'"><div class="t">'+(item.done?'<span class="dot"></span>':'')+esc(item.title)+'</div><div class="d">'+esc(item.time)+' · '+esc(quadrantLabel(item.quadrant))+(item.done?' · Done':'')+'</div></div>'}).join('')}
+if(total===0){list.innerHTML=''}else{list.innerHTML=state.schedule.map(function(item){return '<div class="item'+(item.done?' done':'')+'"><div class="t">'+(item.done?'<span class="dot"></span>':'')+esc(item.title)+'</div><div class="d">'+esc(item.time)+' \u00b7 '+esc(quadrantLabel(item.quadrant))+(item.done?' \u00b7 Done':'')+'</div></div>'}).join('')}
 var pendingEl=document.getElementById('briefPending');
-if(pending===0){pendingEl.innerHTML='<div class="empty">'+(total===0?'No pending items.':'All caught up — nothing is pending.')+'</div>'}else{pendingEl.innerHTML=pendingItems().map(function(item){return '<div class="item"><div class="t">'+esc(item.title)+'</div><div class="d">'+esc(item.time)+' · '+esc(quadrantLabel(item.quadrant))+'</div><div class="row"><button class="small accent" type="button" data-action="done" data-id="'+item.id+'">Mark done</button></div></div>'}).join('')}
+if(pending===0){pendingEl.innerHTML='<div class="empty">'+(total===0?'No pending items.':'All caught up \u2014 nothing is pending.')+'</div>'}else{pendingEl.innerHTML=pendingItems().map(function(item){return '<div class="item"><div class="t">'+esc(item.title)+'</div><div class="d">'+esc(item.time)+' \u00b7 '+esc(quadrantLabel(item.quadrant))+'</div><div class="row"><button class="small accent" type="button" data-action="done" data-id="'+item.id+'">Mark done</button></div></div>'}).join('')}
 }
 function renderSchedule(){
 var grid=document.getElementById('quadGrid');
 grid.innerHTML=QUADRANTS.map(function(q){
 var items=state.schedule.filter(function(item){return item.quadrant===q.id});
-var inner=items.length===0?'<li class="meta">No items yet.</li>':items.map(function(item){return '<li><div>'+(item.done?'<span class="dot"></span>':'')+esc(item.title)+'</div><div class="meta">'+esc(item.time)+(item.done?' · Done':'')+'</div><div><button class="small" type="button" data-action="toggle" data-id="'+item.id+'">'+(item.done?'Undo done':'Mark done')+'</button> <button class="small" type="button" data-action="edit" data-id="'+item.id+'">Edit</button> <button class="small" type="button" data-action="delete" data-id="'+item.id+'">Delete</button></div></li>'}).join('');
+var inner=items.length===0?'<li class="meta">No items yet.</li>':items.map(function(item){return '<li><div>'+(item.done?'<span class="dot"></span>':'')+esc(item.title)+'</div><div class="meta">'+esc(item.time)+(item.done?' \u00b7 Done':'')+'</div><div><button class="small" type="button" data-action="toggle" data-id="'+item.id+'">'+(item.done?'Undo done':'Mark done')+'</button> <button class="small" type="button" data-action="edit" data-id="'+item.id+'">Edit</button> <button class="small" type="button" data-action="delete" data-id="'+item.id+'">Delete</button></div></li>'}).join('');
 return '<div class="q"><b>'+esc(q.label)+'</b><ul>'+inner+'</ul></div>'}).join('');
 document.getElementById('schedEmpty').hidden=state.schedule.length>0;
 }
 function renderChat(){
 var list=document.getElementById('chatList');
 var sorted=state.messages.slice().sort(function(a,b){return b.createdAt-a.createdAt});
-list.innerHTML=sorted.map(function(msg){return '<div class="msg"><div class="who">Local note · '+esc(formatTime(msg.createdAt))+'</div>'+esc(msg.text)+'<div class="row"><button class="small" type="button" data-action="delete-msg" data-id="'+msg.id+'">Delete</button></div></div>'}).join('');
+list.innerHTML=sorted.map(function(msg){return '<div class="msg"><div class="who">Local note \u00b7 '+esc(formatTime(msg.createdAt))+'</div>'+esc(msg.text)+'<div class="row"><button class="small" type="button" data-action="delete-msg" data-id="'+msg.id+'">Delete</button></div></div>'}).join('');
 document.getElementById('chatEmpty').hidden=state.messages.length>0;
 }
 function renderProfile(){
 var total=state.schedule.length;var pending=pendingItems().length;var done=total-pending;
 var byQuadrant=QUADRANTS.map(function(q){var count=state.schedule.filter(function(item){return item.quadrant===q.id}).length;return '<div class="item"><div class="t">'+esc(q.label)+'</div><div class="d">'+count+' item'+(count===1?'':'s')+'</div></div>'}).join('');
-document.getElementById('profileStats').innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+'</div><div class="d">'+pending+' pending · '+done+' done</div></div>'+byQuadrant+'<div class="item"><div class="t">'+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div><div class="d">Stored locally only, under key fit.state.v1. No account, no server, no analytics.</div></div>';
+document.getElementById('profileStats').innerHTML='<div class="item"><div class="t">'+total+' schedule item'+(total===1?'':'s')+'</div><div class="d">'+pending+' pending \u00b7 '+done+' done</div></div>'+byQuadrant+'<div class="item"><div class="t">'+state.messages.length+' journal message'+(state.messages.length===1?'':'s')+'</div><div class="d">Stored locally only, under key fit.state.v1. No account, no server, no analytics.</div></div>';
+var urlInput=document.getElementById('snapshotUrl');if(urlInput&&document.activeElement!==urlInput)urlInput.value=getSnapshotUrl();
 }
-function renderAll(){renderBriefing();renderSchedule();renderChat();renderProfile()}
+function renderAll(){renderBriefing();renderSchedule();renderChat();renderProfile();renderSnapshot();renderSearch()}
 function resetScheduleForm(){document.getElementById('schedForm').reset();editingId=null;document.getElementById('schedFormTitle').textContent='Add schedule item';document.getElementById('schedSubmit').textContent='Add item';document.getElementById('schedCancel').hidden=true}
 document.getElementById('schedForm').addEventListener('submit',function(event){event.preventDefault();var title=document.getElementById('schedTitle').value.trim();var time=document.getElementById('schedTime').value.trim();var quadrant=document.getElementById('schedQuadrant').value;if(!title||!time)return;if(editingId){var existing=null;for(var i=0;i<state.schedule.length;i++){if(state.schedule[i].id===editingId)existing=state.schedule[i]}if(existing){existing.title=title;existing.time=time;existing.quadrant=quadrant}}else{state.schedule.push({id:newId(),title:title,time:time,quadrant:quadrant,done:false,createdAt:Date.now()})}saveState();renderAll();resetScheduleForm()});
 document.getElementById('schedCancel').addEventListener('click',function(){resetScheduleForm()});
@@ -176,8 +311,26 @@ document.getElementById('chatForm').addEventListener('submit',function(event){ev
 document.getElementById('chatList').addEventListener('click',function(event){var btn=event.target.closest('button[data-action="delete-msg"]');if(!btn)return;var id=btn.getAttribute('data-id');state.messages=state.messages.filter(function(x){return x.id!==id});saveState();renderAll()});
 var clearArmed=false;var clearTimer=null;
 document.getElementById('clearData').addEventListener('click',function(){var btn=document.getElementById('clearData');var status=document.getElementById('clearStatus');if(!clearArmed){clearArmed=true;btn.textContent='Click again to confirm';status.textContent='This deletes all schedule items and messages stored on this device. Click again to confirm.';clearTimer=setTimeout(function(){clearArmed=false;btn.textContent='Clear all local data';status.textContent=''},8000);return}clearTimeout(clearTimer);clearArmed=false;try{localStorage.removeItem(KEY)}catch(e){}state={version:1,schedule:[],messages:[]};resetScheduleForm();document.getElementById('chatForm').reset();renderAll();btn.textContent='Clear all local data';status.textContent='All local data has been cleared.'});
-document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('nav button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on')});document.getElementById(b.dataset.v).classList.add('on');window.scrollTo(0,0)})});
+document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.v)})});
+document.getElementById('globalSearch').addEventListener('input',function(){renderSearch()});
+document.getElementById('clearSearch').addEventListener('click',function(){document.getElementById('globalSearch').value='';renderSearch();document.getElementById('globalSearch').focus()});
+document.getElementById('searchResults').addEventListener('click',function(event){var btn=event.target.closest('button[data-search-view]');if(!btn)return;showView(btn.getAttribute('data-search-view'))});
+document.getElementById('searchBtn').addEventListener('click',function(){showView('v-brief');var input=document.getElementById('globalSearch');if(input)input.focus()});
+document.getElementById('saveSnapshotUrl').addEventListener('click',function(){
+var val=document.getElementById('snapshotUrl').value.trim();
+var st=document.getElementById('snapshotStatus');
+if(val&&!/^https?:\/\//i.test(val)){if(st)st.textContent='Enter a full http(s) snapshot URL, or leave it empty for local-only mode.';return}
+setSnapshotUrl(val);
+if(!val){try{localStorage.removeItem(SNAP_CACHE_KEY)}catch(e){}snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';renderSnapshot();renderSearch();if(st)st.textContent='Snapshot URL cleared. Back to local-only mode.';return}
+if(st)st.textContent='Saving... fetching snapshot.';
+fetchSnapshot();
+});
+document.getElementById('refreshSnapshot').addEventListener('click',function(){var st=document.getElementById('snapshotStatus');if(!getSnapshotUrl()){if(st)st.textContent='No snapshot URL configured. Enter one above to fetch a snapshot.';return}fetchSnapshot()});
+setInterval(function(){var el=document.getElementById('snapshotAge');if(el&&snapshot)el.textContent=snapshotAgeLabel()},60000);
+var cached=loadSnapshotCache();
+if(cached){var fromCache=cleanSnapshot(cached.snapshot);if(fromCache){snapshot=fromCache;snapshotFetchedAt=cached.fetchedAt;snapshotFromCache=true}}
 renderAll();
+fetchSnapshot();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
 })();
 </script>
