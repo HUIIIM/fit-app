@@ -36,7 +36,6 @@
 - Gotham's documented discipline: an analyst starts from a known object (person, place, event, document), opens its properties, follows its links to neighbouring objects, and expands the graph hop by hop, keeping the path visible so the investigation can be retraced and challenged.
 - Every hop is explicit and reversible. A link that does not exist is not drawn. The graph is evidence, so a missing link is information, not a gap to be papered over with a guessed connection.
 - Search is object search: the result is an object, and selecting it opens that object — not a document, not a dashboard.
-- Search is object search: the result is an object, and selecting it opens that object — not a document, not a dashboard.
 
 ## 2. The operating discipline, distilled (the rules we copy)
 
