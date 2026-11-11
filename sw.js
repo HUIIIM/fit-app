@@ -1,10 +1,10 @@
-// Helm shell v9. Cache name is derived from SW_VERSION so a new worker
+// Helm shell v11. Cache name is derived from SW_VERSION so a new worker
 // version is a new cache; activate deletes every older cache. The
 // client (index.html) reloads an already-open page ONCE, guarded by a
 // sessionStorage flag, when a new worker takes control (controllerchange).
 // An old shell therefore survives only as an already-open page, never as
 // a silent fresh load.
-const SW_VERSION = 'v10';
+const SW_VERSION = 'v11';
 const CACHE = 'helm-shell-' + SW_VERSION;
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-180.png', './icons/icon.svg'];
 self.addEventListener('install', (e) => {
