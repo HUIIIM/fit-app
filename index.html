@@ -90,7 +90,108 @@ nav button.on{color:var(--ink);font-weight:800;box-shadow:inset 0 2px 0 var(--in
 .row-line .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row-line .when{font-size:12px;line-height:1.4;color:var(--ink);flex:none;font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.view.on{animation:none}*{transition:none!important;animation:none!important}}
-/* HELM DESIGN v1.1 — tokens, type, top bar, search overlay, nav */ :root{--gray3:#3F3F3F;--yellow:#FFCE00;--red:#B3261E} body{font-family:'Inter','HarmonyOS Sans SC',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans SC',sans-serif;font-size:14px;line-height:20px;font-variant-numeric:tabular-nums} header.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line);padding:8px 16px;margin:0} header.topbar h1,header.topbar .sub{display:none} .signal-disc{width:28px;height:28px;border-radius:99px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none} .signal-core{width:8px;height:8px;border-radius:99px;background:var(--accent)} .topbar-info{min-width:0;flex:1;display:flex;flex-direction:column} .top-signal{font-size:12px;line-height:16px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .top-info{font-size:14px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .wordmark{display:none} .top-search-field{display:none} .top-right{display:none} .top-presets{display:none} #searchOverlay{display:none;position:fixed;inset:0;z-index:40;background:var(--paper);padding:24px 16px;overflow:auto} #searchOverlay.open{display:block} .search-overlay-box{max-width:640px;margin:0 auto} .search-overlay-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px} .search-overlay-head h2{font-size:20px;line-height:26px;font-weight:700} .search-card{display:none} .bottom-nav button{color:var(--mut);font-weight:400} .bottom-nav button.on{color:var(--ink);font-weight:800;box-shadow:none} @media(min-width:1024px){.top-search-field{display:flex;align-items:center;flex:1;max-width:480px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--mut);font-size:14px;line-height:20px;text-align:left}.top-right{display:flex;align-items:center;gap:12px}.top-clock{font-size:12px;line-height:16px;font-variant-numeric:tabular-nums;color:var(--mut)}.top-presets{display:flex;align-items:center;gap:8px}.wordmark{display:block;font-size:15px;line-height:20px;font-weight:700;letter-spacing:.08em}.search{display:none}.topbar-info{flex:0 1 auto;min-width:240px}} /* HELM DESIGN v1.1 — cockpit forms */ .view>h2{font-size:20px;line-height:26px;font-weight:700} .card>h2,.ov-block h3{font-size:15px;line-height:20px;font-weight:650} #overviewHeading{font-size:20px;line-height:26px;font-weight:700} .eyebrow{font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)} main{padding:12px 16px 88px} .card{padding:12px} .ov-block{padding:12px;margin-bottom:12px} .item{padding:8px 0} #companyBody{display:flex;flex-direction:column} #companyBody>.ov-block:first-child{display:none} .pending-strip{order:-2;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:20px} .pending-strip.is-zero{color:var(--mut)} #approvalsBlock{order:-1} .stat-num{font-size:32px;line-height:36px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)} .stat-num-sm{font-size:20px;line-height:24px;font-weight:650;font-variant-numeric:tabular-nums;color:var(--ink)} .stat-unit{font-size:12px;line-height:16px;color:var(--mut)} .twin{display:grid;grid-template-columns:1fr 1fr;gap:16px} .twin-stat+.twin-stat{border-left:1px solid var(--line);padding-left:16px} .ov-badge,.pend-badge{display:inline-flex;align-items:center;justify-content:center;height:18px;min-width:18px;padding:0 8px;border-radius:9px;background:var(--accent);color:#FFFFFF;font-size:12px;line-height:18px;font-weight:700;font-variant-numeric:tabular-nums} .count-badge{display:inline-flex;align-items:center;justify-content:center;height:18px;min-width:18px;padding:0 8px;border-radius:9px;border:1px solid var(--mut);background:transparent;color:var(--ink);font-size:12px;line-height:16px;font-weight:650;font-variant-numeric:tabular-nums} .ov-disc{width:28px;height:28px;background:var(--ink)} .ov-disc-core{width:8px;height:8px} .ov-bar{height:4px;background:var(--line);margin:4px 0 12px} .ov-bar i{background:var(--ink)} .ov-bar-7d i,.ov-bar-older i{background:var(--ink)} .bar{height:4px;background:var(--line);border:none} .bar i{background:var(--ink)} .act-row{display:flex;align-items:center;gap:8px;height:36px;padding:0;border-top:1px solid var(--line);font-size:14px;line-height:20px} .act-row:first-child{border-top:none} .act-time{width:48px;flex:none;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums} .act-dot{width:6px;height:6px;flex:none;border-radius:99px;background:var(--mut)} .act-dot.ok{background:var(--ok)} .act-dot.attn{background:var(--red)} .act-dot.verify{background:var(--yellow)} .act-dot.hollow{background:transparent;border:1px solid var(--mut)} .act-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;line-height:20px} .state-word{display:inline-flex;align-items:center;gap:8px;font-size:12px;line-height:16px} .state-dot{width:6px;height:6px;flex:none;border-radius:99px} .state-dot.ok{background:var(--ok)} .state-dot.attn{background:var(--red)} .state-dot.verify{background:var(--yellow)} .state-dot.hollow{background:transparent;border:1px solid var(--mut)} .tbl-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-top:1px solid var(--line)} .tbl-row:first-child{border-top:none} .tbl-num{font-size:20px;line-height:24px;font-weight:650;font-variant-numeric:tabular-nums} .tbl-data{font-size:13px;line-height:18px;font-variant-numeric:tabular-nums} .ov-activity{max-height:224px;overflow:auto} .note{font-size:12px;line-height:16px} .tag{font-size:12px;border-radius:8px} .ov-meta{font-size:12px;line-height:16px} .row-line{padding:10px 0} .row-line .title{font-size:14px} .small{min-height:44px;padding:8px 12px} input,select,textarea{font-size:14px;min-height:44px} h2{font-size:15px;line-height:20px;font-weight:650} .block-head{font-size:15px;line-height:20px;font-weight:650} /* HELM DESIGN v1.1 — wall brick grid and focus */ @media(min-width:1024px){main{padding:16px 24px 88px;max-width:1440px}.card{padding:16px}.ov-block{padding:16px;margin-bottom:16px}#wall{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.wall-panel{padding:16px}.wall-panel h2{font-size:15px;line-height:20px;font-weight:650}#wp-situation{grid-column:span 2}#wp-goals-pano{grid-column:3;grid-row:1}#wp-pending{grid-column:4;grid-row:1}#wp-goals-list{grid-column:1;grid-row:2}#wp-activity{grid-column:2;grid-row:2}#wp-briefing{grid-column:3;grid-row:2}#wp-detail{grid-column:4;grid-row:2}#wp-activity-b{max-height:256px;overflow:auto}} @media(min-width:2560px){#wall{grid-template-columns:repeat(4,minmax(0,1fr))}main{max-width:1600px}} .wall-top{display:none} .wall-panel{border:1px solid var(--line);border-radius:8px;padding:12px} .wall-panel.is-focus{border:2px solid var(--ink)} .focus-tag{display:none;font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)} .wall-panel.is-focus .focus-tag{display:inline-block} .wall-item{display:flex;align-items:center;gap:8px;min-height:36px;padding:0;border:none;border-top:1px solid var(--line);border-radius:0;background:transparent;font-size:14px;line-height:20px;text-align:left;box-shadow:none} .wall-item:first-child{border-top:none} .wall-item .wall-item-title{font-size:14px;line-height:20px} .wall-item .wall-item-type{font-size:12px;line-height:16px;color:var(--mut);flex:none} .wall-item .wall-item-tag,.wall-item .wall-item-date{font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums;flex:none} .wall-presets button{border-radius:8px} .ov-block,.card{scroll-margin-top:80px} header.topbar{display:flex;align-items:center;gap:8px}header.topbar .search{position:static;flex:none;width:44px;height:44px;margin-left:auto}.bar-button{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;width:100%;gap:8px;padding:0;border:none;background:none;cursor:pointer;text-align:left}.bar-button .ov-bar{flex:1 1 100%}.wall-bar{display:block;width:100%;padding:0;min-height:0;margin:4px 0 12px;cursor:pointer}.wall-bar i{display:block;height:4px;background:var(--ink)}.wall-item{flex-wrap:wrap}.wall-item>.t{flex:1 1 auto;min-width:0}.wall-item>.m{flex:1 1 100%;font-size:12px;line-height:16px;color:var(--mut)}.wall-item.act-row{flex-wrap:nowrap}/* HELM DESIGN v1.1 - specificity fixes. G8-2 base rules carry higher specificity for wall bars, the focus tag and panel titles, so re-assert the v1.1 forms here. */.wall-panel .focus-tag{font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)}.wall-panel h3{font-size:15px;line-height:20px;font-weight:650}.wall-panel .bar{height:4px;background:var(--line);border:none;border-radius:0;margin:4px 0 12px}.wall-panel .bar>i{display:block;height:4px;background:var(--ink)}#wall .pend-badge{display:inline-flex;align-items:center;justify-content:center;height:18px;min-width:18px;padding:0 8px;border-radius:9px;font-size:12px;line-height:18px;font-weight:700}@media(min-width:1024px){header.topbar.search{display:none}}</style>
+/* HELM DESIGN v1.1 — tokens, type, top bar, search overlay, nav */ :root{--gray3:#3F3F3F;--yellow:#FFCE00;--red:#B3261E} body{font-family:'Inter','HarmonyOS Sans SC',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans SC',sans-serif;font-size:14px;line-height:20px;font-variant-numeric:tabular-nums} header.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line);padding:8px 16px;margin:0} header.topbar h1,header.topbar .sub{display:none} .signal-disc{width:28px;height:28px;border-radius:99px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex:none} .signal-core{width:8px;height:8px;border-radius:99px;background:var(--accent)} .topbar-info{min-width:0;flex:1;display:flex;flex-direction:column} .top-signal{font-size:12px;line-height:16px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .top-info{font-size:14px;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .wordmark{display:none} .top-search-field{display:none} .top-right{display:none} .top-presets{display:none} #searchOverlay{display:none;position:fixed;inset:0;z-index:40;background:var(--paper);padding:24px 16px;overflow:auto} #searchOverlay.open{display:block} .search-overlay-box{max-width:640px;margin:0 auto} .search-overlay-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px} .search-overlay-head h2{font-size:20px;line-height:26px;font-weight:700} .search-card{display:none} .bottom-nav button{color:var(--mut);font-weight:400} .bottom-nav button.on{color:var(--ink);font-weight:800;box-shadow:none} @media(min-width:1024px){.top-search-field{display:flex;align-items:center;flex:1;max-width:480px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--mut);font-size:14px;line-height:20px;text-align:left}.top-right{display:flex;align-items:center;gap:12px}.top-clock{font-size:12px;line-height:16px;font-variant-numeric:tabular-nums;color:var(--mut)}.top-presets{display:flex;align-items:center;gap:8px}.wordmark{display:block;font-size:15px;line-height:20px;font-weight:700;letter-spacing:.08em}.search{display:none}.topbar-info{flex:0 1 auto;min-width:240px}} /* HELM DESIGN v1.1 — cockpit forms */ .view>h2{font-size:20px;line-height:26px;font-weight:700} .card>h2,.ov-block h3{font-size:15px;line-height:20px;font-weight:650} #overviewHeading{font-size:20px;line-height:26px;font-weight:700} .eyebrow{font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)} main{padding:12px 16px 88px} .card{padding:12px} .ov-block{padding:12px;margin-bottom:12px} .item{padding:8px 0} #companyBody{display:flex;flex-direction:column} #companyBody>.ov-block:first-child{display:none} .pending-strip{order:-2;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:20px} .pending-strip.is-zero{color:var(--mut)} #approvalsBlock{order:-1} .stat-num{font-size:32px;line-height:36px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)} .stat-num-sm{font-size:20px;line-height:24px;font-weight:650;font-variant-numeric:tabular-nums;color:var(--ink)} .stat-unit{font-size:12px;line-height:16px;color:var(--mut)} .twin{display:grid;grid-template-columns:1fr 1fr;gap:16px} .twin-stat+.twin-stat{border-left:1px solid var(--line);padding-left:16px} .ov-badge,.pend-badge{display:inline-flex;align-items:center;justify-content:center;height:18px;min-width:18px;padding:0 8px;border-radius:9px;background:var(--accent);color:#FFFFFF;font-size:12px;line-height:18px;font-weight:700;font-variant-numeric:tabular-nums} .count-badge{display:inline-flex;align-items:center;justify-content:center;height:18px;min-width:18px;padding:0 8px;border-radius:9px;border:1px solid var(--mut);background:transparent;color:var(--ink);font-size:12px;line-height:16px;font-weight:650;font-variant-numeric:tabular-nums} .ov-disc{width:28px;height:28px;background:var(--ink)} .ov-disc-core{width:8px;height:8px} .ov-bar{height:4px;background:var(--line);margin:4px 0 12px} .ov-bar i{background:var(--ink)} .ov-bar-7d i,.ov-bar-older i{background:var(--ink)} .bar{height:4px;background:var(--line);border:none} .bar i{background:var(--ink)} .act-row{display:flex;align-items:center;gap:8px;height:36px;padding:0;border-top:1px solid var(--line);font-size:14px;line-height:20px} .act-row:first-child{border-top:none} .act-time{width:48px;flex:none;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums} .act-dot{width:6px;height:6px;flex:none;border-radius:99px;background:var(--mut)} .act-dot.ok{background:var(--ok)} .act-dot.attn{background:var(--red)} .act-dot.verify{background:var(--yellow)} .act-dot.hollow{background:transparent;border:1px solid var(--mut)} .act-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;line-height:20px} .state-word{display:inline-flex;align-items:center;gap:8px;font-size:12px;line-height:16px} .state-dot{width:6px;height:6px;flex:none;border-radius:99px} .state-dot.ok{background:var(--ok)} .state-dot.attn{background:var(--red)} .state-dot.verify{background:var(--yellow)} .state-dot.hollow{background:transparent;border:1px solid var(--mut)} .tbl-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-top:1px solid var(--line)} .tbl-row:first-child{border-top:none} .tbl-num{font-size:20px;line-height:24px;font-weight:650;font-variant-numeric:tabular-nums} .tbl-data{font-size:13px;line-height:18px;font-variant-numeric:tabular-nums} .ov-activity{max-height:224px;overflow:auto} .note{font-size:12px;line-height:16px} .tag{font-size:12px;border-radius:8px} .ov-meta{font-size:12px;line-height:16px} .row-line{padding:10px 0} .row-line .title{font-size:14px} .small{min-height:44px;padding:8px 12px} input,select,textarea{font-size:14px;min-height:44px} h2{font-size:15px;line-height:20px;font-weight:650} .block-head{font-size:15px;line-height:20px;font-weight:650} /* HELM DESIGN v1.1 — wall brick grid and focus */ @media(min-width:1024px){main{padding:16px 24px 88px;max-width:1440px}.card{padding:16px}.ov-block{padding:16px;margin-bottom:16px}#wall{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.wall-panel{padding:16px}.wall-panel h2{font-size:15px;line-height:20px;font-weight:650}#wp-situation{grid-column:span 2}#wp-goals-pano{grid-column:3;grid-row:1}#wp-pending{grid-column:4;grid-row:1}#wp-goals-list{grid-column:1;grid-row:2}#wp-activity{grid-column:2;grid-row:2}#wp-briefing{grid-column:3;grid-row:2}#wp-detail{grid-column:4;grid-row:2}#wp-activity-b{max-height:256px;overflow:auto}} @media(min-width:2560px){#wall{grid-template-columns:repeat(4,minmax(0,1fr))}main{max-width:1600px}} .wall-top{display:none} .wall-panel{border:1px solid var(--line);border-radius:8px;padding:12px} .wall-panel.is-focus{border:2px solid var(--ink)} .focus-tag{display:none;font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)} .wall-panel.is-focus .focus-tag{display:inline-block} .wall-item{display:flex;align-items:center;gap:8px;min-height:36px;padding:0;border:none;border-top:1px solid var(--line);border-radius:0;background:transparent;font-size:14px;line-height:20px;text-align:left;box-shadow:none} .wall-item:first-child{border-top:none} .wall-item .wall-item-title{font-size:14px;line-height:20px} .wall-item .wall-item-type{font-size:12px;line-height:16px;color:var(--mut);flex:none} .wall-item .wall-item-tag,.wall-item .wall-item-date{font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums;flex:none} .wall-presets button{border-radius:8px} .ov-block,.card{scroll-margin-top:80px} header.topbar{display:flex;align-items:center;gap:8px}header.topbar .search{position:static;flex:none;width:44px;height:44px;margin-left:auto}.bar-button{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;width:100%;gap:8px;padding:0;border:none;background:none;cursor:pointer;text-align:left}.bar-button .ov-bar{flex:1 1 100%}.wall-bar{display:block;width:100%;padding:0;min-height:0;margin:4px 0 12px;cursor:pointer}.wall-bar i{display:block;height:4px;background:var(--ink)}.wall-item{flex-wrap:wrap}.wall-item>.t{flex:1 1 auto;min-width:0}.wall-item>.m{flex:1 1 100%;font-size:12px;line-height:16px;color:var(--mut)}.wall-item.act-row{flex-wrap:nowrap}/* HELM DESIGN v1.1 - specificity fixes. G8-2 base rules carry higher specificity for wall bars, the focus tag and panel titles, so re-assert the v1.1 forms here. */.wall-panel .focus-tag{font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)}.wall-panel h3{font-size:15px;line-height:20px;font-weight:650}.wall-panel .bar{height:4px;background:var(--line);border:none;border-radius:0;margin:4px 0 12px}.wall-panel .bar>i{display:block;height:4px;background:var(--ink)}#wall .pend-badge{display:inline-flex;align-items:center;justify-content:center;height:18px;min-width:18px;padding:0 8px;border-radius:9px;font-size:12px;line-height:18px;font-weight:700}@media(min-width:1024px){header.topbar.search{display:none}}
+/* HELM SLICE 3 — pending inbox (G8 block 4). Tokens only (ink / paper / grays / state tokens). Signal Orange stays on the pending capsule (.ov-badge / .pend-badge) and nowhere else in this block. */
+.inbox-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.inbox-head h3{margin:0;display:flex;align-items:center;gap:8px}
+.inbox-sum{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.inbox-tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin:0 -2px;scrollbar-width:none}
+.inbox-tabs::-webkit-scrollbar{display:none}
+.inbox-tab{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font-family:inherit;font-size:13px;line-height:18px;white-space:nowrap;cursor:pointer}
+.inbox-tab .n{color:var(--mut);font-variant-numeric:tabular-nums}
+.inbox-tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:650}
+.inbox-tab[aria-pressed="true"] .n{color:var(--paper)}
+.inbox-tab:focus-visible,.inbox-row:focus-visible,.inbox-link:focus-visible,.inbox-bar button:focus-visible,.inbox-opt input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.inbox-row{display:block;width:100%;min-height:44px;padding:10px 0;border:none;border-top:1px solid var(--line);background:none;color:var(--ink);font-family:inherit;text-align:left;cursor:pointer}
+.inbox-list>.inbox-row:first-child{border-top:none}
+.inbox-row:hover .inbox-title{text-decoration:underline}
+.inbox-row-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.inbox-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;line-height:20px;font-weight:650;font-variant-numeric:tabular-nums}
+.inbox-row .state-word{flex:none}
+.inbox-effect{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:2px;font-size:13px;line-height:18px}
+.inbox-effect.is-none{color:var(--mut)}
+.inbox-meta{display:block;margin-top:4px;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums}
+.inbox-local{display:block;margin-top:4px;font-size:12px;line-height:16px;font-weight:600}
+.inbox-empty{padding:12px 0;font-size:14px;line-height:20px}
+.inbox-more{display:block;width:100%;min-height:44px;margin-top:4px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font-family:inherit;font-size:14px;line-height:20px;font-weight:650;cursor:pointer}
+.inbox-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
+.inbox-note{flex:1 1 200px;font-size:12px;line-height:16px;color:var(--ink)}
+.inbox-link{flex:none;min-height:44px;padding:0 12px;border:1px solid var(--ink);border-radius:8px;background:var(--paper);color:var(--ink);font-family:inherit;font-size:13px;line-height:18px;font-weight:650;cursor:pointer}
+.inbox-link[disabled]{border-color:var(--line);color:var(--mut);cursor:default}
+html.inbox-lock{overflow:hidden}
+#inboxSheet{display:none;position:fixed;inset:0;z-index:35;overflow:auto;overscroll-behavior:contain;background:var(--paper);padding:0 16px 32px}
+#inboxSheet.open{display:block}
+.inbox-sheet-box{max-width:760px;margin:0 auto}
+.inbox-bar{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:8px;padding:12px 0;margin-bottom:12px;border-bottom:1px solid var(--line);background:var(--paper)}
+.inbox-bar button{min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font-family:inherit;font-size:14px;line-height:20px;cursor:pointer}
+.inbox-bar button[disabled]{color:var(--mut);cursor:default}
+.inbox-bar .pos{flex:1;text-align:center;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums}
+.inbox-bar .close{border-color:var(--ink);font-weight:650}
+.inbox-d-title{margin:4px 0;font-size:20px;line-height:26px;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.inbox-d-sub{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums}
+.inbox-hint{margin:4px 0 8px;font-size:12px;line-height:16px;color:var(--mut)}
+.inbox-warn{margin:12px 0 0;padding:8px 12px;border:1px solid var(--ink);border-radius:8px;font-size:13px;line-height:18px}
+.inbox-sec{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.inbox-sec>h3{margin-bottom:8px;font-size:15px;line-height:20px;font-weight:650}
+.inbox-verbatim{margin:0;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);font-family:inherit;font-size:14px;line-height:20px;white-space:pre-wrap;overflow-wrap:anywhere}
+pre.inbox-verbatim{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;line-height:18px}
+.inbox-diff{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px;line-height:18px;font-variant-numeric:tabular-nums}
+.inbox-diff th{padding:8px 8px 8px 0;border-bottom:1px solid var(--ink);font-size:11px;line-height:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);text-align:left}
+.inbox-diff td{padding:8px 8px 8px 0;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+.inbox-diff .f{font-weight:650}
+.inbox-diff .cur{color:var(--mut)}
+.inbox-diff tr.is-changed .cur{text-decoration:line-through}
+.inbox-diff .new{font-weight:650}
+.inbox-diff tr.is-same td{color:var(--mut);font-weight:400}
+.inbox-diff .miss{color:var(--mut);font-weight:400}
+.inbox-diff .tag{margin-left:0;padding:1px 6px;border:1px solid var(--line);background:none;font-size:11px;line-height:14px;font-weight:600;vertical-align:0}
+.inbox-subject{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;font-size:13px;line-height:18px}
+.inbox-subject .k{color:var(--mut)}
+.inbox-form label{margin:12px 0 4px}
+.inbox-choice{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.inbox-opt{position:relative;display:block;margin:0;font-weight:400}
+.inbox-opt input{position:absolute;inset:0;width:100%;height:100%;min-height:0;margin:0;padding:0;border:0;opacity:0;cursor:pointer}
+.inbox-opt span{display:flex;align-items:center;justify-content:center;min-height:48px;border:1px solid var(--ink);border-radius:8px;background:var(--paper);color:var(--ink);font-size:15px;line-height:20px;font-weight:650}
+.inbox-opt input:checked+span{background:var(--ink);color:var(--paper)}
+.inbox-form textarea{display:block;min-height:96px;resize:vertical}
+.inbox-form-hint{margin:8px 0;font-size:13px;line-height:18px}
+.inbox-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.inbox-actions .btn{flex:1 1 140px}
+#inboxSheet .btn[disabled],#inboxLogCard .btn[disabled]{background:var(--line);border-color:var(--line);color:var(--mut);font-weight:400;cursor:not-allowed}
+.inbox-form .inbox-note,.inbox-local-now .inbox-note{display:block;margin-top:12px}
+.inbox-flash{margin:0 0 12px;padding:8px 12px;border:1px solid var(--ink);border-radius:8px;font-size:13px;line-height:18px;font-weight:650}
+.inbox-local-now{padding:12px;border:1px solid var(--ink);border-radius:8px}
+.inbox-local-now .what{font-size:15px;line-height:20px;font-weight:650}
+.inbox-local-now .why{margin-top:4px;font-size:14px;line-height:20px;white-space:pre-wrap;overflow-wrap:anywhere}
+.inbox-fields{margin:0}
+.inbox-f{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:13px;line-height:18px}
+.inbox-f:first-child{border-top:none}
+.inbox-f dt{color:var(--mut)}
+.inbox-f dt small{display:block;font-size:11px;line-height:14px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.inbox-f dd{margin:0;min-width:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.inbox-f dd.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+.inbox-f dd .sub{display:block;color:var(--mut);font-size:12px;line-height:16px}
+.inbox-none{font-size:14px;line-height:20px;color:var(--mut)}
+.inbox-entry{padding:12px 0;border-top:1px solid var(--line)}
+.inbox-entry:first-child{border-top:none}
+.inbox-entry .what{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;font-size:14px;line-height:20px;font-weight:650;font-variant-numeric:tabular-nums}
+.inbox-entry .when{font-size:12px;line-height:16px;font-weight:400;color:var(--mut)}
+.inbox-entry .why{margin-top:4px;font-size:14px;line-height:20px;white-space:pre-wrap;overflow-wrap:anywhere}
+.inbox-entry .basis{margin-top:4px;font-size:12px;line-height:16px;color:var(--mut);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.inbox-entry .tags{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}
+.inbox-entry .tag{margin-left:0;border:1px solid var(--line);background:none;font-weight:600;vertical-align:0}
+.inbox-entry.is-old .what,.inbox-entry.is-old .why{color:var(--mut)}
+.inbox-json{display:block;width:100%;min-height:200px;margin-top:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;line-height:18px}
+@media(min-width:1024px){
+#inboxSheet{background:rgba(0,0,0,.4);padding:32px 24px}
+.inbox-sheet-box{padding:0 24px 24px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.inbox-bar{position:static;padding:16px 0 12px}
+.inbox-tabs{flex-wrap:wrap;overflow:visible}
+.inbox-tab{min-height:32px;padding:0 8px;font-size:12px}
+#wp-pending-b .inbox-list{max-height:432px;overflow:auto;padding-right:4px}
+.inbox-f{grid-template-columns:176px minmax(0,1fr)}
+}
+</style>
 </head>
 <body>
 <header class="topbar"><span class="wordmark">HELM</span><div class="signal-disc" id="topDisc" aria-hidden="true"><span class="signal-core"></span></div><div class="topbar-info"><div class="top-signal num" id="topSignalText"></div>
@@ -153,6 +254,7 @@ nav button.on{color:var(--ink);font-weight:800;box-shadow:inset 0 2px 0 var(--in
 <div class="item"><div class="t" data-i18n="auth1t">花钱 &gt;$30 才找我</div><div class="d" data-i18n="auth1d">其余事项团队全自动：自行决定、自行解决、只报结果</div></div>
 <div class="item"><div class="t" data-i18n="auth2t">付款前先搜折扣</div><div class="d" data-i18n="auth2d">任何付款先找最便宜的正规路径并留痕</div></div>
 </div>
+<div class="card" id="inboxLogCard"></div>
 <div class="card"><h2 data-i18n="snapshotTitle">Company snapshot</h2><p class="empty" data-i18n="snapshotIntro">Optional: enter a snapshot URL from your server-side generator. Empty means local-only mode — no network call is made and the app behaves exactly as before. Only pre-sanitized display titles are shown; entries without one are counted, not shown.</p><label for="snapshotUrl" data-i18n="snapshotUrlLabel">Snapshot URL</label><input id="snapshotUrl" type="url" placeholder="https://…/snapshot.json" data-i18n-ph="snapshotUrlPlaceholder"><div class="row"><button class="btn ink" id="saveSnapshotUrl" type="button" data-i18n="saveSnapshotUrl">Save snapshot URL</button><button class="btn" id="refreshSnapshot" type="button" data-i18n="refreshSnapshot">Refresh now</button></div><div class="note" id="snapshotStatus"></div></div>
 <div class="card"><h2 data-i18n="clearTitle">Clear local data</h2><p class="empty" data-i18n="clearIntro">This deletes all Helm data stored on this device (schedule items and message journal entries). This cannot be undone.</p><div class="row"><button class="btn" id="clearData" type="button" data-i18n="clearData">Clear all local data</button></div></div>
 </section>
@@ -169,7 +271,7 @@ nav button.on{color:var(--ink);font-weight:800;box-shadow:inset 0 2px 0 var(--in
 var KEY='fit.state.v1';
 var SNAP_URL_KEY='fit.snapshot.url';
 var SNAP_CACHE_KEY='fit.snapshot.cache.v1';
-var SHELL_VERSION='v11';
+var SHELL_VERSION='v12';
 var SW_RELOAD_FLAG='helm.sw.reloaded.'+SHELL_VERSION;
 /* Helm overview strings only, extended to every UI string in this file. zh-CN is the default; en is used when the browser language starts with en. STR completeness: every key below has both zh-CN and en. */
 var STR={
@@ -203,7 +305,7 @@ function displayTitleOf(entry){if(!entry||typeof entry!=='object')return null;re
 function loadSnapshotCache(){try{var raw=localStorage.getItem(SNAP_CACHE_KEY);if(!raw)return null;return JSON.parse(raw)}catch(e){return null}}
 function saveSnapshotCache(snap){try{localStorage.setItem(SNAP_CACHE_KEY,JSON.stringify({snapshot:snap,fetchedAt:Date.now()}))}catch(e){}}
 function cleanApprovalItem(a){if(!a||typeof a!=='object')return null;return{id:asString(a.id),displayTitle:displayTitleOf(a),proposer:asString(a.proposer),effect:asString(a.effect),subjectRef:asString(a.subjectRef||a.subject_ref)}}
-function cleanSnapshot(raw){if(!raw||typeof raw!=='object')return null;var out={briefing:null,goals:[],decisions:[],team:null,overview:null,projectionVersion:null,generationSeq:null,pendingApprovals:null,fleetHealth:null};var pv=(raw.projection_version!==undefined&&raw.projection_version!==null)?raw.projection_version:(raw.projectionVersion!==undefined?raw.projectionVersion:null);if(typeof pv==='number'&&isFinite(pv))out.projectionVersion=pv;else if(typeof pv==='string'&&pv.trim()!=='')out.projectionVersion=pv;out.generationSeq=asNumber((raw.generation_seq!==undefined&&raw.generation_seq!==null)?raw.generation_seq:(raw.generation!==undefined?raw.generation:null));var b=raw.briefing;if(Array.isArray(b))b=b[0];if(b&&typeof b==='object'){out.briefing={kind:asString(b.kind),date:asString(b.date),displayTitle:displayTitleOf(b),summary:asString(b.summary)}}if(Array.isArray(raw.goals)){out.goals=raw.goals.filter(function(g){return g&&typeof g==='object'}).map(function(g){return{id:asString(g.id),displayTitle:displayTitleOf(g)}})}if(Array.isArray(raw.decisions)){out.decisions=raw.decisions.filter(function(d){return d&&typeof d==='object'}).map(function(d){return{id:asString(d.id),displayTitle:displayTitleOf(d),date:asString(d.date),subjectRef:asString(d.subjectRef||d.subject_ref)}})}var tm=raw.team;if(tm&&typeof tm==='object'){var tw=asNumber(tm.workspaces);var tg=asNumber(tm.goals);if(tw!==null||tg!==null)out.team={workspaces:tw,goals:tg}}var ov=raw.overview;if(ov&&typeof ov==='object'){var buckets=null;var bk=ov.goals_activity_buckets;if(bk&&typeof bk==='object'){buckets={updated_last_24h:asNumber(bk.updated_last_24h),updated_last_7d:asNumber(bk.updated_last_7d),older:asNumber(bk.older)}}var activity=[];if(Array.isArray(ov.recent_activity)){activity=ov.recent_activity.filter(function(a){return a&&typeof a==='object'}).map(function(a){return{type:asString(a.type),date:asString(a.date),displayTitle:displayTitleOf(a),subjectRef:asString(a.subjectRef||a.subject_ref)}})}out.overview={goals_total:asNumber(ov.goals_total),goals_named:asNumber(ov.goals_named),goals_activity_buckets:buckets,recent_activity:activity,staleness:asNumber(ov.staleness)}}var pa=raw.pending_approvals||raw.pendingApprovals||(ov&&ov.pending_approvals)||(ov&&ov.pendingApprovals);if(pa&&typeof pa==='object'){if(Array.isArray(pa)){out.pendingApprovals={status:null,count:pa.length,items:pa.filter(function(a){return a&&typeof a==='object'}).map(cleanApprovalItem).filter(function(x){return x})} }else{var items=[];if(Array.isArray(pa.items)){items=pa.items.filter(function(a){return a&&typeof a==='object'}).map(cleanApprovalItem).filter(function(x){return x})}out.pendingApprovals={status:asString(pa.status),count:asNumber(pa.count),items:items}}}var fh=raw.fleet_health||raw.fleetHealth||(ov&&ov.fleet_health)||(ov&&ov.fleetHealth);if(fh&&typeof fh==='object'){var health={};var hasHealth=false;for(var k in fh){if(Object.prototype.hasOwnProperty.call(fh,k)){health[k]=fh[k];hasHealth=true}}if(hasHealth)out.fleetHealth=health}return out}
+function cleanSnapshot(raw){if(!raw||typeof raw!=='object')return null;var out={briefing:null,goals:[],decisions:[],team:null,overview:null,projectionVersion:null,generationSeq:null,pendingApprovals:null,fleetHealth:null};var pv=(raw.projection_version!==undefined&&raw.projection_version!==null)?raw.projection_version:(raw.projectionVersion!==undefined?raw.projectionVersion:null);if(typeof pv==='number'&&isFinite(pv))out.projectionVersion=pv;else if(typeof pv==='string'&&pv.trim()!=='')out.projectionVersion=pv;out.generationSeq=asNumber((raw.generation_seq!==undefined&&raw.generation_seq!==null)?raw.generation_seq:((raw.generationSeq!==undefined&&raw.generationSeq!==null)?raw.generationSeq:(raw.generation!==undefined?raw.generation:null)));var b=raw.briefing;if(Array.isArray(b))b=b[0];if(b&&typeof b==='object'){out.briefing={kind:asString(b.kind),date:asString(b.date),displayTitle:displayTitleOf(b),summary:asString(b.summary)}}if(Array.isArray(raw.goals)){out.goals=raw.goals.filter(function(g){return g&&typeof g==='object'}).map(function(g){return{id:asString(g.id),displayTitle:displayTitleOf(g)}})}if(Array.isArray(raw.decisions)){out.decisions=raw.decisions.filter(function(d){return d&&typeof d==='object'}).map(function(d){return{id:asString(d.id),displayTitle:displayTitleOf(d),date:asString(d.date),subjectRef:asString(d.subjectRef||d.subject_ref)}})}var tm=raw.team;if(tm&&typeof tm==='object'){var tw=asNumber(tm.workspaces);var tg=asNumber(tm.goals);if(tw!==null||tg!==null)out.team={workspaces:tw,goals:tg}}var ov=raw.overview;if(ov&&typeof ov==='object'){var buckets=null;var bk=ov.goals_activity_buckets;if(bk&&typeof bk==='object'){buckets={updated_last_24h:asNumber(bk.updated_last_24h),updated_last_7d:asNumber(bk.updated_last_7d),older:asNumber(bk.older)}}var activity=[];if(Array.isArray(ov.recent_activity)){activity=ov.recent_activity.filter(function(a){return a&&typeof a==='object'}).map(function(a){return{type:asString(a.type),date:asString(a.date),displayTitle:displayTitleOf(a),subjectRef:asString(a.subjectRef||a.subject_ref)}})}out.overview={goals_total:asNumber(ov.goals_total),goals_named:asNumber(ov.goals_named),goals_activity_buckets:buckets,recent_activity:activity,staleness:asNumber(ov.staleness)}}var pa=raw.pending_approvals||raw.pendingApprovals||(ov&&ov.pending_approvals)||(ov&&ov.pendingApprovals);if(pa&&typeof pa==='object'){if(Array.isArray(pa)){out.pendingApprovals={status:null,count:pa.length,items:pa.filter(function(a){return a&&typeof a==='object'}).map(cleanApprovalItem).filter(function(x){return x})} }else{var items=[];if(Array.isArray(pa.items)){items=pa.items.filter(function(a){return a&&typeof a==='object'}).map(cleanApprovalItem).filter(function(x){return x})}out.pendingApprovals={status:asString(pa.status),count:asNumber(pa.count),items:items}}}var fh=raw.fleet_health||raw.fleetHealth||(ov&&ov.fleet_health)||(ov&&ov.fleetHealth);if(fh&&typeof fh==='object'){var health={};var hasHealth=false;for(var k in fh){if(Object.prototype.hasOwnProperty.call(fh,k)){health[k]=fh[k];hasHealth=true}}if(hasHealth)out.fleetHealth=health}inboxAttachQueue(out,raw);return out}
 function formatAge(ms){if(!(ms>0))return t('ageJustNow');var s=Math.floor(ms/1000);if(s<60)return t('ageJustNow');if(s<3600)return t('ageMin',{n:Math.floor(s/60)});if(s<86400)return t('ageHour',{n:Math.floor(s/3600)});return t('ageDay',{n:Math.floor(s/86400)})}
 function snapshotAgeLabel(){if(!snapshot||!snapshotFetchedAt)return '';return formatAge(Date.now()-snapshotFetchedAt)}
 function fetchSnapshot(){var url=getSnapshotUrl();if(!url){snapshot=null;snapshotFetchedAt=0;snapshotFromCache=false;snapshotError='';snapshotLoading=false;renderSnapshot();renderSearch();return}snapshotLoading=true;fetch(url,{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('HTTP '+res.status);return res.json()}).then(function(raw){var cleaned=cleanSnapshot(raw);if(!cleaned)throw new Error('Invalid snapshot');snapshot=cleaned;snapshotFetchedAt=Date.now();snapshotFromCache=false;snapshotError='';snapshotLoading=false;saveSnapshotCache(cleaned);renderSnapshot();renderSearch()}).catch(function(err){snapshotLoading=false;snapshotError=t('snapshotRefreshFailed',{error:(err&&err.message?err.message:'offline')});var cached=loadSnapshotCache();if(cached&&cached.snapshot){var fromCache=cleanSnapshot(cached.snapshot);if(fromCache){snapshot=fromCache;snapshotFetchedAt=cached.fetchedAt||0;snapshotFromCache=true}}renderSnapshot();renderSearch()})}
@@ -244,7 +346,782 @@ if(cached){var fromCache=cleanSnapshot(cached.snapshot);if(fromCache){snapshot=f
 renderAll();
 fetchSnapshot();
 if('serviceWorker' in navigator){var hadController=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadController)return;try{if(sessionStorage.getItem(SW_RELOAD_FLAG))return;sessionStorage.setItem(SW_RELOAD_FLAG,'1')}catch(e){return}location.reload()});navigator.serviceWorker.register('sw.js').catch(function(){})}
-/*G8-3 Object graph (ops-depth). Relations are derived ONLY from subject_ref (see docs/helm-reference-ops-teardown.md, mapping R1-R13). Activity items have no stable id in projection v2.0, so their local address is their position in overview.recent_activity ('activity-<index>'). Seats are a local roster, not snapshot objects.*/var objNav=[];var objDetailEl=null;var objDetailBody=null;var objWasDesktop=false;var OBJ_SEATS=[{key:'steward',nameKey:'agentStewardName',roleKey:'agentStewardRole'},{key:'dev',nameKey:'agentDevName',roleKey:'agentDevRole'},{key:'secretary',nameKey:'agentSecretaryName',roleKey:'agentSecretaryRole'},{key:'researcher',nameKey:'agentResearcherName',roleKey:'agentResearcherRole'},{key:'coach',nameKey:'agentCoachName',roleKey:'agentCoachRole'},{key:'finance',nameKey:'agentFinanceName',roleKey:'agentFinanceRole'}];var OBJ_STR={'zh-CN':{relatedObjects:'相关对象',noRelated:'此快照中没有关联对象。',backNav:'返回',seatNote:'此快照没有席位对象。席位是本地名单，不是快照数据。'},'en':{relatedObjects:'Related objects',noRelated:'No related objects in this snapshot.',backNav:'Back',seatNote:'No seat objects exist in this snapshot. Seats are a local roster, not snapshot data.'}};function ot(k){var tb=OBJ_STR[LOCALE]||OBJ_STR['en'];var v=tb[k];if(v===undefined)v=OBJ_STR['en'][k];return v===undefined?k:v;}function objGoals(){return snapshot?snapshot.goals||[]:[];}function objDecisions(){return snapshot?snapshot.decisions||[]:[];}function objApprovals(){return (snapshot&&snapshot.pendingApprovals&&snapshot.pendingApprovals.items)?snapshot.pendingApprovals.items:[];}function objActivities(){return (snapshot&&snapshot.overview&&snapshot.overview.recent_activity)?snapshot.overview.recent_activity:[];}function objGoalById(id){var g=objGoals();for(var i=0;i<g.length;i++){if(g[i]&&g[i].id===id)return g[i];}return null;}function objDecisionById(id){var d=objDecisions();for(var i=0;i<d.length;i++){if(d[i]&&d[i].id===id)return d[i];}return null;}function objApprovalById(id){var a=objApprovals();for(var i=0;i<a.length;i++){if(a[i]&&a[i].id===id)return a[i];}return null;}function objActivityByIndex(i){var a=objActivities();if(i<0||i>=a.length)return null;return a[i];}function objActivityIndex(a){return objActivities().indexOf(a);}function objTitleOfGoal(g){return (g&&(g.displayTitle||g.id))||t('goalFallback');}function objTitleOfDecision(d){return (d&&(d.displayTitle||d.id))||t('decisionFallback');}function objTitleOfApproval(a){return (a&&(a.displayTitle||a.id))||t('approvalFallback');}function objTitleOfActivity(a){if(!a)return t('activity');if(a.displayTitle)return a.displayTitle;return (a.type||t('activity'))+' · '+((a.date||'').slice(0,10)||'');}function objTitleOfSeat(key){for(var i=0;i<OBJ_SEATS.length;i++){if(OBJ_SEATS[i].key===key)return t(OBJ_SEATS[i].nameKey);}return t('team');}function objSeatRole(key){for(var i=0;i<OBJ_SEATS.length;i++){if(OBJ_SEATS[i].key===key)return t(OBJ_SEATS[i].roleKey);}return '';}function findObject(type,ref){if(type==='goal'){var g=objGoalById(ref);if(!g)return null;return{type:'goal',ref:ref,title:objTitleOfGoal(g),data:g};}if(type==='decision'){var d=objDecisionById(ref);if(!d)return null;return{type:'decision',ref:ref,title:objTitleOfDecision(d),data:d};}if(type==='approval'){var a=objApprovalById(ref);if(!a)return null;return{type:'approval',ref:ref,title:objTitleOfApproval(a),data:a};}if(type==='activity'){var n=parseInt(String(ref).replace('activity-',''),10);if(isNaN(n))return null;var act=objActivityByIndex(n);if(!act)return null;return{type:'activity',ref:'activity-'+n,title:objTitleOfActivity(act),data:act,index:n};}if(type==='briefing'){if(!snapshot||!snapshot.briefing)return null;return{type:'briefing',ref:'briefing',title:(snapshot.briefing.displayTitle||t('briefing')),data:snapshot.briefing};}if(type==='seat'){for(var i=0;i<OBJ_SEATS.length;i++){if(OBJ_SEATS[i].key===ref)return{type:'seat',ref:ref,title:objTitleOfSeat(ref),role:objSeatRole(ref),data:OBJ_SEATS[i]};}return null;}return null;}function objRelatedFor(o){var groups=[];if(!o)return groups;var acts=objActivities(),decs=objDecisions(),apprs=objApprovals();if(o.type==='goal'){var la=[],ld=[],lp=[];for(var i=0;i<acts.length;i++){if(acts[i]&&acts[i].subjectRef===o.ref)la.push({type:'activity',ref:'activity-'+i,title:objTitleOfActivity(acts[i])});}for(var j=0;j<decs.length;j++){if(decs[j]&&decs[j].subjectRef===o.ref)ld.push({type:'decision',ref:decs[j].id,title:objTitleOfDecision(decs[j])});}for(var k=0;k<apprs.length;k++){if(apprs[k]&&apprs[k].subjectRef===o.ref)lp.push({type:'approval',ref:apprs[k].id,title:objTitleOfApproval(apprs[k])});}if(la.length)groups.push({type:'activity',label:t('activity'),items:la});if(ld.length)groups.push({type:'decision',label:t('decisions'),items:ld});if(lp.length)groups.push({type:'approval',label:t('approvals'),items:lp});}else if(o.type==='decision'||o.type==='approval'||o.type==='activity'){var sr=o.data&&o.data.subjectRef?o.data.subjectRef:null;if(sr){var g=objGoalById(sr);if(g)groups.push({type:'goal',label:t('goals'),items:[{type:'goal',ref:g.id,title:objTitleOfGoal(g)}]});}}return groups;}function objRelatedCount(o){var n=0;var gs=objRelatedFor(o);for(var i=0;i<gs.length;i++)n+=gs[i].items.length;return n;}function objPrimaryCount(o){if(!o)return 0;if(o.type==='goal'){var n=0;var acts=objActivities();for(var i=0;i<acts.length;i++){if(acts[i]&&acts[i].subjectRef===o.ref)n++;}return n;}if(o.type==='seat')return 0;return objRelatedCount(o);}function objTypeLabel(type){if(type==='goal')return t('goals');if(type==='decision')return t('decisions');if(type==='approval')return t('approvals');if(type==='activity')return t('activity');if(type==='briefing')return t('briefing');return t('team');}function objCrumbsHtml(){var parts=[];for(var i=0;i<objNav.length;i++){var o=findObject(objNav[i].type,objNav[i].ref);var title=o?o.title:(objNav[i].type+' '+objNav[i].ref);if(i<objNav.length-1)parts.push('<button type="button" class="crumb" data-obj-hop="'+i+'">'+esc(title)+'</button>');else parts.push('<span class="crumb-cur">'+esc(title)+'</span>');}return parts.join('<span class="crumb-sep">›</span>');}function objDetailContent(o){var h='';h+='<div class="obj-crumbs"><button type="button" class="obj-back" data-obj-back="1">‹ '+esc(ot('backNav'))+'</button><span class="obj-trail">'+objCrumbsHtml()+'</span></div>';h+='<div class="obj-head"><div class="eyebrow">'+esc(objTypeLabel(o.type))+'</div><div class="obj-title">'+esc(o.title)+'</div>';var meta=[];if(o.data&&o.data.date)meta.push(formatDate(o.data.date));if(o.type==='activity'&&o.data&&o.data.type)meta.push(o.data.type);meta.push(o.ref);h+='<div class="obj-meta">'+esc(meta.join(' · '))+'</div></div>';h+='<div class="obj-lines">';if(o.type==='approval'){if(o.data.proposer)h+='<div class="obj-line">'+esc(t('proposer'))+': '+esc(o.data.proposer)+'</div>';if(o.data.effect)h+='<div class="obj-line">'+esc(t('effect'))+': '+esc(o.data.effect)+'</div>';}if(o.type==='seat'&&o.role)h+='<div class="obj-line">'+esc(o.role)+'</div>';if(o.type==='seat')h+='<div class="obj-line obj-src">'+esc(ot('seatNote'))+'</div>';if(o.type==='briefing'&&o.data.summary)h+='<div class="obj-line">'+esc(o.data.summary)+'</div>';if(o.type==='activity'&&o.data&&!o.data.displayTitle)h+='<div class="obj-line">'+esc(t('activityCountOnly'))+'</div>';var src='';if(snapshot&&snapshot.generationSeq!==null&&snapshot.generationSeq!==undefined)src=(LOCALE==='en'?'Source: snapshot · Generation {gen}':'来源：快照 · 第 {gen} 代').split('{gen}').join(String(snapshot.generationSeq));else src=LOCALE==='en'?'Source: snapshot':'来源：快照';h+='<div class="obj-line obj-src">'+esc(src)+'</div>';h+='</div>';var groups=objRelatedFor(o);h+='<div class="obj-rel-head">'+esc(ot('relatedObjects'))+'</div>';if(!groups.length){h+='<div class="obj-none">'+esc(ot('noRelated'))+'</div>';}else{for(var i=0;i<groups.length;i++){var g=groups[i];h+='<div class="obj-group"><div class="obj-group-head"><span>'+esc(g.label)+'</span><span class="count-badge num">'+g.items.length+'</span></div>';for(var j=0;j<g.items.length;j++){var it=g.items[j];h+='<button type="button" class="obj-rel" data-obj-type="'+esc(it.type)+'" data-obj-ref="'+esc(it.ref)+'"><span class="t">'+esc(it.title)+'</span><span class="m">'+esc(it.ref)+'</span></button>';}h+='</div>';}}return h;}function objIsDesktop(){try{return window.matchMedia('(min-width:1024px)').matches;}catch(e){return false;}}function objCurrent(){if(!objNav.length)return null;var top=objNav[objNav.length-1];return findObject(top.type,top.ref);}function objRefreshDetail(){var o=objCurrent();while(objNav.length&&!o){objNav.pop();o=objCurrent();}var b7=document.getElementById('wp-detail-b');if(b7&&o)b7.innerHTML=objDetailContent(o);if(objDetailBody&&o)objDetailBody.innerHTML=objDetailContent(o);if(objDetailEl)objDetailEl.classList.toggle('open',!!o&&!objIsDesktop());return o;}function objFocusDetailSurface(){if(objIsDesktop())showView('v-brief');}function openObject(type,ref){var o=findObject(type,ref);if(!o)return false;var top=objNav[objNav.length-1];if(top&&top.type===type&&top.ref===ref){objRefreshDetail();objFocusDetailSurface();return true;}objNav.push({type:type,ref:ref});if(objNav.length>40)objNav.shift();closeSearchOverlay();wallClosePalette();objRefreshDetail();objFocusDetailSurface();return true;}function objBack(){if(!objNav.length)return false;objNav.pop();if(!objNav.length){objClose();return true;}objRefreshDetail();return true;}function objClose(){var had=objNav.length>0||(objDetailEl&&objDetailEl.classList.contains('open'));objNav=[];if(objDetailEl)objDetailEl.classList.remove('open');if(had)renderWall();}function objJumpToHop(i){if(isNaN(i)||i<0||i>=objNav.length)return false;objNav=objNav.slice(0,i+1);objRefreshDetail();return true;}function objInjectCss(){if(document.getElementById('objStyle'))return;var st=document.createElement('style');st.id='objStyle';st.textContent='.obj-row{cursor:pointer}'+'.obj-count{margin-left:6px}'+'.act-row .obj-count,.wall-item .obj-count{margin-left:auto}'+'.agent .obj-count{float:right;margin-left:6px}'+'#objDetail{display:none;position:fixed;inset:0;z-index:30;background:var(--paper);overflow:auto;padding:16px 16px 96px}'+'#objDetail.open{display:block}'+'@media(min-width:1024px){#objDetail{display:none!important}}'+'.obj-close{display:block;margin:0 0 12px auto;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 12px;font-size:14px;cursor:pointer}'+'.obj-crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}'+'.obj-back{border:1px solid var(--ink);background:var(--paper);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:700;cursor:pointer}'+'.obj-trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;line-height:20px}'+'.crumb{background:none;border:none;padding:4px 2px;font-size:13px;cursor:pointer;text-decoration:underline}'+'.crumb-cur{font-weight:700}'+'.crumb-sep{color:var(--mut)}'+'.obj-head{margin-bottom:8px}'+'.obj-title{font-size:20px;line-height:26px;font-weight:700}'+'#wp-detail-b .obj-title{font-size:16px;line-height:22px}'+'.obj-meta{font-size:13px;line-height:20px;margin-top:4px}'+'.obj-lines{margin-bottom:8px}'+'.obj-line{font-size:14px;line-height:20px;padding:6px 0;border-top:1px solid var(--line)}'+'.obj-src{color:var(--mut)}'+'.obj-rel-head{font-size:15px;line-height:20px;font-weight:700;margin:12px 0 8px}'+'.obj-none{font-size:14px;line-height:20px;padding:6px 0}'+'.obj-group{margin-bottom:12px}'+'.obj-group-head{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;line-height:20px;font-weight:700;padding:6px 0;border-top:1px solid var(--line)}'+'.obj-rel{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:14px;line-height:20px;cursor:pointer}'+'.obj-rel .t{font-weight:600;display:block}'+'.obj-rel .m{color:var(--mut);font-size:12px;display:block}';document.head.appendChild(st);}function objBuildOverlay(){if(objDetailEl)return;var el=document.createElement('div');el.id='objDetail';el.setAttribute('role','dialog');el.setAttribute('aria-label',t('pDetail'));el.innerHTML='<button type="button" class="obj-close" data-obj-close="1">× '+esc(t('closeCmd'))+'</button><div class="obj-body"></div>';document.body.appendChild(el);objDetailEl=el;objDetailBody=el.querySelector('.obj-body');}function objSetCountBadge(row,o,place){if(!row||!o)return;var n=objPrimaryCount(o);var label=o.type==='goal'?t('activity'):(o.type==='seat'?t('approvalFallback'):t('goalFallback'));var badge=row.querySelector('.obj-count');if(!badge){badge=document.createElement('span');badge.className='count-badge obj-count';if(place==='after-title'){var tt=row.querySelector('.t');if(tt&&tt.parentNode)tt.parentNode.insertBefore(badge,tt.nextSibling);else row.appendChild(badge);}else if(place==='into-title'){var t2=row.querySelector('.t');if(t2)t2.appendChild(badge);else row.appendChild(badge);}else if(place==='first'){if(row.firstChild)row.insertBefore(badge,row.firstChild);else row.appendChild(badge);}else{row.appendChild(badge);}}badge.textContent=n;badge.setAttribute('title',n+' '+label);}function objWallFilteredActivities(){var list=objActivities();if(!wallActivityFilter)return list.slice();var out=[];for(var i=0;i<list.length;i++){var a=list[i];var age=Date.now()-Date.parse(a.date||'');if(!(age>=0)){out.push(a);continue;}if(wallActivityFilter==='24h'){if(age<86400000)out.push(a);}else if(wallActivityFilter==='7d'){if(age<604800000)out.push(a);}else{if(age>=604800000)out.push(a);}}return out;}function objPhoneFilteredActivities(){var list=objActivities();if(!ovActivityFilter)return list.slice(0,10);var out=[];for(var i=0;i<list.length;i++){var a=list[i];var d=Date.parse(a.date||'');if(isNaN(d))continue;var age=Date.now()-d;if(ovActivityFilter==='24h'){if(age<86400000)out.push(a);}else if(ovActivityFilter==='7d'){if(age<604800000)out.push(a);}else{if(age>=604800000)out.push(a);}}return out.slice(0,10);}function objTagWallRows(){if(!snapshot)return;var named=objGoals().filter(function(g){return g.displayTitle;});var gl=document.getElementById('wp-goals-list-b');if(gl){var gb=gl.querySelectorAll('.wall-item');for(var i=0;i<gb.length&&i<named.length;i++){gb[i].setAttribute('data-obj-type','goal');gb[i].setAttribute('data-obj-ref',named[i].id||'');gb[i].classList.add('obj-row');objSetCountBadge(gb[i],{type:'goal',ref:named[i].id},'after-title');}}var pb=document.getElementById('wp-pending-b');if(pb){var apprs=objApprovals();var pb2=pb.querySelectorAll('.wall-item');for(var j=0;j<pb2.length&&j<apprs.length;j++){pb2[j].setAttribute('data-obj-type','approval');pb2[j].setAttribute('data-obj-ref',apprs[j].id||'');pb2[j].classList.add('obj-row');objSetCountBadge(pb2[j],{type:'approval',ref:apprs[j].id,data:apprs[j]},'after-title');}}var bb=document.getElementById('wp-briefing-b');if(bb){var decs=objDecisions().slice(0,5);var bb2=bb.querySelectorAll('.wall-item');for(var k=0;k<bb2.length&&k<decs.length;k++){bb2[k].setAttribute('data-obj-type','decision');bb2[k].setAttribute('data-obj-ref',decs[k].id||'');bb2[k].classList.add('obj-row');objSetCountBadge(bb2[k],{type:'decision',ref:decs[k].id,data:decs[k]},'after-title');}}var ab=document.getElementById('wp-activity-b');if(ab){var list=objWallFilteredActivities();var ab2=ab.querySelectorAll('.wall-item');for(var m=0;m<ab2.length&&m<list.length;m++){var ai=objActivityIndex(list[m]);ab2[m].setAttribute('data-obj-type','activity');ab2[m].setAttribute('data-obj-ref','activity-'+ai);ab2[m].classList.add('obj-row');objSetCountBadge(ab2[m],{type:'activity',ref:'activity-'+ai,data:list[m]},'row');}}var db=document.getElementById('wp-detail-b');if(db&&!objNav.length){var items=db.querySelectorAll('.wall-item');if(items.length===1&&objDecisions().length>0){var dec0=objDecisions()[0];items[0].setAttribute('data-obj-type','decision');items[0].setAttribute('data-obj-ref',dec0.id||'');items[0].classList.add('obj-row');objSetCountBadge(items[0],{type:'decision',ref:dec0.id,data:dec0},'after-title');}else{var linked=objActivities().filter(wallIsLinked);for(var n=0;n<items.length&&n<linked.length;n++){var li=objActivityIndex(linked[n]);items[n].setAttribute('data-obj-type','activity');items[n].setAttribute('data-obj-ref','activity-'+li);items[n].classList.add('obj-row');objSetCountBadge(items[n],{type:'activity',ref:'activity-'+li,data:linked[n]},'row');}}}}function objPhoneBlockKind(block){var h=block.querySelector('h3');if(!h)return '';var tx=h.textContent||'';if(tx.indexOf(t('approvals'))>-1)return 'approvals';if(tx.indexOf(t('decisions'))>-1)return 'decisions';if(tx.indexOf(t('goals'))>-1)return 'goals';if(tx.indexOf(t('activity'))>-1)return 'activity';return '';}function objTagPhoneRows(){var body=document.getElementById('companyBody');if(!body||!snapshot)return;var blocks=body.querySelectorAll('.ov-block');for(var b=0;b<blocks.length;b++){var kind=objPhoneBlockKind(blocks[b]);if(kind==='decisions'){var items=blocks[b].querySelectorAll('.item');if(items.length&&snapshot.briefing){items[0].setAttribute('data-obj-type','briefing');items[0].setAttribute('data-obj-ref','briefing');items[0].classList.add('obj-row');objSetCountBadge(items[0],{type:'briefing',ref:'briefing'},'into-title');}var decRows=blocks[b].querySelectorAll('.act-row');var decs=objDecisions().slice(0,5);for(var i=0;i<decRows.length&&i<decs.length;i++){decRows[i].setAttribute('data-obj-type','decision');decRows[i].setAttribute('data-obj-ref',decs[i].id||'');decRows[i].classList.add('obj-row');objSetCountBadge(decRows[i],{type:'decision',ref:decs[i].id,data:decs[i]},'row');}}else if(kind==='goals'){var named=objGoals().filter(function(g){return g.displayTitle;});var gRows=blocks[b].querySelectorAll('.act-row');for(var j=0;j<gRows.length&&j<named.length;j++){gRows[j].setAttribute('data-obj-type','goal');gRows[j].setAttribute('data-obj-ref',named[j].id||'');gRows[j].classList.add('obj-row');objSetCountBadge(gRows[j],{type:'goal',ref:named[j].id},'row');}}else if(kind==='activity'){var acts=objPhoneFilteredActivities();var aRows=blocks[b].querySelectorAll('.act-row');for(var k=0;k<aRows.length&&k<acts.length;k++){var ai=objActivityIndex(acts[k]);aRows[k].setAttribute('data-obj-type','activity');aRows[k].setAttribute('data-obj-ref','activity-'+ai);aRows[k].classList.add('obj-row');objSetCountBadge(aRows[k],{type:'activity',ref:'activity-'+ai,data:acts[k]},'row');}}else if(kind==='approvals'){var apprs=objApprovals();var pItems=blocks[b].querySelectorAll('.item');for(var m=0;m<pItems.length&&m<apprs.length;m++){pItems[m].setAttribute('data-obj-type','approval');pItems[m].setAttribute('data-obj-ref',apprs[m].id||'');pItems[m].classList.add('obj-row');objSetCountBadge(pItems[m],{type:'approval',ref:apprs[m].id,data:apprs[m]},'into-title');}}}}function objTagSeatRows(){var team=document.getElementById('v-team');if(!team)return;var agents=team.querySelectorAll('.agent');for(var i=0;i<agents.length&&i<OBJ_SEATS.length;i++){agents[i].setAttribute('data-obj-type','seat');agents[i].setAttribute('data-obj-ref',OBJ_SEATS[i].key);agents[i].classList.add('obj-row');objSetCountBadge(agents[i],{type:'seat',ref:OBJ_SEATS[i].key},'first');}}function objSearchObjectFor(r){if(!r||!snapshot)return null;if(r.kind===t('searchKindBriefing')){return snapshot.briefing?{type:'briefing',ref:'briefing'}:null;}if(r.kind===t('searchKindGoal')){var gs=objGoals();for(var i=0;i<gs.length;i++){if(gs[i].displayTitle&&gs[i].displayTitle===r.text)return{type:'goal',ref:gs[i].id};}return null;}if(r.kind===t('searchKindDecision')){var ds=objDecisions();var matches=[];for(var j=0;j<ds.length;j++){if(objTitleOfDecision(ds[j])===r.text)matches.push(ds[j]);}if(!matches.length)return null;for(var k=0;k<matches.length;k++){if(matches[k].date&&r.detail&&r.detail.indexOf(matches[k].date)>-1)return{type:'decision',ref:matches[k].id};}return{type:'decision',ref:matches[0].id};}if(r.kind===t('searchKindActivity')){var as=objActivities();var acts=[];for(var m=0;m<as.length;m++){if(as[m].displayTitle&&as[m].displayTitle===r.text)acts.push(m);}if(!acts.length)return null;for(var n=0;n<acts.length;n++){var a=as[acts[n]];if(a.type&&r.detail&&r.detail.indexOf(a.type)>-1&&a.date&&r.detail.indexOf(a.date)>-1)return{type:'activity',ref:'activity-'+acts[n]};}return{type:'activity',ref:'activity-'+acts[0]};}if(r.kind===t('searchKindApproval')){var ps=objApprovals();var pm=[];for(var p=0;p<ps.length;p++){if(ps[p].displayTitle&&ps[p].displayTitle===r.text)pm.push(ps[p]);}if(!pm.length)return null;for(var q=0;q<pm.length;q++){if(pm[q].proposer&&r.detail&&r.detail.indexOf(pm[q].proposer)>-1)return{type:'approval',ref:pm[q].id};}return{type:'approval',ref:pm[0].id};}return null;}function objHandleObjClick(btn){var ty=btn.getAttribute('data-obj-type');var rf=btn.getAttribute('data-obj-ref');if(ty&&rf!==null&&rf!==undefined&&rf!=='')return openObject(ty,rf);return false;}var _objRenderSnapshot=renderSnapshot;var _objRenderWall=renderWall;var _objRenderSearch=renderSearch;var _objWallCmdList=wallCmdList;var _objOpenSearchOverlay=openSearchOverlay;var _objWallOpenPalette=wallOpenPalette;renderSnapshot=function(){_objRenderSnapshot();objTagPhoneRows();objTagSeatRows();};renderWall=function(){_objRenderWall();objTagWallRows();objRefreshDetail();};renderSearch=function(){_objRenderSearch();var input=document.getElementById('globalSearch');var box=document.getElementById('searchResults');if(!input||!box)return;var results=searchResultsFor(input.value||'');var items=box.querySelectorAll('.item');for(var i=0;i<items.length&&i<results.length;i++){var o=objSearchObjectFor(results[i]);if(o){items[i].setAttribute('data-obj-type',o.type);items[i].setAttribute('data-obj-ref',o.ref);var btn=items[i].querySelector('[data-search-view]');if(btn)btn.removeAttribute('data-search-view');}}};wallCmdList=function(){var cmds=_objWallCmdList();var room=1000;if(typeof cmdMaxN==='number'&&isFinite(cmdMaxN))room=Math.max(0,cmdMaxN-cmds.length);if(!room||!snapshot)return cmds;function addObjCmd(type,ref){if(room<=0)return;var o=findObject(type,ref);if(!o)return;cmds.push({label:objTypeLabel(type)+' · '+o.title,run:function(){openObject(type,ref);}});room--;}var gs=objGoals();for(var i=0;i<gs.length;i++)addObjCmd('goal',gs[i].id);var ds=objDecisions();for(var j=0;j<ds.length;j++)addObjCmd('decision',ds[j].id);var ps=objApprovals();for(var k=0;k<ps.length;k++)addObjCmd('approval',ps[k].id);if(snapshot.briefing)addObjCmd('briefing','briefing');var acts=objActivities();for(var m=0;m<acts.length;m++)addObjCmd('activity','activity-'+m);return cmds;};openSearchOverlay=function(){objClose();_objOpenSearchOverlay();};wallOpenPalette=function(){objClose();_objWallOpenPalette();};var wallEl=document.getElementById('wall');if(wallEl)wallEl.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-hop]');if(btn){var idx=parseInt(btn.getAttribute('data-obj-hop'),10);if(!isNaN(idx)){objJumpToHop(idx);return;}}var back=ev.target.closest('[data-obj-back]');if(back){objBack();return;}var b2=ev.target.closest('[data-obj-type]');if(b2)objHandleObjClick(b2);});var cb=document.getElementById('companyBody');if(cb)cb.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-type]');if(btn)objHandleObjClick(btn);});var sr=document.getElementById('searchResults');if(sr)sr.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-type]');if(btn){ev.stopPropagation();if(objHandleObjClick(btn))closeSearchOverlay();}});var teamEl=document.getElementById('v-team');if(teamEl)teamEl.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-type]');if(btn)objHandleObjClick(btn);});document.addEventListener('keydown',function(ev){if(ev.key!=='Escape')return;var pal=document.getElementById('cmd-palette');if(pal&&pal.style.display!=='none')return;var so=document.getElementById('searchOverlay');if(so&&so.style.display!=='none')return;if(!objNav.length)return;ev.preventDefault();ev.stopImmediatePropagation();objBack();},true);window.addEventListener('resize',function(){var now=objIsDesktop();if(now!==objWasDesktop){objWasDesktop=now;objRefreshDetail();}});objInjectCss();objBuildOverlay();if(objDetailEl)objDetailEl.addEventListener('click',function(ev){var c=ev.target.closest('[data-obj-close]');if(c){objClose();return;}var b2=ev.target.closest('[data-obj-back]');if(b2){objBack();return;}var hop=ev.target.closest('[data-obj-hop]');if(hop){var idx=parseInt(hop.getAttribute('data-obj-hop'),10);if(!isNaN(idx))objJumpToHop(idx);return;}var btn=ev.target.closest('[data-obj-type]');if(btn)objHandleObjClick(btn);});objTagSeatRows();objTagPhoneRows();objTagWallRows();objRefreshDetail();})();
+/*G8-3 Object graph (ops-depth). Relations are derived ONLY from subject_ref (see docs/helm-reference-ops-teardown.md, mapping R1-R13). Activity items have no stable id in projection v2.0, so their local address is their position in overview.recent_activity ('activity-<index>'). Seats are a local roster, not snapshot objects.*/var objNav=[];var objDetailEl=null;var objDetailBody=null;var objWasDesktop=false;var OBJ_SEATS=[{key:'steward',nameKey:'agentStewardName',roleKey:'agentStewardRole'},{key:'dev',nameKey:'agentDevName',roleKey:'agentDevRole'},{key:'secretary',nameKey:'agentSecretaryName',roleKey:'agentSecretaryRole'},{key:'researcher',nameKey:'agentResearcherName',roleKey:'agentResearcherRole'},{key:'coach',nameKey:'agentCoachName',roleKey:'agentCoachRole'},{key:'finance',nameKey:'agentFinanceName',roleKey:'agentFinanceRole'}];var OBJ_STR={'zh-CN':{relatedObjects:'相关对象',noRelated:'此快照中没有关联对象。',backNav:'返回',seatNote:'此快照没有席位对象。席位是本地名单，不是快照数据。'},'en':{relatedObjects:'Related objects',noRelated:'No related objects in this snapshot.',backNav:'Back',seatNote:'No seat objects exist in this snapshot. Seats are a local roster, not snapshot data.'}};function ot(k){var tb=OBJ_STR[LOCALE]||OBJ_STR['en'];var v=tb[k];if(v===undefined)v=OBJ_STR['en'][k];return v===undefined?k:v;}function objGoals(){return snapshot?snapshot.goals||[]:[];}function objDecisions(){return snapshot?snapshot.decisions||[]:[];}function objApprovals(){return (snapshot&&snapshot.pendingApprovals&&snapshot.pendingApprovals.items)?snapshot.pendingApprovals.items:[];}function objActivities(){return (snapshot&&snapshot.overview&&snapshot.overview.recent_activity)?snapshot.overview.recent_activity:[];}function objGoalById(id){var g=objGoals();for(var i=0;i<g.length;i++){if(g[i]&&g[i].id===id)return g[i];}return null;}function objDecisionById(id){var d=objDecisions();for(var i=0;i<d.length;i++){if(d[i]&&d[i].id===id)return d[i];}return null;}function objApprovalById(id){var a=objApprovals();for(var i=0;i<a.length;i++){if(a[i]&&a[i].id===id)return a[i];}return null;}function objActivityByIndex(i){var a=objActivities();if(i<0||i>=a.length)return null;return a[i];}function objActivityIndex(a){return objActivities().indexOf(a);}function objTitleOfGoal(g){return (g&&(g.displayTitle||g.id))||t('goalFallback');}function objTitleOfDecision(d){return (d&&(d.displayTitle||d.id))||t('decisionFallback');}function objTitleOfApproval(a){return (a&&(a.displayTitle||a.id))||t('approvalFallback');}function objTitleOfActivity(a){if(!a)return t('activity');if(a.displayTitle)return a.displayTitle;return (a.type||t('activity'))+' · '+((a.date||'').slice(0,10)||'');}function objTitleOfSeat(key){for(var i=0;i<OBJ_SEATS.length;i++){if(OBJ_SEATS[i].key===key)return t(OBJ_SEATS[i].nameKey);}return t('team');}function objSeatRole(key){for(var i=0;i<OBJ_SEATS.length;i++){if(OBJ_SEATS[i].key===key)return t(OBJ_SEATS[i].roleKey);}return '';}function findObject(type,ref){if(type==='goal'){var g=objGoalById(ref);if(!g)return null;return{type:'goal',ref:ref,title:objTitleOfGoal(g),data:g};}if(type==='decision'){var d=objDecisionById(ref);if(!d)return null;return{type:'decision',ref:ref,title:objTitleOfDecision(d),data:d};}if(type==='approval'){var a=objApprovalById(ref);if(!a)return null;return{type:'approval',ref:ref,title:objTitleOfApproval(a),data:a};}if(type==='activity'){var n=parseInt(String(ref).replace('activity-',''),10);if(isNaN(n))return null;var act=objActivityByIndex(n);if(!act)return null;return{type:'activity',ref:'activity-'+n,title:objTitleOfActivity(act),data:act,index:n};}if(type==='briefing'){if(!snapshot||!snapshot.briefing)return null;return{type:'briefing',ref:'briefing',title:(snapshot.briefing.displayTitle||t('briefing')),data:snapshot.briefing};}if(type==='seat'){for(var i=0;i<OBJ_SEATS.length;i++){if(OBJ_SEATS[i].key===ref)return{type:'seat',ref:ref,title:objTitleOfSeat(ref),role:objSeatRole(ref),data:OBJ_SEATS[i]};}return null;}return null;}function objRelatedFor(o){var groups=[];if(!o)return groups;var acts=objActivities(),decs=objDecisions(),apprs=objApprovals();if(o.type==='goal'){var la=[],ld=[],lp=[];for(var i=0;i<acts.length;i++){if(acts[i]&&acts[i].subjectRef===o.ref)la.push({type:'activity',ref:'activity-'+i,title:objTitleOfActivity(acts[i])});}for(var j=0;j<decs.length;j++){if(decs[j]&&decs[j].subjectRef===o.ref)ld.push({type:'decision',ref:decs[j].id,title:objTitleOfDecision(decs[j])});}for(var k=0;k<apprs.length;k++){if(apprs[k]&&apprs[k].subjectRef===o.ref)lp.push({type:'approval',ref:apprs[k].id,title:objTitleOfApproval(apprs[k])});}if(la.length)groups.push({type:'activity',label:t('activity'),items:la});if(ld.length)groups.push({type:'decision',label:t('decisions'),items:ld});if(lp.length)groups.push({type:'approval',label:t('approvals'),items:lp});}else if(o.type==='decision'||o.type==='approval'||o.type==='activity'){var sr=o.data&&o.data.subjectRef?o.data.subjectRef:null;if(sr){var g=objGoalById(sr);if(g)groups.push({type:'goal',label:t('goals'),items:[{type:'goal',ref:g.id,title:objTitleOfGoal(g)}]});}}return groups;}function objRelatedCount(o){var n=0;var gs=objRelatedFor(o);for(var i=0;i<gs.length;i++)n+=gs[i].items.length;return n;}function objPrimaryCount(o){if(!o)return 0;if(o.type==='goal'){var n=0;var acts=objActivities();for(var i=0;i<acts.length;i++){if(acts[i]&&acts[i].subjectRef===o.ref)n++;}return n;}if(o.type==='seat')return 0;return objRelatedCount(o);}function objTypeLabel(type){if(type==='goal')return t('goals');if(type==='decision')return t('decisions');if(type==='approval')return t('approvals');if(type==='activity')return t('activity');if(type==='briefing')return t('briefing');return t('team');}function objCrumbsHtml(){var parts=[];for(var i=0;i<objNav.length;i++){var o=findObject(objNav[i].type,objNav[i].ref);var title=o?o.title:(objNav[i].type+' '+objNav[i].ref);if(i<objNav.length-1)parts.push('<button type="button" class="crumb" data-obj-hop="'+i+'">'+esc(title)+'</button>');else parts.push('<span class="crumb-cur">'+esc(title)+'</span>');}return parts.join('<span class="crumb-sep">›</span>');}function objDetailContent(o){var h='';h+='<div class="obj-crumbs"><button type="button" class="obj-back" data-obj-back="1">‹ '+esc(ot('backNav'))+'</button><span class="obj-trail">'+objCrumbsHtml()+'</span></div>';h+='<div class="obj-head"><div class="eyebrow">'+esc(objTypeLabel(o.type))+'</div><div class="obj-title">'+esc(o.title)+'</div>';var meta=[];if(o.data&&o.data.date)meta.push(formatDate(o.data.date));if(o.type==='activity'&&o.data&&o.data.type)meta.push(o.data.type);meta.push(o.ref);h+='<div class="obj-meta">'+esc(meta.join(' · '))+'</div></div>';h+='<div class="obj-lines">';if(o.type==='approval'){if(o.data.proposer)h+='<div class="obj-line">'+esc(t('proposer'))+': '+esc(o.data.proposer)+'</div>';if(o.data.effect)h+='<div class="obj-line">'+esc(t('effect'))+': '+esc(o.data.effect)+'</div>';}if(o.type==='seat'&&o.role)h+='<div class="obj-line">'+esc(o.role)+'</div>';if(o.type==='seat')h+='<div class="obj-line obj-src">'+esc(ot('seatNote'))+'</div>';if(o.type==='briefing'&&o.data.summary)h+='<div class="obj-line">'+esc(o.data.summary)+'</div>';if(o.type==='activity'&&o.data&&!o.data.displayTitle)h+='<div class="obj-line">'+esc(t('activityCountOnly'))+'</div>';var src='';if(snapshot&&snapshot.generationSeq!==null&&snapshot.generationSeq!==undefined)src=(LOCALE==='en'?'Source: snapshot · Generation {gen}':'来源：快照 · 第 {gen} 代').split('{gen}').join(String(snapshot.generationSeq));else src=LOCALE==='en'?'Source: snapshot':'来源：快照';h+='<div class="obj-line obj-src">'+esc(src)+'</div>';h+='</div>';var groups=objRelatedFor(o);h+='<div class="obj-rel-head">'+esc(ot('relatedObjects'))+'</div>';if(!groups.length){h+='<div class="obj-none">'+esc(ot('noRelated'))+'</div>';}else{for(var i=0;i<groups.length;i++){var g=groups[i];h+='<div class="obj-group"><div class="obj-group-head"><span>'+esc(g.label)+'</span><span class="count-badge num">'+g.items.length+'</span></div>';for(var j=0;j<g.items.length;j++){var it=g.items[j];h+='<button type="button" class="obj-rel" data-obj-type="'+esc(it.type)+'" data-obj-ref="'+esc(it.ref)+'"><span class="t">'+esc(it.title)+'</span><span class="m">'+esc(it.ref)+'</span></button>';}h+='</div>';}}return h;}function objIsDesktop(){try{return window.matchMedia('(min-width:1024px)').matches;}catch(e){return false;}}function objCurrent(){if(!objNav.length)return null;var top=objNav[objNav.length-1];return findObject(top.type,top.ref);}function objRefreshDetail(){var o=objCurrent();while(objNav.length&&!o){objNav.pop();o=objCurrent();}var b7=document.getElementById('wp-detail-b');if(b7&&o)b7.innerHTML=objDetailContent(o);if(objDetailBody&&o)objDetailBody.innerHTML=objDetailContent(o);if(objDetailEl)objDetailEl.classList.toggle('open',!!o&&!objIsDesktop());return o;}function objFocusDetailSurface(){if(objIsDesktop())showView('v-brief');}function openObject(type,ref){var o=findObject(type,ref);if(!o)return false;var top=objNav[objNav.length-1];if(top&&top.type===type&&top.ref===ref){objRefreshDetail();objFocusDetailSurface();return true;}objNav.push({type:type,ref:ref});if(objNav.length>40)objNav.shift();closeSearchOverlay();wallClosePalette();objRefreshDetail();objFocusDetailSurface();return true;}function objBack(){if(!objNav.length)return false;objNav.pop();if(!objNav.length){objClose();return true;}objRefreshDetail();return true;}function objClose(){var had=objNav.length>0||(objDetailEl&&objDetailEl.classList.contains('open'));objNav=[];if(objDetailEl)objDetailEl.classList.remove('open');if(had)renderWall();}function objJumpToHop(i){if(isNaN(i)||i<0||i>=objNav.length)return false;objNav=objNav.slice(0,i+1);objRefreshDetail();return true;}function objInjectCss(){if(document.getElementById('objStyle'))return;var st=document.createElement('style');st.id='objStyle';st.textContent='.obj-row{cursor:pointer}'+'.obj-count{margin-left:6px}'+'.act-row .obj-count,.wall-item .obj-count{margin-left:auto}'+'.agent .obj-count{float:right;margin-left:6px}'+'#objDetail{display:none;position:fixed;inset:0;z-index:30;background:var(--paper);overflow:auto;padding:16px 16px 96px}'+'#objDetail.open{display:block}'+'@media(min-width:1024px){#objDetail{display:none!important}}'+'.obj-close{display:block;margin:0 0 12px auto;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 12px;font-size:14px;cursor:pointer}'+'.obj-crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}'+'.obj-back{border:1px solid var(--ink);background:var(--paper);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:700;cursor:pointer}'+'.obj-trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;line-height:20px}'+'.crumb{background:none;border:none;padding:4px 2px;font-size:13px;cursor:pointer;text-decoration:underline}'+'.crumb-cur{font-weight:700}'+'.crumb-sep{color:var(--mut)}'+'.obj-head{margin-bottom:8px}'+'.obj-title{font-size:20px;line-height:26px;font-weight:700}'+'#wp-detail-b .obj-title{font-size:16px;line-height:22px}'+'.obj-meta{font-size:13px;line-height:20px;margin-top:4px}'+'.obj-lines{margin-bottom:8px}'+'.obj-line{font-size:14px;line-height:20px;padding:6px 0;border-top:1px solid var(--line)}'+'.obj-src{color:var(--mut)}'+'.obj-rel-head{font-size:15px;line-height:20px;font-weight:700;margin:12px 0 8px}'+'.obj-none{font-size:14px;line-height:20px;padding:6px 0}'+'.obj-group{margin-bottom:12px}'+'.obj-group-head{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;line-height:20px;font-weight:700;padding:6px 0;border-top:1px solid var(--line)}'+'.obj-rel{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:14px;line-height:20px;cursor:pointer}'+'.obj-rel .t{font-weight:600;display:block}'+'.obj-rel .m{color:var(--mut);font-size:12px;display:block}';document.head.appendChild(st);}function objBuildOverlay(){if(objDetailEl)return;var el=document.createElement('div');el.id='objDetail';el.setAttribute('role','dialog');el.setAttribute('aria-label',t('pDetail'));el.innerHTML='<button type="button" class="obj-close" data-obj-close="1">× '+esc(t('closeCmd'))+'</button><div class="obj-body"></div>';document.body.appendChild(el);objDetailEl=el;objDetailBody=el.querySelector('.obj-body');}function objSetCountBadge(row,o,place){if(!row||!o)return;var n=objPrimaryCount(o);var label=o.type==='goal'?t('activity'):(o.type==='seat'?t('approvalFallback'):t('goalFallback'));var badge=row.querySelector('.obj-count');if(!badge){badge=document.createElement('span');badge.className='count-badge obj-count';if(place==='after-title'){var tt=row.querySelector('.t');if(tt&&tt.parentNode)tt.parentNode.insertBefore(badge,tt.nextSibling);else row.appendChild(badge);}else if(place==='into-title'){var t2=row.querySelector('.t');if(t2)t2.appendChild(badge);else row.appendChild(badge);}else if(place==='first'){if(row.firstChild)row.insertBefore(badge,row.firstChild);else row.appendChild(badge);}else{row.appendChild(badge);}}badge.textContent=n;badge.setAttribute('title',n+' '+label);}function objWallFilteredActivities(){var list=objActivities();if(!wallActivityFilter)return list.slice();var out=[];for(var i=0;i<list.length;i++){var a=list[i];var age=Date.now()-Date.parse(a.date||'');if(!(age>=0)){out.push(a);continue;}if(wallActivityFilter==='24h'){if(age<86400000)out.push(a);}else if(wallActivityFilter==='7d'){if(age<604800000)out.push(a);}else{if(age>=604800000)out.push(a);}}return out;}function objPhoneFilteredActivities(){var list=objActivities();if(!ovActivityFilter)return list.slice(0,10);var out=[];for(var i=0;i<list.length;i++){var a=list[i];var d=Date.parse(a.date||'');if(isNaN(d))continue;var age=Date.now()-d;if(ovActivityFilter==='24h'){if(age<86400000)out.push(a);}else if(ovActivityFilter==='7d'){if(age<604800000)out.push(a);}else{if(age>=604800000)out.push(a);}}return out.slice(0,10);}function objTagWallRows(){if(!snapshot)return;var named=objGoals().filter(function(g){return g.displayTitle;});var gl=document.getElementById('wp-goals-list-b');if(gl){var gb=gl.querySelectorAll('.wall-item');for(var i=0;i<gb.length&&i<named.length;i++){gb[i].setAttribute('data-obj-type','goal');gb[i].setAttribute('data-obj-ref',named[i].id||'');gb[i].classList.add('obj-row');objSetCountBadge(gb[i],{type:'goal',ref:named[i].id},'after-title');}}var pb=document.getElementById('wp-pending-b');if(pb){var apprs=objApprovals();var pb2=pb.querySelectorAll('.wall-item');for(var j=0;j<pb2.length&&j<apprs.length;j++){pb2[j].setAttribute('data-obj-type','approval');pb2[j].setAttribute('data-obj-ref',apprs[j].id||'');pb2[j].classList.add('obj-row');objSetCountBadge(pb2[j],{type:'approval',ref:apprs[j].id,data:apprs[j]},'after-title');}}var bb=document.getElementById('wp-briefing-b');if(bb){var decs=objDecisions().slice(0,5);var bb2=bb.querySelectorAll('.wall-item');for(var k=0;k<bb2.length&&k<decs.length;k++){bb2[k].setAttribute('data-obj-type','decision');bb2[k].setAttribute('data-obj-ref',decs[k].id||'');bb2[k].classList.add('obj-row');objSetCountBadge(bb2[k],{type:'decision',ref:decs[k].id,data:decs[k]},'after-title');}}var ab=document.getElementById('wp-activity-b');if(ab){var list=objWallFilteredActivities();var ab2=ab.querySelectorAll('.wall-item');for(var m=0;m<ab2.length&&m<list.length;m++){var ai=objActivityIndex(list[m]);ab2[m].setAttribute('data-obj-type','activity');ab2[m].setAttribute('data-obj-ref','activity-'+ai);ab2[m].classList.add('obj-row');objSetCountBadge(ab2[m],{type:'activity',ref:'activity-'+ai,data:list[m]},'row');}}var db=document.getElementById('wp-detail-b');if(db&&!objNav.length){var items=db.querySelectorAll('.wall-item');if(items.length===1&&objDecisions().length>0){var dec0=objDecisions()[0];items[0].setAttribute('data-obj-type','decision');items[0].setAttribute('data-obj-ref',dec0.id||'');items[0].classList.add('obj-row');objSetCountBadge(items[0],{type:'decision',ref:dec0.id,data:dec0},'after-title');}else{var linked=objActivities().filter(wallIsLinked);for(var n=0;n<items.length&&n<linked.length;n++){var li=objActivityIndex(linked[n]);items[n].setAttribute('data-obj-type','activity');items[n].setAttribute('data-obj-ref','activity-'+li);items[n].classList.add('obj-row');objSetCountBadge(items[n],{type:'activity',ref:'activity-'+li,data:linked[n]},'row');}}}}function objPhoneBlockKind(block){var h=block.querySelector('h3');if(!h)return '';var tx=h.textContent||'';if(tx.indexOf(t('approvals'))>-1)return 'approvals';if(tx.indexOf(t('decisions'))>-1)return 'decisions';if(tx.indexOf(t('goals'))>-1)return 'goals';if(tx.indexOf(t('activity'))>-1)return 'activity';return '';}function objTagPhoneRows(){var body=document.getElementById('companyBody');if(!body||!snapshot)return;var blocks=body.querySelectorAll('.ov-block');for(var b=0;b<blocks.length;b++){var kind=objPhoneBlockKind(blocks[b]);if(kind==='decisions'){var items=blocks[b].querySelectorAll('.item');if(items.length&&snapshot.briefing){items[0].setAttribute('data-obj-type','briefing');items[0].setAttribute('data-obj-ref','briefing');items[0].classList.add('obj-row');objSetCountBadge(items[0],{type:'briefing',ref:'briefing'},'into-title');}var decRows=blocks[b].querySelectorAll('.act-row');var decs=objDecisions().slice(0,5);for(var i=0;i<decRows.length&&i<decs.length;i++){decRows[i].setAttribute('data-obj-type','decision');decRows[i].setAttribute('data-obj-ref',decs[i].id||'');decRows[i].classList.add('obj-row');objSetCountBadge(decRows[i],{type:'decision',ref:decs[i].id,data:decs[i]},'row');}}else if(kind==='goals'){var named=objGoals().filter(function(g){return g.displayTitle;});var gRows=blocks[b].querySelectorAll('.act-row');for(var j=0;j<gRows.length&&j<named.length;j++){gRows[j].setAttribute('data-obj-type','goal');gRows[j].setAttribute('data-obj-ref',named[j].id||'');gRows[j].classList.add('obj-row');objSetCountBadge(gRows[j],{type:'goal',ref:named[j].id},'row');}}else if(kind==='activity'){var acts=objPhoneFilteredActivities();var aRows=blocks[b].querySelectorAll('.act-row');for(var k=0;k<aRows.length&&k<acts.length;k++){var ai=objActivityIndex(acts[k]);aRows[k].setAttribute('data-obj-type','activity');aRows[k].setAttribute('data-obj-ref','activity-'+ai);aRows[k].classList.add('obj-row');objSetCountBadge(aRows[k],{type:'activity',ref:'activity-'+ai,data:acts[k]},'row');}}else if(kind==='approvals'){var apprs=objApprovals();var pItems=blocks[b].querySelectorAll('.item');for(var m=0;m<pItems.length&&m<apprs.length;m++){pItems[m].setAttribute('data-obj-type','approval');pItems[m].setAttribute('data-obj-ref',apprs[m].id||'');pItems[m].classList.add('obj-row');objSetCountBadge(pItems[m],{type:'approval',ref:apprs[m].id,data:apprs[m]},'into-title');}}}}function objTagSeatRows(){var team=document.getElementById('v-team');if(!team)return;var agents=team.querySelectorAll('.agent');for(var i=0;i<agents.length&&i<OBJ_SEATS.length;i++){agents[i].setAttribute('data-obj-type','seat');agents[i].setAttribute('data-obj-ref',OBJ_SEATS[i].key);agents[i].classList.add('obj-row');objSetCountBadge(agents[i],{type:'seat',ref:OBJ_SEATS[i].key},'first');}}function objSearchObjectFor(r){if(!r||!snapshot)return null;if(r.kind===t('searchKindBriefing')){return snapshot.briefing?{type:'briefing',ref:'briefing'}:null;}if(r.kind===t('searchKindGoal')){var gs=objGoals();for(var i=0;i<gs.length;i++){if(gs[i].displayTitle&&gs[i].displayTitle===r.text)return{type:'goal',ref:gs[i].id};}return null;}if(r.kind===t('searchKindDecision')){var ds=objDecisions();var matches=[];for(var j=0;j<ds.length;j++){if(objTitleOfDecision(ds[j])===r.text)matches.push(ds[j]);}if(!matches.length)return null;for(var k=0;k<matches.length;k++){if(matches[k].date&&r.detail&&r.detail.indexOf(matches[k].date)>-1)return{type:'decision',ref:matches[k].id};}return{type:'decision',ref:matches[0].id};}if(r.kind===t('searchKindActivity')){var as=objActivities();var acts=[];for(var m=0;m<as.length;m++){if(as[m].displayTitle&&as[m].displayTitle===r.text)acts.push(m);}if(!acts.length)return null;for(var n=0;n<acts.length;n++){var a=as[acts[n]];if(a.type&&r.detail&&r.detail.indexOf(a.type)>-1&&a.date&&r.detail.indexOf(a.date)>-1)return{type:'activity',ref:'activity-'+acts[n]};}return{type:'activity',ref:'activity-'+acts[0]};}if(r.kind===t('searchKindApproval')){var ps=objApprovals();var pm=[];for(var p=0;p<ps.length;p++){if(ps[p].displayTitle&&ps[p].displayTitle===r.text)pm.push(ps[p]);}if(!pm.length)return null;for(var q=0;q<pm.length;q++){if(pm[q].proposer&&r.detail&&r.detail.indexOf(pm[q].proposer)>-1)return{type:'approval',ref:pm[q].id};}return{type:'approval',ref:pm[0].id};}return null;}function objHandleObjClick(btn){var ty=btn.getAttribute('data-obj-type');var rf=btn.getAttribute('data-obj-ref');if(ty&&rf!==null&&rf!==undefined&&rf!=='')return openObject(ty,rf);return false;}var _objRenderSnapshot=renderSnapshot;var _objRenderWall=renderWall;var _objRenderSearch=renderSearch;var _objWallCmdList=wallCmdList;var _objOpenSearchOverlay=openSearchOverlay;var _objWallOpenPalette=wallOpenPalette;renderSnapshot=function(){_objRenderSnapshot();objTagPhoneRows();objTagSeatRows();};renderWall=function(){_objRenderWall();objTagWallRows();objRefreshDetail();};renderSearch=function(){_objRenderSearch();var input=document.getElementById('globalSearch');var box=document.getElementById('searchResults');if(!input||!box)return;var results=searchResultsFor(input.value||'');var items=box.querySelectorAll('.item');for(var i=0;i<items.length&&i<results.length;i++){var o=objSearchObjectFor(results[i]);if(o){items[i].setAttribute('data-obj-type',o.type);items[i].setAttribute('data-obj-ref',o.ref);var btn=items[i].querySelector('[data-search-view]');if(btn)btn.removeAttribute('data-search-view');}}};wallCmdList=function(){var cmds=_objWallCmdList();var room=1000;if(typeof cmdMaxN==='number'&&isFinite(cmdMaxN))room=Math.max(0,cmdMaxN-cmds.length);if(!room||!snapshot)return cmds;function addObjCmd(type,ref){if(room<=0)return;var o=findObject(type,ref);if(!o)return;cmds.push({label:objTypeLabel(type)+' · '+o.title,run:function(){openObject(type,ref);}});room--;}var gs=objGoals();for(var i=0;i<gs.length;i++)addObjCmd('goal',gs[i].id);var ds=objDecisions();for(var j=0;j<ds.length;j++)addObjCmd('decision',ds[j].id);var ps=objApprovals();for(var k=0;k<ps.length;k++)addObjCmd('approval',ps[k].id);if(snapshot.briefing)addObjCmd('briefing','briefing');var acts=objActivities();for(var m=0;m<acts.length;m++)addObjCmd('activity','activity-'+m);return cmds;};openSearchOverlay=function(){objClose();_objOpenSearchOverlay();};wallOpenPalette=function(){objClose();_objWallOpenPalette();};var wallEl=document.getElementById('wall');if(wallEl)wallEl.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-hop]');if(btn){var idx=parseInt(btn.getAttribute('data-obj-hop'),10);if(!isNaN(idx)){objJumpToHop(idx);return;}}var back=ev.target.closest('[data-obj-back]');if(back){objBack();return;}var b2=ev.target.closest('[data-obj-type]');if(b2)objHandleObjClick(b2);});var cb=document.getElementById('companyBody');if(cb)cb.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-type]');if(btn)objHandleObjClick(btn);});var sr=document.getElementById('searchResults');if(sr)sr.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-type]');if(btn){ev.stopPropagation();if(objHandleObjClick(btn))closeSearchOverlay();}});var teamEl=document.getElementById('v-team');if(teamEl)teamEl.addEventListener('click',function(ev){var btn=ev.target.closest('[data-obj-type]');if(btn)objHandleObjClick(btn);});document.addEventListener('keydown',function(ev){if(ev.key!=='Escape')return;var pal=document.getElementById('cmd-palette');if(pal&&pal.style.display!=='none')return;var so=document.getElementById('searchOverlay');if(so&&so.style.display!=='none')return;if(!objNav.length)return;ev.preventDefault();ev.stopImmediatePropagation();objBack();},true);window.addEventListener('resize',function(){var now=objIsDesktop();if(now!==objWasDesktop){objWasDesktop=now;objRefreshDetail();}});objInjectCss();objBuildOverlay();if(objDetailEl)objDetailEl.addEventListener('click',function(ev){var c=ev.target.closest('[data-obj-close]');if(c){objClose();return;}var b2=ev.target.closest('[data-obj-back]');if(b2){objBack();return;}var hop=ev.target.closest('[data-obj-hop]');if(hop){var idx=parseInt(hop.getAttribute('data-obj-hop'),10);if(!isNaN(idx))objJumpToHop(idx);return;}var btn=ev.target.closest('[data-obj-type]');if(btn)objHandleObjClick(btn);});objTagSeatRows();objTagPhoneRows();objTagWallRows();objRefreshDetail();
+/* G8-4 Pending inbox (Helm slice 3).
+   Data: ONE section of the snapshot projection, the queue-mirror section (`queue`; the same shape is also accepted
+   under `pending_approvals` when its items carry queue_id). No other source is read and no network call is added.
+   Exposure: the mirror's raw `title` is [review]-level and is never read. The title slot shows the title_map value
+   (display_title) and otherwise falls back to "queue_id · kind"; no title is invented.
+   State: K2 closed enum {pending, approved, rejected, executed, unknown}; anything else is shown as unknown and is
+   not decidable (fail-closed). Missing values stay null and render as words, never as made-up data.
+   Decisions (D-09): approve / reject / withdraw need a written reason; they are appended to a local log in
+   localStorage (INBOX_LOG_KEY) and can be exported as JSON. This block never writes a source file, never calls the
+   hub and never claims delivery. It reads, holds and persists no credential of any kind.
+   Review (D-10): field-level rows are drawn only from structured effect fields; text effects render verbatim. */
+var INBOX_LOG_KEY='helm.decisions.v1';
+var INBOX_LOG_SCHEMA='helm.decision-log.v1';
+var INBOX_TABS=['todo','logged','approved','rejected','executed','unknown','all'];
+var INBOX_PHONE_LIMIT=6;
+var INBOX_CUR_KEYS=['from','before','current','old'];
+var INBOX_NEW_KEYS=['to','after','proposed','new','value'];
+var INBOX_NAME_KEYS=['field','path','key','name'];
+var INBOX_TEXT_KEYS=['summary','text','description'];
+var INBOX_STR={
+'zh-CN':{
+inboxTitle:"待决收件箱",
+inboxNotConnected:"待决队列未连接。本快照没有取得队列镜像读数，这里不列出任何待决件，也不以 0 代替。",
+inboxStatusUnknown:"队列读数状态无法识别（status={s}），按未连接处理，不列出任何件。",
+inboxEmpty:"队列已连接，当前没有任何件。",
+inboxCountOnly:"队列申报 {n} 件，但本快照没有携带明细，无法列出。",
+inboxCountMismatch:"队列申报 {n} 件，本快照携带明细 {m} 件",
+inboxDropped:"{n} 件缺少 queue_id 或编号重复，未列出",
+inboxSummary:"队列 {total} 件 · 待你决定 {todo} · 本地已记录待回写 {logged}",
+inboxTabTodo:"待决",inboxTabLogged:"本地已记录",inboxTabApproved:"已批准",inboxTabRejected:"已否决",inboxTabExecuted:"已执行",inboxTabUnknown:"状态未知",inboxTabAll:"全部",
+inboxTabEmpty:"「{tab}」下没有件。",
+inboxTodoDone:"没有待你决定的件。",
+inboxShowAll:"显示全部 {n} 件",inboxShowLess:"收起",
+inboxStatePending:"待决",inboxStateApproved:"已批准",inboxStateRejected:"已否决",inboxStateExecuted:"已执行",inboxStateUnknown:"状态未知",
+inboxKindMissing:"kind 未记录",
+inboxEffectMissing:"effect 未记录",
+inboxEffectFields:"{n} 项字段",
+inboxEffectStructured:"结构化 effect（见详情）",
+inboxRequested:"提请",
+inboxRequestedMissing:"提请时间未记录",
+inboxActorMissing:"actor 未记录",
+inboxLocalLogged:"本地已记录：{a} · 未回写",
+inboxLocalStale:"本地记录基于旧内容（内容哈希已变），需复核",
+inboxActApprove:"批准",inboxActReject:"否决",inboxActWithdraw:"撤回",
+inboxNotice:"决定记录于本地日志、经日志回写中枢确认队列。本页不直写任何源文件，也不表示决定已送达中枢。",
+inboxLogBtn:"决策日志（{n}）",
+inboxPrev:"‹ 上一件",inboxNext:"下一件 ›",inboxClose:"关闭",
+inboxTitleFallbackNote:"无显示标题（title_map 无此件），标题位以 queue_id · kind 代位。",
+inboxWarnCached:"当前显示的不是实时快照（{state} · {age}），队列可能已变化。决定会连同所依据的内容哈希一并记录。",
+inboxWarnNoHash:"此件没有内容哈希，回写时无法校验决定所依据的内容。",
+inboxWarnStale:"此件内容哈希已变化：此前的本地决定基于旧内容，不再计为已记录，请复核后重新决定。",
+inboxSecEffect:"影响对照（effect）",
+inboxEffectTextNote:"此件 effect 只有文本，没有结构化字段，以下原样呈现，不生成对照。",
+inboxEffectRawNote:"effect 是结构化数据，但字段形态无法识别，以下原样呈现，不生成对照。",
+inboxEffectNoCurNote:"effect 没有携带现状值，以下只列提议字段，不生成对照。",
+inboxColField:"字段",inboxColCur:"现状",inboxColNew:"提议",
+inboxCurMissing:"未携带",inboxSame:"不变",inboxChanged:"变更",
+inboxSubjectLabel:"关联对象（快照现状）",
+inboxSubjectNone:"无关联对象",
+inboxSubjectOutside:"{ref}（不在本快照内）",
+inboxSecDecision:"决定",
+inboxChoiceLabel:"批准或否决",
+inboxReasonLabel:"理由（必填）",
+inboxReasonPh:"写明理由。没有理由不能提交。",
+inboxHintBoth:"先选择批准或否决，并填写理由。",inboxHintChoice:"还需选择批准或否决。",inboxHintReason:"还需填写理由。",inboxHintReady:"将记入本地日志：{a}。",
+inboxSubmit:"记入本地日志",inboxSubmitA:"{a}并记入本地日志",
+inboxSaved:"已记入本地日志并回读确认。尚未回写中枢。",
+inboxSaveFailed:"写入本地日志失败（浏览器存储不可用或已满），这次决定没有被记录。",
+inboxDecidedHub:"中枢队列已有决定，不在此改写。",
+inboxUnknownHub:"此件状态未知，按 fail-closed 不开放决定。",
+inboxLocalNow:"本地日志当前记录",
+inboxLocalNowState:"中枢队列状态仍为待决，直到日志回写并经确认。",
+inboxRedecide:"改判",inboxWithdrawBtn:"撤回",inboxCancel:"取消",
+inboxWithdrawNote:"撤回会追加一条撤回记录，原记录保留可回溯。",
+inboxNextTodo:"下一件待决 ›",
+inboxSecFields:"全部字段",
+inboxFQueueId:"队列编号",inboxFKind:"类型",inboxFState:"状态",inboxFTitle:"显示标题",inboxFActor:"行为方",inboxFRequestedAt:"提请时间",inboxFSubjectRef:"关联对象",inboxFEffect:"影响",inboxFHash:"内容哈希",inboxFDecidedAt:"决定时间",inboxFDecidedVia:"决定途径",inboxFDecisionNote:"决定备注",
+inboxPendingVal:"待决",inboxMissingVal:"未记录",
+inboxTitleNone:"无（title_map 无此件；原始标题属 [review] 级，不投影）",
+inboxEffectSeeAbove:"见上方影响对照",
+inboxSecHistory:"本件本地日志",
+inboxHistoryNone:"本件还没有本地日志记录。",
+inboxSuperseded:"已被后续记录取代",inboxEffective:"当前有效",inboxNotDelivered:"未回写",inboxWithdrawn:"撤回记录",
+inboxBasis:"依据：内容哈希 {h} · 第 {g} 代 · {s}",
+inboxBasisNoHash:"无",inboxBasisNoGen:"—",
+inboxGone:"此件已不在当前快照中。",
+inboxLogTitle:"决策日志",
+inboxLogCount:"{n} 条记录",
+inboxLogEmpty:"本地日志还没有记录。",
+inboxLogIntro:"本设备上的本地决定记录，只追加、不改写。决定经日志回写中枢确认队列；在回写确认之前，中枢队列状态不会变化。",
+inboxExport:"导出 JSON 文件",inboxShowJson:"显示 JSON 文本",inboxHideJson:"隐藏 JSON 文本",
+inboxExportFailed:"无法生成下载文件，已在下方显示 JSON 文本，可手动复制。",
+inboxJsonLabel:"决策日志 JSON 文本",
+inboxLogOpen:"查看日志",
+inboxLogNoToken:"PWA 阶段不接令牌，本日志不含任何凭据。",
+inboxLogUnreadable:"此前的本地日志内容无法完整解析，原始内容已另存为备份键，未被覆盖。",
+inboxLogLast:"最近一条：{a} · {id} · {when}",
+inboxOpenItem:"打开此件",
+inboxNotInSnapshot:"不在当前快照中",
+inboxCmdLog:"打开决策日志"
+},
+'en':{
+inboxTitle:"Pending inbox",
+inboxNotConnected:"Pending queue not connected. This snapshot carries no queue-mirror reading, so no items are listed here and no zero is shown in its place.",
+inboxStatusUnknown:"Queue status not recognised (status={s}). Treated as not connected; no items are listed.",
+inboxEmpty:"Queue connected. It currently holds no items.",
+inboxCountOnly:"The queue reports {n} items, but this snapshot carries no item details, so none can be listed.",
+inboxCountMismatch:"queue reports {n}, snapshot carries {m} item details",
+inboxDropped:"{n} items without a queue_id or with a duplicate id are not listed",
+inboxSummary:"{total} in queue · {todo} awaiting your decision · {logged} logged locally, awaiting write-back",
+inboxTabTodo:"Pending",inboxTabLogged:"Logged locally",inboxTabApproved:"Approved",inboxTabRejected:"Rejected",inboxTabExecuted:"Executed",inboxTabUnknown:"Unknown state",inboxTabAll:"All",
+inboxTabEmpty:"No items under \"{tab}\".",
+inboxTodoDone:"Nothing is awaiting your decision.",
+inboxShowAll:"Show all {n}",inboxShowLess:"Show fewer",
+inboxStatePending:"Pending",inboxStateApproved:"Approved",inboxStateRejected:"Rejected",inboxStateExecuted:"Executed",inboxStateUnknown:"Unknown state",
+inboxKindMissing:"kind not recorded",
+inboxEffectMissing:"effect not recorded",
+inboxEffectFields:"{n} fields",
+inboxEffectStructured:"Structured effect (see detail)",
+inboxRequested:"Requested",
+inboxRequestedMissing:"request time not recorded",
+inboxActorMissing:"actor not recorded",
+inboxLocalLogged:"Logged locally: {a} · not written back",
+inboxLocalStale:"Local record is based on older content (content hash changed) — review again",
+inboxActApprove:"Approve",inboxActReject:"Reject",inboxActWithdraw:"Withdraw",
+inboxNotice:"Decisions are recorded in the local log and written back through the hub confirmation queue. This page never writes a source file and does not mean the decision has reached the hub.",
+inboxLogBtn:"Decision log ({n})",
+inboxPrev:"‹ Previous",inboxNext:"Next ›",inboxClose:"Close",
+inboxTitleFallbackNote:"No display title (no title_map entry for this item); the title slot shows queue_id · kind instead.",
+inboxWarnCached:"This is not a live snapshot ({state} · {age}); the queue may have changed. The decision is recorded together with the content hash it was based on.",
+inboxWarnNoHash:"This item has no content hash, so write-back cannot verify the content the decision was based on.",
+inboxWarnStale:"The content hash of this item changed: the earlier local decision was based on older content and no longer counts as logged. Review and decide again.",
+inboxSecEffect:"Effect review",
+inboxEffectTextNote:"The effect of this item is text only, with no structured fields. It is shown verbatim; no comparison is generated.",
+inboxEffectRawNote:"The effect is structured, but its field shape is not recognised. It is shown verbatim; no comparison is generated.",
+inboxEffectNoCurNote:"The effect carries no current values, so only the proposed fields are listed; no comparison is generated.",
+inboxColField:"Field",inboxColCur:"Current",inboxColNew:"Proposed",
+inboxCurMissing:"not carried",inboxSame:"unchanged",inboxChanged:"changed",
+inboxSubjectLabel:"Subject (as in snapshot)",
+inboxSubjectNone:"No subject",
+inboxSubjectOutside:"{ref} (not in this snapshot)",
+inboxSecDecision:"Decision",
+inboxChoiceLabel:"Approve or reject",
+inboxReasonLabel:"Reason (required)",
+inboxReasonPh:"Write the reason. A decision without a reason cannot be submitted.",
+inboxHintBoth:"Choose approve or reject and write a reason first.",inboxHintChoice:"Choose approve or reject.",inboxHintReason:"A reason is still needed.",inboxHintReady:"Will be recorded in the local log: {a}.",
+inboxSubmit:"Record in local log",inboxSubmitA:"{a} and record in local log",
+inboxSaved:"Recorded in the local log and read back. Not yet written back to the hub.",
+inboxSaveFailed:"Writing the local log failed (browser storage unavailable or full). This decision was not recorded.",
+inboxDecidedHub:"The hub queue already holds a decision; it is not rewritten here.",
+inboxUnknownHub:"The state of this item is unknown; decisions are closed for it (fail-closed).",
+inboxLocalNow:"Current local log record",
+inboxLocalNowState:"The hub queue state stays pending until the log is written back and confirmed.",
+inboxRedecide:"Change decision",inboxWithdrawBtn:"Withdraw",inboxCancel:"Cancel",
+inboxWithdrawNote:"Withdrawing appends a withdrawal record; the original record is kept for traceability.",
+inboxNextTodo:"Next pending ›",
+inboxSecFields:"All fields",
+inboxFQueueId:"Queue id",inboxFKind:"Kind",inboxFState:"State",inboxFTitle:"Display title",inboxFActor:"Actor",inboxFRequestedAt:"Requested at",inboxFSubjectRef:"Subject",inboxFEffect:"Effect",inboxFHash:"Content hash",inboxFDecidedAt:"Decided at",inboxFDecidedVia:"Decided via",inboxFDecisionNote:"Decision note",
+inboxPendingVal:"Pending",inboxMissingVal:"Not recorded",
+inboxTitleNone:"None (no title_map entry; the raw title is [review]-level and is not projected)",
+inboxEffectSeeAbove:"See effect review above",
+inboxSecHistory:"Local log for this item",
+inboxHistoryNone:"No local log record for this item yet.",
+inboxSuperseded:"Superseded by a later record",inboxEffective:"In effect",inboxNotDelivered:"Not written back",inboxWithdrawn:"Withdrawal record",
+inboxBasis:"Basis: content hash {h} · generation {g} · {s}",
+inboxBasisNoHash:"none",inboxBasisNoGen:"—",
+inboxGone:"This item is no longer in the current snapshot.",
+inboxLogTitle:"Decision log",
+inboxLogCount:"{n} records",
+inboxLogEmpty:"The local log has no records yet.",
+inboxLogIntro:"Local decision records on this device, append-only. Decisions are written back through the hub confirmation queue; until write-back is confirmed the hub queue state does not change.",
+inboxExport:"Export JSON file",inboxShowJson:"Show JSON text",inboxHideJson:"Hide JSON text",
+inboxExportFailed:"Could not create a download. The JSON text is shown below and can be copied by hand.",
+inboxJsonLabel:"Decision log JSON text",
+inboxLogOpen:"View log",
+inboxLogNoToken:"No token is connected in the PWA phase; this log contains no credentials.",
+inboxLogUnreadable:"Earlier local log content could not be parsed completely. The original bytes were kept under a backup key and were not overwritten.",
+inboxLogLast:"Latest: {a} · {id} · {when}",
+inboxOpenItem:"Open item",
+inboxNotInSnapshot:"not in the current snapshot",
+inboxCmdLog:"Open decision log"
+}};
+(function(){for(var lc in INBOX_STR){if(!STR[lc])continue;for(var k in INBOX_STR[lc]){STR[lc][k]=INBOX_STR[lc][k]}}})();
+
+/* ---- data layer: queue section -> cleaned queue (same snake_case shape, so a cached snapshot re-cleans identically) ---- */
+function inboxOwn(o,k){return Object.prototype.hasOwnProperty.call(o,k)}
+function inboxCleanEffect(v){
+  if(typeof v==='string')return v.trim()?v:null;
+  if(typeof v==='number'||typeof v==='boolean')return String(v);
+  if(v&&typeof v==='object'){try{var s=JSON.stringify(v);if(!s||s==='{}'||s==='[]')return null;return JSON.parse(s)}catch(e){return null}}
+  return null;
+}
+function inboxCleanItem(a,titleMap){
+  if(!a||typeof a!=='object')return null;
+  var id=asString(a.queue_id);if(!id)return null;
+  /* K2 closed enum, exact match only. (Literal check: this runs from cleanSnapshot before the block below is initialised.) */
+  var st=asString(a.state);if(st!=='pending'&&st!=='approved'&&st!=='rejected'&&st!=='executed')st='unknown';
+  /* Title slot: title_map value only. a.title (raw, [review]-level) is deliberately not read. */
+  var title=asString(a.display_title);
+  if(!title&&titleMap&&inboxOwn(titleMap,id))title=asString(titleMap[id]);
+  return{queue_id:id,kind:asString(a.kind),state:st,actor:asString(a.actor),requested_at:asString(a.requested_at),subject_ref:asString(a.subject_ref),effect:inboxCleanEffect(a.effect),content_hash:asString(a.content_hash),decided_at:asString(a.decided_at),decided_via:asString(a.decided_via),decision_note:asString(a.decision_note),display_title:title||null};
+}
+function inboxCleanQueue(raw){
+  if(!raw||typeof raw!=='object')return null;
+  var src=null;
+  if(raw.queue&&typeof raw.queue==='object'&&!Array.isArray(raw.queue))src=raw.queue;
+  else{var pa=raw.pending_approvals;if(pa&&typeof pa==='object'&&!Array.isArray(pa)&&Array.isArray(pa.items)&&pa.items.some(function(x){return x&&typeof x==='object'&&typeof x.queue_id==='string'}))src=pa}
+  if(!src)return null;
+  var tm=null;
+  if(src.title_map&&typeof src.title_map==='object')tm=src.title_map;
+  else if(raw.title_map&&typeof raw.title_map==='object')tm=raw.title_map;
+  var seen={},items=[],dropped=0;
+  (Array.isArray(src.items)?src.items:[]).forEach(function(a){var it=inboxCleanItem(a,tm);if(!it||seen[it.queue_id]){dropped++;return}seen[it.queue_id]=true;items.push(it)});
+  return{status:asString(src.status),count:asNumber(src.count),items:items,dropped:dropped+(asNumber(src.dropped)||0)};
+}
+/* Called from cleanSnapshot. When the queue section is present the inbox is the single consumer of pending items, so the legacy pendingApprovals reading is cleared. */
+function inboxAttachQueue(out,raw){var q=inboxCleanQueue(raw);out.queue=q;if(q)out.pendingApprovals=null}
+function inboxQueue(){return(snapshot&&snapshot.queue)?snapshot.queue:null}
+function inboxActive(){return!!inboxQueue()}
+function inboxItemById(id){var q=inboxQueue();if(!q)return null;for(var i=0;i<q.items.length;i++){if(q.items[i].queue_id===id)return q.items[i]}return null}
+
+/* ---- local decision log (append-only; localStorage) ---- */
+var inboxLogNotice='';
+function inboxValidEntry(e){return!!(e&&typeof e==='object'&&typeof e.log_id==='string'&&typeof e.queue_id==='string'&&(e.action==='approve'||e.action==='reject'||e.action==='withdraw')&&typeof e.decision_note==='string'&&typeof e.decided_at==='string')}
+function inboxLoadLog(){
+  var raw=null;
+  try{raw=localStorage.getItem(INBOX_LOG_KEY)}catch(e){return[]}
+  if(!raw)return[];
+  var entries=null,clean=false;
+  try{var d=JSON.parse(raw);if(d&&Array.isArray(d.entries)){entries=d.entries.filter(inboxValidEntry);clean=(entries.length===d.entries.length)}}catch(e){}
+  if(!clean){
+    /* Never overwrite bytes we could not fully read: keep them under a backup key first. */
+    try{localStorage.setItem(INBOX_LOG_KEY+'.unreadable.'+Date.now(),raw);localStorage.setItem(INBOX_LOG_KEY,JSON.stringify({schema:INBOX_LOG_SCHEMA,entries:entries||[]}))}catch(e){}
+    inboxLogNotice='unreadable';
+  }
+  return entries||[];
+}
+var inboxLog=inboxLoadLog();
+function inboxAppendEntry(entry){
+  var cur=inboxLoadLog();var seq=0;
+  for(var i=0;i<cur.length;i++){if(typeof cur[i].seq==='number'&&cur[i].seq>seq)seq=cur[i].seq}
+  entry.seq=seq+1;cur.push(entry);
+  try{localStorage.setItem(INBOX_LOG_KEY,JSON.stringify({schema:INBOX_LOG_SCHEMA,entries:cur}))}catch(e){return false}
+  /* Read back: only report success when the entry is really in storage. */
+  var back=inboxLoadLog();
+  var ok=back.some(function(e){return e.log_id===entry.log_id});
+  if(ok)inboxLog=back;
+  return ok;
+}
+function inboxLastEntry(id){for(var i=inboxLog.length-1;i>=0;i--){if(inboxLog[i].queue_id===id)return inboxLog[i]}return null}
+/* The latest record for an item is the one in effect, unless it is a withdrawal. A record whose basis hash differs from the item's current content_hash is stale and does not count as logged. */
+function inboxLocalFor(it){
+  var e=inboxLastEntry(it.queue_id);
+  if(!e||e.action==='withdraw')return{entry:null,stale:false};
+  var bh=(e.basis&&e.basis.content_hash)?e.basis.content_hash:null;
+  return{entry:e,stale:bh!==(it.content_hash||null)};
+}
+function inboxBucket(it){if(it.state==='pending'){var l=inboxLocalFor(it);return(l.entry&&!l.stale)?'logged':'todo'}return it.state}
+function inboxExportObject(){return{schema:INBOX_LOG_SCHEMA,exported_at:new Date().toISOString(),shell_version:SHELL_VERSION,delivery:'local_only',note:'Local decision log exported from the Helm PWA. These entries are NOT delivered to the hub; write-back happens through the hub confirmation queue.',entries:inboxLog.slice()}}
+function inboxExportText(){return JSON.stringify(inboxExportObject(),null,2)}
+function inboxExportFile(){
+  try{
+    var d=new Date();var p=function(n){return String(n).padStart(2,'0')};
+    var name='helm-decision-log-'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes())+p(d.getSeconds())+'.json';
+    var url=URL.createObjectURL(new Blob([inboxExportText()],{type:'application/json'}));
+    var a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){try{URL.revokeObjectURL(url)}catch(e){}},2000);
+    return true;
+  }catch(e){return false}
+}
+
+/* ---- presentation helpers ---- */
+function inboxTitle(it){return it.display_title||(it.queue_id+' · '+(it.kind||t('inboxKindMissing')))}
+function inboxStateLabel(s){return t('inboxState'+s.charAt(0).toUpperCase()+s.slice(1))}
+function inboxStateWord(s){var dot=(s==='approved'||s==='executed')?'ok':(s==='rejected'?'attn':(s==='unknown'?'verify':'hollow'));return '<span class="state-word"><span class="state-dot '+dot+'"></span>'+esc(inboxStateLabel(s))+'</span>'}
+function inboxActLabel(a){return t(a==='approve'?'inboxActApprove':(a==='reject'?'inboxActReject':'inboxActWithdraw'))}
+function inboxTs(iso){if(!iso)return null;var d=new Date(iso);if(isNaN(d.getTime()))return{text:iso,ms:null};return{text:d.toLocaleString(LOCALE,{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}),ms:d.getTime()}}
+function inboxVal(v){if(v===null||v===undefined)return 'null';if(typeof v==='string')return v;if(typeof v==='number'||typeof v==='boolean')return String(v);try{return JSON.stringify(v)}catch(e){return String(v)}}
+function inboxPickPair(o){
+  var r={hasCur:false,cur:null,hasNew:false,next:null},i;
+  for(i=0;i<INBOX_CUR_KEYS.length;i++){if(inboxOwn(o,INBOX_CUR_KEYS[i])){r.hasCur=true;r.cur=o[INBOX_CUR_KEYS[i]];break}}
+  for(i=0;i<INBOX_NEW_KEYS.length;i++){if(inboxOwn(o,INBOX_NEW_KEYS[i])){r.hasNew=true;r.next=o[INBOX_NEW_KEYS[i]];break}}
+  return(r.hasCur||r.hasNew)?r:null;
+}
+/* Structured effect -> field rows, or null when the shape is not recognised (the caller then renders it verbatim).
+   Recognised: (a) an array of {field|path|key|name, from|before|current|old, to|after|proposed|new|value};
+   (b) an object holding such an array under `changes` or `fields`; (c) a plain map field -> scalar (proposed only)
+   or field -> {from.., to..}. A current value is shown only when the effect itself carries one. */
+function inboxEffectRows(effect){
+  if(!effect||typeof effect!=='object')return null;
+  var summary=null,list=null,rows=[],i,k,p,name;
+  if(Array.isArray(effect))list=effect;
+  else{
+    for(i=0;i<INBOX_TEXT_KEYS.length;i++){if(!summary)summary=asString(effect[INBOX_TEXT_KEYS[i]])}
+    if(Array.isArray(effect.changes))list=effect.changes;
+    else if(Array.isArray(effect.fields))list=effect.fields;
+  }
+  if(list){
+    for(i=0;i<list.length;i++){
+      var e=list[i];if(!e||typeof e!=='object'||Array.isArray(e))return null;
+      name=null;for(k=0;k<INBOX_NAME_KEYS.length;k++){if(!name)name=asString(e[INBOX_NAME_KEYS[k]])}
+      p=inboxPickPair(e);if(!name||!p)return null;
+      p.field=name;rows.push(p);
+    }
+  }else{
+    for(k in effect){
+      if(!inboxOwn(effect,k)||INBOX_TEXT_KEYS.indexOf(k)>-1)continue;
+      var v=effect[k];
+      /* An array value is not a recognised field shape: the caller renders the whole effect verbatim. */
+      if(Array.isArray(v))return null;
+      if(v&&typeof v==='object'){p=inboxPickPair(v);if(!p)return null}
+      else{p={hasCur:false,cur:null,hasNew:true,next:v}}
+      p.field=k;rows.push(p);
+    }
+  }
+  return rows.length?{summary:summary,rows:rows}:null;
+}
+function inboxEffectSummary(it){
+  var e=it.effect;if(e===null||e===undefined)return null;
+  if(typeof e==='string')return e.replace(/\s+/g,' ').trim();
+  var p=inboxEffectRows(e);if(!p)return t('inboxEffectStructured');
+  var names=p.rows.slice(0,3).map(function(r){return r.field}).join(', ');
+  return(p.summary?p.summary+' — ':'')+t('inboxEffectFields',{n:p.rows.length})+': '+names+(p.rows.length>3?'…':'');
+}
+function inboxResolveSubject(ref){
+  if(!ref)return null;
+  var g=objGoalById(ref);if(g)return{type:'goal',ref:ref,title:objTitleOfGoal(g),label:t('goals')};
+  var d=objDecisionById(ref);if(d)return{type:'decision',ref:ref,title:objTitleOfDecision(d),label:t('decisions')};
+  return null;
+}
+function inboxGroups(){
+  var q=inboxQueue();var g={todo:[],logged:[],approved:[],rejected:[],executed:[],unknown:[],all:[]};
+  if(!q)return g;
+  q.items.forEach(function(it){g[inboxBucket(it)].push(it);g.all.push(it)});
+  var byReq=function(a,b){var x=inboxTs(a.requested_at),y=inboxTs(b.requested_at);var xm=(x&&x.ms!==null)?x.ms:Infinity,ym=(y&&y.ms!==null)?y.ms:Infinity;if(xm!==ym)return xm<ym?-1:1;return a.queue_id<b.queue_id?-1:(a.queue_id>b.queue_id?1:0)};
+  var byDec=function(a,b){var x=inboxTs(a.decided_at),y=inboxTs(b.decided_at);var xm=(x&&x.ms!==null)?x.ms:-Infinity,ym=(y&&y.ms!==null)?y.ms:-Infinity;if(xm!==ym)return xm>ym?-1:1;return a.queue_id<b.queue_id?-1:(a.queue_id>b.queue_id?1:0)};
+  /* Waiting items: longest-waiting first. Decided items: most recent decision first. "All" keeps queue order. */
+  g.todo.sort(byReq);g.logged.sort(byReq);g.unknown.sort(byReq);g.approved.sort(byDec);g.rejected.sort(byDec);g.executed.sort(byDec);
+  return g;
+}
+function inboxTabLabel(k){return t('inboxTab'+k.charAt(0).toUpperCase()+k.slice(1))}
+
+/* ---- list (rendered into the phone block 4 host and the Wall P4 host) ---- */
+var inboxTab='todo';
+var inboxExpanded=false;
+function inboxRowHtml(it){
+  var l=inboxLocalFor(it),sum=inboxEffectSummary(it),ts=inboxTs(it.requested_at),meta=[];
+  if(it.display_title)meta.push(it.queue_id);
+  if(ts)meta.push(t('inboxRequested')+' '+ts.text+((ts.ms!==null&&it.state==='pending')?' · '+formatAge(Date.now()-ts.ms):''));
+  else meta.push(t('inboxRequestedMissing'));
+  meta.push(it.actor||t('inboxActorMissing'));
+  var h='<button type="button" class="inbox-row" data-inbox-open="'+esc(it.queue_id)+'">';
+  h+='<span class="inbox-row-top"><span class="inbox-title">'+esc(inboxTitle(it))+'</span>'+inboxStateWord(it.state)+'</span>';
+  h+='<span class="inbox-effect'+(sum?'':' is-none')+'">'+esc(sum||t('inboxEffectMissing'))+'</span>';
+  h+='<span class="inbox-meta">'+esc(meta.join(' · '))+'</span>';
+  if(l.entry)h+='<span class="inbox-local">'+esc(l.stale?t('inboxLocalStale'):t('inboxLocalLogged',{a:inboxActLabel(l.entry.action)}))+'</span>';
+  return h+'</button>';
+}
+function inboxFootHtml(withNotice){
+  return '<div class="inbox-foot">'+(withNotice?'<span class="inbox-note">'+esc(t('inboxNotice'))+'</span>':'<span></span>')+'<button type="button" class="inbox-link" data-inbox-log="1">'+esc(t('inboxLogBtn',{n:inboxLog.length}))+'</button></div>';
+}
+function inboxHostHtml(host){
+  var q=inboxQueue();var phone=(host==='phone');var h='';
+  var connected=(q.status==='connected');
+  var g=connected?inboxGroups():null;
+  var todoN=g?g.todo.length:0;
+  var badge=todoN>0?'<span class="'+(phone?'ov-badge':'pend-badge')+' num">'+todoN+'</span>':'';
+  if(phone)h+='<div class="inbox-head"><h3>'+esc(t('inboxTitle'))+badge+'</h3></div>';
+  if(!connected){
+    h+='<div class="inbox-empty">'+esc(q.status==='not_connected'?t('inboxNotConnected'):t('inboxStatusUnknown',{s:q.status===null?'null':q.status}))+'</div>';
+    return h+inboxFootHtml(false);
+  }
+  var total=q.items.length;
+  if(total===0){
+    h+='<div class="inbox-empty">'+esc((q.count!==null&&q.count>0)?t('inboxCountOnly',{n:q.count}):t('inboxEmpty'))+'</div>';
+    if(q.dropped>0)h+='<div class="inbox-sum">'+esc(t('inboxDropped',{n:q.dropped}))+'</div>';
+    return h+inboxFootHtml(false);
+  }
+  var sum=[t('inboxSummary',{total:total,todo:todoN,logged:g.logged.length})];
+  if(q.count!==null&&q.count!==total)sum.push(t('inboxCountMismatch',{n:q.count,m:total}));
+  if(q.dropped>0)sum.push(t('inboxDropped',{n:q.dropped}));
+  h+='<div class="inbox-sum">'+(phone?'':badge)+'<span>'+esc(sum.join(' · '))+'</span></div>';
+  h+='<div class="inbox-tabs" role="group" aria-label="'+esc(t('inboxTitle'))+'">';
+  INBOX_TABS.forEach(function(k){
+    var n=g[k].length;
+    if(n===0&&k!=='todo'&&k!=='all'&&k!==inboxTab)return;
+    h+='<button type="button" class="inbox-tab" data-inbox-tab="'+k+'" aria-pressed="'+(k===inboxTab?'true':'false')+'">'+esc(inboxTabLabel(k))+'<span class="n">'+n+'</span></button>';
+  });
+  h+='</div>';
+  var rows=g[inboxTab]||[];
+  if(!rows.length){
+    h+='<div class="inbox-empty">'+esc(inboxTab==='todo'?t('inboxTodoDone'):t('inboxTabEmpty',{tab:inboxTabLabel(inboxTab)}))+'</div>';
+  }else{
+    var shown=(phone&&!inboxExpanded)?rows.slice(0,INBOX_PHONE_LIMIT):rows;
+    h+='<div class="inbox-list">'+shown.map(inboxRowHtml).join('')+'</div>';
+    if(phone&&rows.length>INBOX_PHONE_LIMIT)h+='<button type="button" class="inbox-more" data-inbox-more="1" aria-expanded="'+(inboxExpanded?'true':'false')+'">'+esc(inboxExpanded?t('inboxShowLess'):t('inboxShowAll',{n:rows.length}))+'</button>';
+  }
+  return h+inboxFootHtml(true);
+}
+function inboxFocusKey(host){
+  var st={top:0,attr:null,val:null};if(!host)return st;
+  var l=host.querySelector('.inbox-list');if(l)st.top=l.scrollTop;
+  var a=document.activeElement;
+  if(a&&host.contains(a)){['data-inbox-open','data-inbox-tab','data-inbox-more','data-inbox-log'].forEach(function(at){if(!st.attr&&a.hasAttribute(at)){st.attr=at;st.val=a.getAttribute(at)}})}
+  return st;
+}
+function inboxFocusRestore(host,st){
+  if(!host||!st)return;
+  var l=host.querySelector('.inbox-list');if(l&&st.top)l.scrollTop=st.top;
+  if(!st.attr)return;
+  var nodes=host.querySelectorAll('['+st.attr+']');
+  for(var i=0;i<nodes.length;i++){if(nodes[i].getAttribute(st.attr)===st.val){try{nodes[i].focus({preventScroll:true})}catch(e){nodes[i].focus()}return}}
+}
+function inboxRenderPhoneHost(){
+  if(!inboxActive())return;
+  var el=document.getElementById('approvalsBlock');if(!el)return;
+  el.classList.add('inbox');el.innerHTML=inboxHostHtml('phone');
+}
+function inboxRenderWallHost(){
+  if(!inboxActive())return;
+  var b=document.getElementById('wp-pending-b');if(!b)return;
+  var tt=document.getElementById('wp-pending-t');if(tt)tt.textContent=t('inboxTitle');
+  b.classList.add('inbox');b.innerHTML=inboxHostHtml('wall');
+}
+function inboxRenderHosts(){
+  var p=document.getElementById('approvalsBlock'),w=document.getElementById('wp-pending-b');
+  var ps=inboxFocusKey(p),ws=inboxFocusKey(w);
+  inboxRenderPhoneHost();inboxRenderWallHost();
+  inboxFocusRestore(p,ps);inboxFocusRestore(w,ws);
+}
+
+/* ---- sheet: item detail (decision inside the detail) and the decision log ---- */
+var inboxSheetEl=null,inboxSheetBody=null,inboxSheetMode=null,inboxOpenId=null,inboxNavList=[],inboxDrafts={},inboxFlash=null,inboxReturnFocus=null,inboxSig='',inboxJsonShown=false,inboxLogMsg='';
+function inboxDraft(id){if(!inboxDrafts[id])inboxDrafts[id]={mode:null,choice:null,reason:''};return inboxDrafts[id]}
+function inboxFormState(it){
+  /* 'closed' (hub already decided / unknown state), 'summary' (a local record is in effect), or a form mode. */
+  if(it.state!=='pending')return 'closed';
+  var d=inboxDraft(it.queue_id),l=inboxLocalFor(it);
+  if(l.entry&&!l.stale){return(d.mode==='redecide'||d.mode==='withdraw')?d.mode:'summary'}
+  return 'decide';
+}
+function inboxFormReady(it){
+  var d=inboxDraft(it.queue_id),fs=inboxFormState(it),hasReason=d.reason.trim().length>0;
+  if(fs==='withdraw')return{ok:hasReason,hint:hasReason?t('inboxHintReady',{a:t('inboxActWithdraw')}):t('inboxHintReason'),label:t('inboxSubmitA',{a:t('inboxActWithdraw')})};
+  var hasChoice=(d.choice==='approve'||d.choice==='reject');
+  var hint=hasChoice?(hasReason?t('inboxHintReady',{a:inboxActLabel(d.choice)}):t('inboxHintReason')):(hasReason?t('inboxHintChoice'):t('inboxHintBoth'));
+  return{ok:hasChoice&&hasReason,hint:hint,label:hasChoice?t('inboxSubmitA',{a:inboxActLabel(d.choice)}):t('inboxSubmit')};
+}
+function inboxEffectHtml(it){
+  var e=it.effect,h='';
+  if(e===null||e===undefined){h+='<p class="inbox-none">'+esc(t('inboxEffectMissing'))+'</p>'}
+  else if(typeof e==='string'){h+='<p class="inbox-hint">'+esc(t('inboxEffectTextNote'))+'</p><div class="inbox-verbatim">'+esc(e)+'</div>'}
+  else{
+    var p=inboxEffectRows(e);
+    if(!p){h+='<p class="inbox-hint">'+esc(t('inboxEffectRawNote'))+'</p><pre class="inbox-verbatim">'+esc(JSON.stringify(e,null,2))+'</pre>'}
+    else{
+      var anyCur=p.rows.some(function(r){return r.hasCur});
+      if(p.summary)h+='<div class="inbox-verbatim">'+esc(p.summary)+'</div>';
+      if(!anyCur)h+='<p class="inbox-hint">'+esc(t('inboxEffectNoCurNote'))+'</p>';
+      h+='<table class="inbox-diff"><thead><tr><th scope="col">'+esc(t('inboxColField'))+'</th>'+(anyCur?'<th scope="col">'+esc(t('inboxColCur'))+'</th>':'')+'<th scope="col">'+esc(t('inboxColNew'))+'</th></tr></thead><tbody>';
+      p.rows.forEach(function(r){
+        var both=r.hasCur&&r.hasNew,same=both&&inboxVal(r.cur)===inboxVal(r.next);
+        h+='<tr class="'+(both?(same?'is-same':'is-changed'):'')+'"><td class="f">'+esc(r.field)+'</td>';
+        if(anyCur)h+='<td>'+(r.hasCur?'<span class="cur">'+esc(inboxVal(r.cur))+'</span>':'<span class="miss">'+esc(t('inboxCurMissing'))+'</span>')+'</td>';
+        h+='<td>'+(r.hasNew?'<span class="new">'+esc(inboxVal(r.next))+'</span>':'<span class="miss">'+esc(t('inboxCurMissing'))+'</span>')+(both?' <span class="tag">'+esc(same?t('inboxSame'):t('inboxChanged'))+'</span>':'')+'</td></tr>';
+      });
+      h+='</tbody></table>';
+    }
+  }
+  h+='<div class="inbox-subject"><span class="k">'+esc(t('inboxSubjectLabel'))+'</span>';
+  if(!it.subject_ref){h+='<span>'+esc(t('inboxSubjectNone'))+'</span>'}
+  else{var so=inboxResolveSubject(it.subject_ref);
+    if(so)h+='<button type="button" class="inbox-link" data-fk="subject" data-inbox-subject-type="'+esc(so.type)+'" data-inbox-subject-ref="'+esc(so.ref)+'">'+esc(so.label+' · '+so.title+' · '+so.ref)+' ›</button>';
+    else h+='<span>'+esc(t('inboxSubjectOutside',{ref:it.subject_ref}))+'</span>';}
+  return h+'</div>';
+}
+function inboxEntryHtml(e,opts){
+  var ts=inboxTs(e.decided_at),b=e.basis||{},last=inboxLastEntry(e.queue_id),isLast=!!(last&&last.log_id===e.log_id);
+  var h='<div class="inbox-entry'+(isLast?'':' is-old')+'"><div class="what"><span>'+esc(inboxActLabel(e.action))+(opts&&opts.showId?' · '+esc(e.queue_id):'')+'</span><span class="when">'+esc(ts?ts.text:'')+'</span></div>';
+  h+='<div class="why">'+esc(e.decision_note)+'</div>';
+  h+='<div class="basis">'+esc(t('inboxBasis',{h:b.content_hash||t('inboxBasisNoHash'),g:(b.generation_seq===null||b.generation_seq===undefined)?t('inboxBasisNoGen'):b.generation_seq,s:b.snapshot_state||'—'}))+'</div>';
+  h+='<div class="tags"><span class="tag">'+esc(isLast?(e.action==='withdraw'?t('inboxWithdrawn'):t('inboxEffective')):t('inboxSuperseded'))+'</span><span class="tag">'+esc(t('inboxNotDelivered'))+'</span>';
+  if(opts&&opts.showId){h+=inboxItemById(e.queue_id)?'<button type="button" class="inbox-link" data-inbox-open="'+esc(e.queue_id)+'">'+esc(t('inboxOpenItem'))+'</button>':'<span class="tag">'+esc(t('inboxNotInSnapshot'))+'</span>'}
+  return h+'</div></div>';
+}
+function inboxDecisionHtml(it){
+  var fs=inboxFormState(it),d=inboxDraft(it.queue_id),l=inboxLocalFor(it),h='';
+  if(inboxFlash&&inboxFlash.id===it.queue_id)h+='<div class="inbox-flash" role="status">'+esc(inboxFlash.text)+'</div>';
+  if(fs==='closed'){return h+'<p class="inbox-none">'+esc(it.state==='unknown'?t('inboxUnknownHub'):t('inboxDecidedHub'))+'</p>'}
+  if(fs==='summary'){
+    var ts=inboxTs(l.entry.decided_at);
+    h+='<div class="inbox-local-now"><div class="eyebrow">'+esc(t('inboxLocalNow'))+'</div><div class="what">'+esc(inboxActLabel(l.entry.action))+' · '+esc(ts?ts.text:'')+'</div><div class="why">'+esc(l.entry.decision_note)+'</div><span class="inbox-note">'+esc(t('inboxLocalNowState'))+' '+esc(t('inboxNotice'))+'</span></div>';
+    h+='<div class="inbox-actions">';
+    if(inboxNextTodoId(it.queue_id))h+='<button type="button" class="btn primary" data-fk="nexttodo" data-inbox-nexttodo="1">'+esc(t('inboxNextTodo'))+'</button>';
+    h+='<button type="button" class="btn" data-fk="redecide" data-inbox-mode="redecide">'+esc(t('inboxRedecide'))+'</button><button type="button" class="btn" data-fk="withdraw" data-inbox-mode="withdraw">'+esc(t('inboxWithdrawBtn'))+'</button></div>';
+    return h;
+  }
+  var rd=inboxFormReady(it);
+  h+='<form class="inbox-form" id="inboxForm" novalidate>';
+  if(fs==='withdraw'){h+='<p class="inbox-hint">'+esc(t('inboxWithdrawNote'))+'</p>'}
+  else{
+    h+='<div class="inbox-choice" role="radiogroup" aria-label="'+esc(t('inboxChoiceLabel'))+'">';
+    ['approve','reject'].forEach(function(c){h+='<label class="inbox-opt"><input type="radio" name="inboxChoice" data-fk="choice-'+c+'" value="'+c+'"'+(d.choice===c?' checked':'')+'><span>'+esc(inboxActLabel(c))+'</span></label>'});
+    h+='</div>';
+  }
+  h+='<label for="inboxReason">'+esc(t('inboxReasonLabel'))+'</label><textarea id="inboxReason" data-fk="reason" rows="4" maxlength="2000" required aria-describedby="inboxFormHint" placeholder="'+esc(t('inboxReasonPh'))+'">'+esc(d.reason)+'</textarea>';
+  h+='<div class="inbox-form-hint" id="inboxFormHint" aria-live="polite">'+esc(rd.hint)+'</div>';
+  h+='<div class="inbox-actions"><button type="submit" class="btn primary" id="inboxSubmit" data-fk="submit"'+(rd.ok?'':' disabled')+'>'+esc(rd.label)+'</button>';
+  if(fs!=='decide')h+='<button type="button" class="btn" data-fk="cancel" data-inbox-mode="cancel">'+esc(t('inboxCancel'))+'</button>';
+  h+='</div><span class="inbox-note">'+esc(t('inboxNotice'))+'</span></form>';
+  return h;
+}
+function inboxFieldRow(label,key,valueHtml,cls){return '<div class="inbox-f"><dt>'+esc(label)+'<small>'+esc(key)+'</small></dt><dd'+(cls?' class="'+cls+'"':'')+'>'+valueHtml+'</dd></div>'}
+function inboxFieldsHtml(it){
+  var miss='<span class="inbox-none">'+esc(t('inboxMissingVal'))+'</span>';
+  /* decided_* are null while an item waits: say "pending" there instead of leaving a hole. */
+  var dec=function(v){return v?esc(v):(it.state==='pending'?esc(t('inboxPendingVal')):miss)};
+  var req=inboxTs(it.requested_at),da=inboxTs(it.decided_at);
+  var so=inboxResolveSubject(it.subject_ref);
+  var h='<dl class="inbox-fields">';
+  h+=inboxFieldRow(t('inboxFQueueId'),'queue_id',esc(it.queue_id));
+  h+=inboxFieldRow(t('inboxFKind'),'kind',it.kind?esc(it.kind):miss);
+  h+=inboxFieldRow(t('inboxFState'),'state',inboxStateWord(it.state)+' <span class="sub">'+esc(it.state)+'</span>');
+  h+=inboxFieldRow(t('inboxFTitle'),'title_map',it.display_title?esc(it.display_title):'<span class="inbox-none">'+esc(t('inboxTitleNone'))+'</span>');
+  h+=inboxFieldRow(t('inboxFActor'),'actor',it.actor?esc(it.actor):miss);
+  h+=inboxFieldRow(t('inboxFRequestedAt'),'requested_at',req?esc(req.text)+(req.ms!==null?'<span class="sub">'+esc(it.requested_at)+'</span>':''):miss);
+  h+=inboxFieldRow(t('inboxFSubjectRef'),'subject_ref',it.subject_ref?esc(so?(it.subject_ref+' · '+so.title):t('inboxSubjectOutside',{ref:it.subject_ref})):'<span class="inbox-none">'+esc(t('inboxSubjectNone'))+'</span>');
+  h+=inboxFieldRow(t('inboxFEffect'),'effect',(it.effect===null||it.effect===undefined)?miss:esc(t('inboxEffectSeeAbove')));
+  h+=inboxFieldRow(t('inboxFHash'),'content_hash',it.content_hash?esc(it.content_hash):miss,it.content_hash?'mono':'');
+  h+=inboxFieldRow(t('inboxFDecidedAt'),'decided_at',it.decided_at?esc(da.text)+(da.ms!==null?'<span class="sub">'+esc(it.decided_at)+'</span>':''):dec(null));
+  h+=inboxFieldRow(t('inboxFDecidedVia'),'decided_via',dec(it.decided_via));
+  h+=inboxFieldRow(t('inboxFDecisionNote'),'decision_note',dec(it.decision_note));
+  return h+'</dl>';
+}
+function inboxBarHtml(showNav){
+  var h='<div class="inbox-bar">';
+  if(showNav){
+    var idx=inboxNavList.indexOf(inboxOpenId);
+    h+='<button type="button" data-fk="prev" data-inbox-step="-1"'+(idx>0?'':' disabled')+'>'+esc(t('inboxPrev'))+'</button>';
+    h+='<span class="pos">'+(idx>-1?(idx+1)+' / '+inboxNavList.length:'')+'</span>';
+    h+='<button type="button" data-fk="next" data-inbox-step="1"'+((idx>-1&&idx<inboxNavList.length-1)?'':' disabled')+'>'+esc(t('inboxNext'))+'</button>';
+  }else{h+='<span class="pos"></span>'}
+  return h+'<button type="button" class="close" data-fk="close" data-inbox-close="1">'+esc(t('inboxClose'))+'</button></div>';
+}
+function inboxDetailHtml(){
+  var it=inboxItemById(inboxOpenId);
+  if(!it)return inboxBarHtml(false)+'<h2 class="inbox-d-title" id="inboxSheetTitle">'+esc(inboxOpenId||'')+'</h2><p class="inbox-empty">'+esc(t('inboxGone'))+'</p>';
+  var h=inboxBarHtml(true);
+  var req=inboxTs(it.requested_at),l=inboxLocalFor(it),sig=signalState();
+  h+='<div class="eyebrow">'+esc(t('inboxTitle'))+' · '+esc(it.kind||t('inboxKindMissing'))+'</div>';
+  h+='<h2 class="inbox-d-title" id="inboxSheetTitle">'+esc(inboxTitle(it))+'</h2>';
+  h+='<div class="inbox-d-sub">'+inboxStateWord(it.state)+'<span>'+esc(it.queue_id)+'</span><span>'+esc(req?t('inboxRequested')+' '+req.text:t('inboxRequestedMissing'))+'</span><span>'+esc(it.actor||t('inboxActorMissing'))+'</span></div>';
+  if(!it.display_title)h+='<p class="inbox-hint">'+esc(t('inboxTitleFallbackNote'))+'</p>';
+  if(it.state==='pending'){
+    if(sig!=='live')h+='<p class="inbox-warn">'+esc(t('inboxWarnCached',{state:signalLabel(sig),age:snapshotAgeLabel()}))+'</p>';
+    if(l.entry&&l.stale)h+='<p class="inbox-warn">'+esc(t('inboxWarnStale'))+'</p>';
+    if(!it.content_hash)h+='<p class="inbox-warn">'+esc(t('inboxWarnNoHash'))+'</p>';
+  }
+  h+='<section class="inbox-sec"><h3>'+esc(t('inboxSecEffect'))+'</h3>'+inboxEffectHtml(it)+'</section>';
+  h+='<section class="inbox-sec"><h3>'+esc(t('inboxSecDecision'))+'</h3>'+inboxDecisionHtml(it)+'</section>';
+  h+='<section class="inbox-sec"><h3>'+esc(t('inboxSecFields'))+'</h3>'+inboxFieldsHtml(it)+'</section>';
+  var hist=inboxLog.filter(function(e){return e.queue_id===it.queue_id}).reverse();
+  h+='<section class="inbox-sec"><h3>'+esc(t('inboxSecHistory'))+'</h3>'+(hist.length?hist.map(function(e){return inboxEntryHtml(e,null)}).join(''):'<p class="inbox-none">'+esc(t('inboxHistoryNone'))+'</p>')+'</section>';
+  return h;
+}
+function inboxLogHtml(){
+  var h=inboxBarHtml(false);
+  h+='<div class="eyebrow">'+esc(t('inboxLogCount',{n:inboxLog.length}))+'</div><h2 class="inbox-d-title" id="inboxSheetTitle">'+esc(t('inboxLogTitle'))+'</h2>';
+  h+='<p class="inbox-hint">'+esc(t('inboxLogIntro'))+' '+esc(t('inboxLogNoToken'))+'</p>';
+  if(inboxLogNotice==='unreadable')h+='<p class="inbox-warn">'+esc(t('inboxLogUnreadable'))+'</p>';
+  if(inboxLogMsg)h+='<p class="inbox-warn" role="status">'+esc(inboxLogMsg)+'</p>';
+  var none=inboxLog.length===0;
+  h+='<div class="inbox-actions"><button type="button" class="btn primary" data-fk="export" data-inbox-export="1"'+(none?' disabled':'')+'>'+esc(t('inboxExport'))+'</button><button type="button" class="btn" data-fk="json" data-inbox-json="1"'+(none?' disabled':'')+' aria-expanded="'+(inboxJsonShown?'true':'false')+'">'+esc(inboxJsonShown?t('inboxHideJson'):t('inboxShowJson'))+'</button></div>';
+  if(inboxJsonShown&&!none)h+='<textarea class="inbox-json" readonly aria-label="'+esc(t('inboxJsonLabel'))+'">'+esc(inboxExportText())+'</textarea>';
+  h+='<section class="inbox-sec">'+(none?'<p class="inbox-none">'+esc(t('inboxLogEmpty'))+'</p>':inboxLog.slice().reverse().map(function(e){return inboxEntryHtml(e,{showId:true})}).join(''))+'</section>';
+  return h;
+}
+function inboxBuildSheet(){
+  if(inboxSheetEl)return;
+  var el=document.createElement('div');el.id='inboxSheet';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-labelledby','inboxSheetTitle');
+  el.innerHTML='<div class="inbox-sheet-box"></div>';
+  document.body.appendChild(el);inboxSheetEl=el;inboxSheetBody=el.firstChild;
+  /* Desktop: a click on the scrim closes the dialog (the draft is kept in memory). Phone: the sheet is full-screen, so only the Close button closes it. */
+  el.addEventListener('click',function(ev){if(ev.target===el){if(objIsDesktop())inboxCloseSheet();return}inboxHandleClick(ev)});
+  el.addEventListener('input',function(ev){var ta=ev.target;if(!ta||ta.id!=='inboxReason'||!inboxOpenId)return;inboxDraft(inboxOpenId).reason=ta.value;inboxUpdateFormUi()});
+  el.addEventListener('change',function(ev){var r=ev.target;if(!r||r.name!=='inboxChoice'||!inboxOpenId)return;inboxDraft(inboxOpenId).choice=(r.value==='approve'||r.value==='reject')?r.value:null;inboxUpdateFormUi()});
+  el.addEventListener('submit',function(ev){ev.preventDefault();inboxSubmit()});
+}
+function inboxUpdateFormUi(){
+  var it=inboxItemById(inboxOpenId);if(!it||!inboxSheetBody)return;
+  var rd=inboxFormReady(it),b=inboxSheetBody.querySelector('#inboxSubmit'),hint=inboxSheetBody.querySelector('#inboxFormHint');
+  if(b){b.disabled=!rd.ok;b.textContent=rd.label}
+  if(hint)hint.textContent=rd.hint;
+}
+function inboxSheetSig(){
+  if(inboxSheetMode==='log')return 'log|'+inboxLog.length+'|'+inboxJsonShown+'|'+inboxLogMsg;
+  var it=inboxItemById(inboxOpenId),last=inboxOpenId?inboxLastEntry(inboxOpenId):null;
+  return 'detail|'+JSON.stringify(it)+'|'+(last?last.log_id:'')+'|'+signalState()+'|'+(snapshot?snapshot.generationSeq:'')+'|'+(it?inboxFormState(it):'')+'|'+(inboxFlash?inboxFlash.text:'')+'|'+inboxNavList.join(',');
+}
+function inboxRenderSheet(focusKey){
+  if(!inboxSheetEl||!inboxSheetMode)return;
+  var a=document.activeElement,fk=focusKey||null,sel=null;
+  if(!fk&&a&&inboxSheetEl.contains(a)&&a.getAttribute){fk=a.getAttribute('data-fk');if(a.id==='inboxReason'){try{sel=[a.selectionStart,a.selectionEnd]}catch(e){}}}
+  var top=inboxSheetEl.scrollTop;
+  inboxSheetBody.innerHTML=(inboxSheetMode==='log')?inboxLogHtml():inboxDetailHtml();
+  inboxSig=inboxSheetSig();
+  if(!focusKey)inboxSheetEl.scrollTop=top;
+  var n=fk?inboxSheetBody.querySelector('[data-fk="'+fk+'"]'):null;
+  if(!n||n.disabled)n=inboxSheetBody.querySelector('[data-fk="close"]');
+  if(n){try{n.focus({preventScroll:!focusKey})}catch(e){n.focus()}if(sel&&n.id==='inboxReason'){try{n.setSelectionRange(sel[0],sel[1])}catch(e){}}}
+}
+/* Called after every snapshot render: re-draw the open sheet only when what it shows actually changed, so typing is never interrupted by the periodic refresh. */
+function inboxSyncSheet(){if(!inboxSheetEl||!inboxSheetMode)return;if(inboxSheetSig()!==inboxSig)inboxRenderSheet(null)}
+function inboxShowSheet(mode,originEl){
+  inboxBuildSheet();
+  if(!inboxSheetMode)inboxReturnFocus=originEl||document.activeElement||null;
+  inboxSheetMode=mode;
+  closeSearchOverlay();
+  var pal=document.getElementById('cmd-palette');if(pal)pal.classList.remove('open');
+  inboxSheetEl.classList.add('open');document.documentElement.classList.add('inbox-lock');
+  inboxSheetEl.scrollTop=0;
+  inboxRenderSheet('close');
+}
+function inboxOpen(id,originEl,navIds){
+  if(!inboxItemById(id))return false;
+  if(inboxFlash&&inboxFlash.id!==id)inboxFlash=null;
+  inboxOpenId=id;
+  if(navIds)inboxNavList=navIds;
+  else if(inboxNavList.indexOf(id)<0){var q=inboxQueue();inboxNavList=q?q.items.map(function(x){return x.queue_id}):[id]}
+  inboxShowSheet('detail',originEl);
+  return true;
+}
+function inboxOpenLog(originEl){inboxLog=inboxLoadLog();inboxLogMsg='';inboxOpenId=null;inboxShowSheet('log',originEl)}
+function inboxCloseSheet(){
+  if(!inboxSheetEl||!inboxSheetMode)return;
+  inboxSheetMode=null;inboxOpenId=null;inboxFlash=null;inboxJsonShown=false;inboxLogMsg='';
+  inboxSheetEl.classList.remove('open');document.documentElement.classList.remove('inbox-lock');
+  var back=inboxReturnFocus;inboxReturnFocus=null;
+  /* The originating row may have been re-rendered: fall back to the same row in a visible host. */
+  if(back&&document.body.contains(back)&&back.offsetParent!==null){back.focus();return}
+  var id=back&&back.getAttribute?back.getAttribute('data-inbox-open'):null;
+  var rows=document.querySelectorAll('.inbox-row');
+  for(var i=0;i<rows.length;i++){if(rows[i].offsetParent!==null&&(!id||rows[i].getAttribute('data-inbox-open')===id)){rows[i].focus();return}}
+}
+function inboxNextTodoId(afterId){
+  var g=inboxGroups();if(!g.todo.length)return null;
+  var todo={};g.todo.forEach(function(x){todo[x.queue_id]=true});
+  var idx=inboxNavList.indexOf(afterId);
+  if(idx>-1){for(var s=1;s<=inboxNavList.length;s++){var c=inboxNavList[(idx+s)%inboxNavList.length];if(c!==afterId&&todo[c])return c}}
+  return g.todo[0].queue_id!==afterId?g.todo[0].queue_id:null;
+}
+function inboxSubmit(){
+  var it=inboxItemById(inboxOpenId);if(!it)return;
+  var fs=inboxFormState(it),d=inboxDraft(it.queue_id);
+  if(fs!=='decide'&&fs!=='redecide'&&fs!=='withdraw')return;
+  /* The reason gate is re-checked here; the disabled button is not the only guard. */
+  var rd=inboxFormReady(it);if(!rd.ok){inboxUpdateFormUi();return}
+  var action=(fs==='withdraw')?'withdraw':d.choice;
+  var prev=inboxLastEntry(it.queue_id);
+  var entry={log_id:newId(),seq:0,queue_id:it.queue_id,action:action,proposed_state:action==='approve'?'approved':(action==='reject'?'rejected':null),decision_note:d.reason.trim(),decided_at:new Date().toISOString(),decided_via:'helm-pwa-local-log',supersedes:prev?prev.log_id:null,
+    basis:{content_hash:it.content_hash,kind:it.kind,state:it.state,subject_ref:it.subject_ref,requested_at:it.requested_at,generation_seq:snapshot?snapshot.generationSeq:null,projection_version:snapshot?snapshot.projectionVersion:null,snapshot_state:signalState(),snapshot_fetched_at:snapshotFetchedAt?new Date(snapshotFetchedAt).toISOString():null},
+    delivery:'local_only'};
+  if(!inboxAppendEntry(entry)){inboxFlash={id:it.queue_id,text:t('inboxSaveFailed')};inboxRenderSheet('submit');return}
+  inboxDrafts[it.queue_id]={mode:null,choice:null,reason:''};
+  inboxFlash={id:it.queue_id,text:t('inboxSaved')};
+  inboxRenderHosts();inboxRenderMe();
+  inboxRenderSheet(action==='withdraw'?'reason':(inboxNextTodoId(it.queue_id)?'nexttodo':'redecide'));
+}
+function inboxHandleClick(ev){
+  var el=ev.target&&ev.target.closest?ev.target.closest('[data-inbox-open],[data-inbox-tab],[data-inbox-more],[data-inbox-log],[data-inbox-close],[data-inbox-step],[data-inbox-mode],[data-inbox-nexttodo],[data-inbox-export],[data-inbox-json],[data-inbox-subject-type]'):null;
+  if(!el||el.disabled)return false;
+  var host=el.closest('#approvalsBlock,#wp-pending-b');
+  if(el.hasAttribute('data-inbox-open')){
+    var nav=null;
+    if(host){var g=inboxGroups();nav=(g[inboxTab]||[]).map(function(x){return x.queue_id})}
+    inboxOpen(el.getAttribute('data-inbox-open'),inboxSheetMode?null:el,nav);return true;
+  }
+  if(el.hasAttribute('data-inbox-tab')){var k=el.getAttribute('data-inbox-tab');if(INBOX_TABS.indexOf(k)>-1&&k!==inboxTab){inboxTab=k;inboxExpanded=false}inboxRenderHosts();return true}
+  if(el.hasAttribute('data-inbox-more')){inboxExpanded=!inboxExpanded;inboxRenderHosts();return true}
+  if(el.hasAttribute('data-inbox-log')){inboxOpenLog(el);return true}
+  if(el.hasAttribute('data-inbox-close')){inboxCloseSheet();return true}
+  if(el.hasAttribute('data-inbox-step')){var idx=inboxNavList.indexOf(inboxOpenId),to=idx+parseInt(el.getAttribute('data-inbox-step'),10);if(idx>-1&&to>=0&&to<inboxNavList.length){inboxFlash=null;inboxOpenId=inboxNavList[to];inboxSheetEl.scrollTop=0;inboxRenderSheet(el.getAttribute('data-fk'))}return true}
+  if(el.hasAttribute('data-inbox-mode')){
+    var m=el.getAttribute('data-inbox-mode'),d=inboxDraft(inboxOpenId);
+    inboxFlash=null;
+    if(m==='cancel'){d.mode=null;d.choice=null;d.reason='';inboxRenderSheet('redecide')}
+    else if(m==='redecide'||m==='withdraw'){d.mode=m;d.choice=null;d.reason='';inboxRenderSheet(m==='withdraw'?'reason':'choice-approve')}
+    return true;
+  }
+  if(el.hasAttribute('data-inbox-nexttodo')){var nx=inboxNextTodoId(inboxOpenId);if(nx){inboxFlash=null;inboxOpenId=nx;if(inboxNavList.indexOf(nx)<0)inboxNavList=inboxGroups().todo.map(function(x){return x.queue_id});inboxSheetEl.scrollTop=0;inboxRenderSheet('close')}return true}
+  if(el.hasAttribute('data-inbox-export')){if(!inboxLog.length)return true;if(!inboxExportFile()){if(inboxSheetMode!=='log')inboxOpenLog(el);inboxJsonShown=true;inboxLogMsg=t('inboxExportFailed');inboxRenderSheet('json')}return true}
+  if(el.hasAttribute('data-inbox-json')){inboxJsonShown=!inboxJsonShown;inboxRenderSheet('json');return true}
+  if(el.hasAttribute('data-inbox-subject-type')){var ty=el.getAttribute('data-inbox-subject-type'),rf=el.getAttribute('data-inbox-subject-ref');inboxCloseSheet();openObject(ty,rf);return true}
+  return false;
+}
+
+/* ---- Me view: decision log card ---- */
+function inboxRenderMe(){
+  var card=document.getElementById('inboxLogCard');if(!card)return;
+  var keep=document.activeElement&&card.contains(document.activeElement)?document.activeElement.id:null;
+  var last=inboxLog.length?inboxLog[inboxLog.length-1]:null,lt=last?inboxTs(last.decided_at):null;
+  var h='<h2>'+esc(t('inboxLogTitle'))+'</h2>';
+  h+='<div class="item"><div class="t num">'+esc(t('inboxLogCount',{n:inboxLog.length}))+'</div><div class="d">'+esc(last?t('inboxLogLast',{a:inboxActLabel(last.action),id:last.queue_id,when:lt?lt.text:''}):t('inboxLogEmpty'))+'</div></div>';
+  h+='<div class="row"><button class="btn ink" type="button" id="inboxLogOpen" data-inbox-log="1">'+esc(t('inboxLogOpen'))+'</button><button class="btn" type="button" id="inboxLogExport" data-inbox-export="1"'+(inboxLog.length?'':' disabled')+'>'+esc(t('inboxExport'))+'</button></div>';
+  h+='<div class="note">'+esc(t('inboxNotice'))+' '+esc(t('inboxLogNoToken'))+'</div>';
+  card.innerHTML=h;
+  if(keep){var n=document.getElementById(keep);if(n)n.focus()}
+}
+
+/* ---- wiring: wrap the existing renderers, search and palette (same pattern as the earlier slices) ---- */
+var _inboxRenderSnapshot=renderSnapshot;
+renderSnapshot=function(){
+  var p=document.getElementById('approvalsBlock'),ps=inboxFocusKey(p);
+  _inboxRenderSnapshot();
+  inboxRenderPhoneHost();inboxFocusRestore(document.getElementById('approvalsBlock'),ps);
+  inboxRenderMe();inboxSyncSheet();
+};
+var _inboxRenderWall=renderWall;
+renderWall=function(){
+  var w=document.getElementById('wp-pending-b'),ws=inboxFocusKey(w);
+  _inboxRenderWall();
+  inboxRenderWallHost();inboxFocusRestore(w,ws);
+};
+var _inboxSearchResultsFor=searchResultsFor;
+searchResultsFor=function(q){
+  var res=_inboxSearchResultsFor(q),needle=q.trim().toLowerCase(),qu=inboxQueue();
+  if(!needle||!qu||qu.status!=='connected')return res;
+  qu.items.forEach(function(it){
+    var hay=[it.queue_id,it.display_title||'',it.actor||'',typeof it.effect==='string'?it.effect:''].join(' ').toLowerCase();
+    if(hay.indexOf(needle)>-1)res.push({kind:t('inboxTitle'),text:inboxTitle(it),detail:joinParts([inboxStateLabel(it.state),inboxEffectSummary(it)]),view:'v-brief',inboxId:it.queue_id});
+  });
+  return res;
+};
+var _inboxRenderSearch=renderSearch;
+renderSearch=function(){
+  _inboxRenderSearch();
+  var input=document.getElementById('globalSearch'),box=document.getElementById('searchResults');if(!input||!box)return;
+  var results=searchResultsFor(input.value||''),items=box.querySelectorAll('.item');
+  for(var i=0;i<items.length&&i<results.length;i++){
+    if(!results[i].inboxId)continue;
+    var btn=items[i].querySelector('button');
+    if(btn){btn.removeAttribute('data-search-view');btn.setAttribute('data-inbox-open',results[i].inboxId)}
+  }
+};
+var _inboxWallCmdList=wallCmdList;
+wallCmdList=function(){var cmds=_inboxWallCmdList();cmds.push({label:t('inboxCmdLog'),run:function(){inboxOpenLog(null)}});return cmds};
+var _inboxWallJumpPending=wallJumpPending;
+wallJumpPending=function(){
+  if(!inboxActive()){_inboxWallJumpPending();return}
+  var panel=document.getElementById('wp-pending');if(panel)panel.scrollIntoView();
+  var first=document.querySelector('#wp-pending-b .inbox-row');
+  if(first)first.focus();else if(panel)panel.focus();
+};
+['companyBody','wall','v-me'].forEach(function(id){var n=document.getElementById(id);if(n)n.addEventListener('click',inboxHandleClick)});
+var inboxSr=document.getElementById('searchResults');
+if(inboxSr)inboxSr.addEventListener('click',function(ev){var b=ev.target.closest('[data-inbox-open]');if(!b)return;var id=b.getAttribute('data-inbox-open');closeSearchOverlay();inboxOpen(id,null,null)});
+document.addEventListener('keydown',function(ev){
+  if(!inboxSheetMode||!inboxSheetEl)return;
+  if(ev.key==='Escape'){ev.preventDefault();ev.stopImmediatePropagation();inboxCloseSheet();return}
+  if(ev.key==='Tab'){
+    /* Keep keyboard focus inside the open sheet. */
+    var f=Array.prototype.filter.call(inboxSheetEl.querySelectorAll('button,textarea,input,[tabindex="0"]'),function(n){return!n.disabled&&n.offsetParent!==null});
+    if(!f.length)return;
+    var first=f[0],last=f[f.length-1],a=document.activeElement;
+    if(!inboxSheetEl.contains(a)){ev.preventDefault();first.focus()}
+    else if(ev.shiftKey&&a===first){ev.preventDefault();last.focus()}
+    else if(!ev.shiftKey&&a===last){ev.preventDefault();first.focus()}
+    return;
+  }
+  /* While the sheet is open, page-level shortcuts (/, P, Ctrl/Cmd+K, arrows) stay off. */
+  ev.stopImmediatePropagation();
+},true);
+window.addEventListener('storage',function(ev){if(ev.key!==INBOX_LOG_KEY)return;inboxLog=inboxLoadLog();inboxRenderHosts();inboxRenderMe();inboxSyncSheet()});
+inboxRenderHosts();inboxRenderMe();
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,260 @@
+{
+  "projection_version": 2,
+  "generation_seq": 49,
+  "generated_at": "2026-11-12T08:00:00Z",
+  "briefing": {
+    "kind": "daily",
+    "date": "2026-11-12",
+    "display_title": "Helm daily overview"
+  },
+  "goals": [
+    {
+      "id": "goal-1",
+      "display_title": "Ship Helm overview"
+    },
+    {
+      "id": "goal-2",
+      "display_title": "Grow Helm adoption"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "dec-46",
+      "date": "2026-11-11",
+      "display_title": "Approve Helm overview launch",
+      "subject_ref": "goal-1"
+    }
+  ],
+  "team": {
+    "workspaces": 1,
+    "goals": 2
+  },
+  "overview": {
+    "goals_total": 2,
+    "goals_named": 2,
+    "goals_activity_buckets": {
+      "updated_last_24h": 1,
+      "updated_last_7d": 1,
+      "older": 0
+    },
+    "recent_activity": [
+      {
+        "type": "goal",
+        "date": "2026-11-12",
+        "display_title": "Ship Helm overview",
+        "subject_ref": "goal-1"
+      },
+      {
+        "type": "decision",
+        "date": "2026-11-11",
+        "display_title": "Approve Helm overview launch",
+        "subject_ref": "goal-1"
+      }
+    ],
+    "staleness": 0
+  },
+  "fleet_health": {
+    "healthy": 3,
+    "degraded": 0,
+    "down": 0
+  },
+  "queue": {
+    "status": "connected",
+    "count": 12,
+    "title_map": {
+      "cqe06": "Title supplied by title_map"
+    },
+    "items": [
+      {
+        "queue_id": "cqe01",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:01:00Z",
+        "subject_ref": "goal-1",
+        "effect": [
+          {
+            "field": "budget_cap_usd",
+            "from": 60,
+            "to": 100
+          },
+          {
+            "field": "review_cadence",
+            "from": "monthly",
+            "to": "weekly"
+          },
+          {
+            "field": "owner",
+            "from": "seat-pm",
+            "to": "seat-pm"
+          }
+        ],
+        "content_hash": "sha256:b4baca894ba024f0c5e6467e8378782de5061e031991f9850a7c73c6c8d326f4",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe02",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:02:00Z",
+        "subject_ref": null,
+        "effect": {
+          "pilot_seats": 5,
+          "pilot_end": "2026-12-01"
+        },
+        "content_hash": "sha256:bee95ea87c7ca8660d13e86fdff7e45fb3d9e9b14f08d349cbea1d0553e62950",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe03",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:03:00Z",
+        "subject_ref": null,
+        "effect": {
+          "summary": "Move the briefing earlier and shorten it",
+          "changes": [
+            {
+              "path": "briefing.time",
+              "before": "08:00",
+              "after": "07:30"
+            },
+            {
+              "path": "briefing.max_items",
+              "before": 10,
+              "after": 5
+            }
+          ]
+        },
+        "content_hash": "sha256:05aed700ad29d50340bdecbe587b14f155e768e8d6ed766f2a3a9a06f5b8aec0",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe04",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:04:00Z",
+        "subject_ref": null,
+        "effect": {
+          "steps": [
+            "export",
+            "archive"
+          ],
+          "targets": [
+            [
+              "branch",
+              "stage-0"
+            ]
+          ]
+        },
+        "content_hash": "sha256:651bbd6dbf7b15483d211e4820526d18101193fff69bbfaaec0b85ddd75a97cc",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe05",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:05:00Z",
+        "subject_ref": null,
+        "effect": "Text effect on an item whose raw title must stay hidden",
+        "content_hash": "sha256:ec1f4a6c39e3d95e91b10d8203dc59897c032709fdaac36abd1aac9d99fa64fa",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null,
+        "title": "RAW REVIEW TITLE (must not be displayed)"
+      },
+      {
+        "queue_id": "cqe06",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:06:00Z",
+        "subject_ref": null,
+        "effect": "Text effect on an item titled through the envelope title_map",
+        "content_hash": "sha256:8f0534ff6cb5beecf85a597f6bfdf712bc73e3d2e4b1dce243e2a09b5578d4b5",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe07",
+        "kind": "ceo_ruling",
+        "state": "escalated",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:07:00Z",
+        "subject_ref": null,
+        "effect": "State outside the K2 enum; must render as unknown and stay closed",
+        "content_hash": "sha256:fe3979fe2d4367a69e63262b53a96b013d8e1ba0d098a3e5294324beb4bb6e84",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe08",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:08:00Z",
+        "subject_ref": "goal-999",
+        "effect": "Subject reference that is not in this snapshot",
+        "content_hash": "sha256:baefcef8b1e7e31178cf5b41c208a9242faa24a6d29e5785c0fe3847fbf3b381",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "queue_id": "cqe09",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:09:00Z",
+        "subject_ref": null,
+        "effect": "Pending item without a content hash",
+        "content_hash": null,
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      },
+      {
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "effect": "Item without queue_id; must be dropped and counted"
+      },
+      {
+        "queue_id": "cqe01",
+        "kind": "ceo_ruling",
+        "state": "pending",
+        "actor": "seat-pm",
+        "requested_at": "2026-11-11T09:01:00Z",
+        "subject_ref": null,
+        "effect": "Duplicate queue_id; must be dropped and counted",
+        "content_hash": "sha256:b4baca894ba024f0c5e6467e8378782de5061e031991f9850a7c73c6c8d326f4",
+        "decided_at": null,
+        "decided_via": null,
+        "decision_note": null,
+        "display_title": null
+      }
+    ]
+  }
+}
